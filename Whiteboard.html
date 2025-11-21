@@ -15,17 +15,23 @@
     <div class="Whiteboard_Area">
         <div class="Whiteboard" id="Whiteboard"></div>
 
+        <div class="Tool_Element" id="Color_Creator" data-Connect="Pencil_Marker_Colour">
+            <input type="color" name="Color_Creator" id="Color_Creator" value="#68838b">
+        </div>
+
         <div class="Whiteboard_Tools">
-            <div class="Active"><span class="material-symbols-rounded">stylus_pen</span></div>
-            <div><span class="material-symbols-rounded">text_fields</span></div>
-            <div><span class="material-symbols-rounded">timer</span></div>
-            <div><span class="material-symbols-rounded">star_shine</span></div>
-            <div class="Whiteboard_Divider"></div>
+            <div class="Active Tool" data-Tool="Pencil" title="Pencil"><span class="material-symbols-rounded">stylus_pen</span></div>
+            <div class="Tool" data-Tool="Marker" title="Marker"><span class="material-symbols-rounded">ink_marker</span></div>
+            <div class="Tool" data-Tool="Pencil_Marker_Colour" title="Pencil_Marker_Colour"><span class="material-symbols-rounded">format_color_text</span></div>
+            <div class="Tool" data-Tool="Text" title="Text"><span class="material-symbols-rounded">text_fields</span></div>
+            <div class="Whiteboard_Divider">|</div>
             <div><span class="material-symbols-rounded">undo</span></div>
             <div><span class="material-symbols-rounded">redo</span></div>
-            <div class="Whiteboard_Divider"></div>
+            <div class="Whiteboard_Divider">|</div>
             <div><span class="material-symbols-rounded">more_vert</span></div>
         </div>
     </div>
+
+    <script src="./Index.js"></script>
 </body>
 </html>

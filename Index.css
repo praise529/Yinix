@@ -41,6 +41,7 @@ body {
     padding: 25px;
     display: flex;
     position: fixed;
+    left: 50px;
     bottom: 50px;
     max-height: 30px;
     text-align: center;
@@ -51,7 +52,7 @@ body {
 }
 
 .Whiteboard_Area .Whiteboard_Tools div {
-    transition: 0.2s ease-in-out;
+    transition: 0.01s ease-in-out;
 }
 
 .Whiteboard_Area .Whiteboard_Tools div span {
@@ -59,12 +60,36 @@ body {
     cursor: pointer;
     user-select: none;
     color: var(--Special-Black);
+    transition: color 0.2s ease-in-out;
 }
-.Whiteboard_Area .Whiteboard_Tools div span:hover, .Whiteboard_Area .Whiteboard_Tools div.Active span {
-    color: var(--Orange);
+.Whiteboard_Area .Whiteboard_Tools div span:hover {
+    color: #47595e;
+}
+.Whiteboard_Area .Whiteboard_Tools div span:active {
+    opacity: 0.5;
 }
 
 .Whiteboard_Area .Whiteboard_Tools div.Active {
     color: var(--Orange);
     transform: translateY(-10px);
 }
+.Whiteboard_Area .Whiteboard_Tools div.Active span {
+    color: var(--Orange);
+}
+
+.Whiteboard_Area .Whiteboard_Tools .Whiteboard_Divider {
+    font-size: 28px;
+    color: var(--Special-Black);
+}
+
+.Whiteboard_Area #Color_Creator {
+    left: 195px;
+    bottom: 150px;
+    display: none;
+    position: fixed;
+    background: var(--White);
+    border: var(--Light-Border);
+}
+/* .Whiteboard_Area #Color_Creator input {
+    width: 20px;
+} */
