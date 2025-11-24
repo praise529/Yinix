@@ -1,19 +1,21 @@
 import cors from "cors";
 import express, { type Request, type Response } from "express";
-import { config } from "dotenv";
-
-config();
+import Connect_To_Database from "./Database/MongoDB";
+import Auth_Router from "./Routes/Auth.routes";
+import { PORT } from "./Config/ENV";
 
 const App = express();
-const PORT = process.env.PORT || 5000;
+const Port = PORT || 5000;
 
 App.use(cors());
 App.use(express.json());
+App.use("/API/Auth", Auth_Router);
 
 App.get("/", (req: Request, res: Response) => {
   res.json({ Yinix: true });
 });
 
-App.listen(PORT, () => {
+App.listen(Port, async () => {
+  await Connect_To_Database();
   console.log(`Yinix! - http://localhost:${PORT}`);
 });
