@@ -8,7 +8,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stopwatch - Yinix</title>
+    <title>Timer - Yinix</title>
 
     <style>
         #Timer {
@@ -68,7 +68,7 @@
         <div class="Timer-Controls">
             <button class="Timer-Controls-Button" id="Timer-Plus-10"><span class="material-symbols-rounded">exposure_plus_2</span></button>
             <button class="Timer-Controls-Button" id="Timer-Play"><span class="material-symbols-rounded">play_arrow</span></button>
-            <button class="Timer-Controls-Button" id="Timer-Restart"><span class="material-symbols-rounded">replay</span></button>
+            <button class="Timer-Controls-Button" id="Timer-Restart" onclick="Reset()"><span class="material-symbols-rounded">replay</span></button>
         </div><br><br>
 
         <button onclick="Open_In_New_Window()"><span class="material-symbols-rounded">open_in_new</span> Open in new window</button>
@@ -117,6 +117,7 @@
                 return;
             }
             Update();
+            document.title = `${PadStart(Timer_Hours)}:${PadStart(Timer_Minutes)}:${PadStart(Timer_Seconds)} - Timer - Yinix!`;
         }
 
         function Start() {
@@ -132,6 +133,12 @@
             Timer_Play.innerHTML = `<span class="material-symbols-rounded">play_arrow</span>`;
         }
 
+        function Reset() {
+            Stop();
+            Timer_Hours = Timer_Minutes = Timer_Seconds = 0;
+            Update();
+        }
+
         Timer_Play.addEventListener("click", () => {
             Interval ? Stop() : Start();
         });
@@ -141,7 +148,7 @@
 
 
         function Open_In_New_Window() {
-            window.open("http://127.0.0.1:5500/Tools/Timer.html", "", "width=1000,height=1000");
+            window.open("https://yinixx.vercel.app/Tools/Timer.html", "", "width=1000,height=1000");
         }
     </script>
 

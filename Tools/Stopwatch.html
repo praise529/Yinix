@@ -80,7 +80,7 @@
         <div class="Stopwatch-Controls">
             <button class="Stopwatch-Controls-Button" id="Stopwatch-Lap" onclick="Lap()"><span class="material-symbols-rounded">laps</span></button>
             <button class="Stopwatch-Controls-Button" id="Stopwatch-Play" onclick="Start()"><span class="material-symbols-rounded">play_arrow</span></button>
-            <button class="Stopwatch-Controls-Button" id="Stopwatch-Restart"><span class="material-symbols-rounded">replay</span></button>
+            <button class="Stopwatch-Controls-Button" id="Stopwatch-Restart" onclick="Reset()"><span class="material-symbols-rounded">replay</span></button>
         </div>
 
         <div id="Stopwatch-Laps"></div>
@@ -138,6 +138,12 @@
             Stopwatch_Play.innerHTML = `<span class="material-symbols-rounded">play_arrow</span>`;
             clearInterval(Interval);
             Interval = null;
+        }
+
+        function Reset() {
+            Stop();
+            Stopwatch_Minutes = Stopwatch_Seconds = Stopwatch_Milliseconds = 0;
+            Update();
         }
 
 
