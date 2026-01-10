@@ -64,6 +64,9 @@ button {
     border: var(--Light-Border);
     border-radius: var(--Radius-1);
 }
+.Muted {
+    color: var(--Text-Muted);
+}
 
 
 
