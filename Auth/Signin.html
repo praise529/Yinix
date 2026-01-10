@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Links!!! 🔗 -->
+    <link rel="stylesheet" href="../Index.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Yinix</title>
+</head>
+<body>
+    <div class="Account_Form">
+        <h2>Sign In</h2>
+        
+        <form method="post" id="Signin_Form">
+            <input type="number" name="Signin_Code" id="Signin_Code" 
+            maxlength="7" required placeholder="Your Code..." autofocus>
+            <input type="email" name="Signin_Email" id="Signin_Email"
+            maxlength="255" minlength="5" placeholder="Your Email (if you have one)..." autocapitalize="off">
+            <input type="password" name="Signin_Code" id="Signin_Password"
+            placeholder="You NEED this...">
+
+            <button type="submit">Signin!</button>
+        </form>
+
+        <div class="Social_Buttons">
+            <button class="OAuth2_Signin_Button" id="Google">Sign In With Google</button>
+            <button class="OAuth2_Signin_Button" id="Apple">Sign In With Apple</button>
+        </div>
+    </div>
+
+    <script>
+        const Signin_Form = document.getElementById("Signin_Form");
+        const Signin_Code = document.getElementById("Signin_Code").value;
+        const Signin_Email = document.getElementById("Signin_Email").value;
+        const Signin_Password = document.getElementById("Signin_Password").value;
+
+        Signin_Form.addEventListener("submit", async (Event) => {
+            Event.preventDefault();
+            Submit();
+        })
+
+        async function Submit() {
+            fetch("http://localhost:1100/API/Auth/Sign_In", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ Code: Signin_Code, Email: Signin_Email, Password: Signin_Password })
+            })
+            .then((Yinix_Data) => {
+                console.log("YYYYYYYYAAAAAAAAAAAAAYYYYYYYYYYYY!!!!!!!");
+                console.log(Yinix_Data);
+
+                sessionStorage.setItem("Name", Yinix_Data.Info.Name);
+                sessionStorage.setItem("Email", Yinix_Data.Info.Email);
+                sessionStorage.setItem("Code", Yinix_Data.Info.Code);
+
+                return Yinix_Data.json();
+            })
+            .catch((Err) => {
+                console.error(`We couldn't sign you in because ${Err}`);
+            })
+            .finally(() => {
+                console.info("Sign in complete");
+            });
+        }
+
+        // async function Add_Classroom() {
+        //     try {
+        //         const Yinix_Response = fetch()
+        //     } catch (Err) {
+                
+        //     }
+        // }
+    </script>
+</body>
+</html>

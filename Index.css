@@ -1,38 +1,87 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
-    font-family: "Varela Round", sans-serif;
+    font-family: "Fredoka", sans-serif;
 }
 
 :root {
-    --White: hsl(100, 100%, 100%);
-    --Light: hsl(0, 0%, 93%);
-    --Black: hsl(0, 0%, 20%);
-    --Orange: hsl(36, 99%, 67%);
-    --Special-Black: hsl(194, 14%, 48%);
+    --White: hsl(10, 100%, 100%);
+    --Dark-White: hsl(10, 0%, 97%);
 
-    --Light-Border: 2px solid var(--Light);
+    --Main: hsl(0, 100%, 68%);
+    --Secondary-Main: hsl(350, 100%, 68%);
+
+    --Text-Black: hsl(0, 100%, 10%);
+    --Text-White: hsl(0, 100%, 99%);
+    --Teal-Black: hsl(195, 14%, 50%);
+    --Text-Muted: hsl(0, 0%, 50%);
+
+    --Light-Border: 4px solid var(--Dark-White);
+
+    --Radius-1: 10px;
+    --Radius-2: 20px;
 }
 
 :root.Dark_Mode {
-    --White: hsl(0, 0%, 13%);
-    --Light: hsl(0, 0%, 20%);
-    --Black: hsl(100, 100%, 100%);
-    --Orange: hsl(36, 99%, 67%);
-    --Special-Black: hsl(197, 100%, 93%);
+    --White: hsl(10, 0%, 20%);
+    --Dark-White: hsl(10, 0%, 10%);
+
+    --Main: hsl(0, 100%, 78%);
+    --Secondary-Main: hsl(350, 100%, 78%);
+
+    --Text-Black: hsl(0, 100%, 99%);
+    --Text-White: hsl(0, 100%, 99%);
+    --Teal-Black: hsl(195, 14%, 50%);
+
+    --Light-Border: 4px solid var(--Dark-White);
+
+    --Radius-1: 10px;
+    --Radius-2: 20px;
 }
 
 body {
+    overflow-x: hidden;
     background: var(--White);
 }
+
 body.Scroll-None {
     overflow: hidden;
+    /* min-height: 100vh;
+    min-height: 100dvh; */
+}
+
+
+button {
+    gap: 5px;
+    padding: 16px;
+    font-weight: 500;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    background: var(--White);
+    border: var(--Light-Border);
+    border-radius: var(--Radius-1);
 }
 
 
 
+.Tool-Box {
+    gap: 12px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 64px;
+    z-index: 1000;
+    text-align: center;
+    translate: -50% -50%;
+    border: var(--Light-Border);
+    border-radius: var(--Radius-2);
+}
+.Tool-Box h1 {
+    font-size: 100px;
+}
 
 
 
@@ -66,50 +115,64 @@ body.Scroll-None {
     font-size: 32px;
     cursor: pointer;
     user-select: none;
-    color: var(--Special-Black);
+    color: var(--Teal-Black);
     transition: color 0.2s ease-in-out;
 }
+
 .Whiteboard_Area .Whiteboard_Tools div span:hover {
     color: #47595e;
 }
+
 .Whiteboard_Area .Whiteboard_Tools div span:active {
     opacity: 0.5;
 }
 
 .Whiteboard_Area .Whiteboard_Tools div.Active {
-    color: var(--Orange);
+    color: var(--Main);
     transform: translateY(-10px);
 }
+
 .Whiteboard_Area .Whiteboard_Tools div.Active span {
-    color: var(--Orange);
+    color: var(--Main);
 }
 
 .Whiteboard_Area .Whiteboard_Tools .Whiteboard_Divider {
     font-size: 28px;
-    color: var(--Special-Black);
+    color: var(--Light);
 }
 
-.Whiteboard_Area #Color_Creator {
+.Whiteboard_Area #Colour_Creator {
     left: 195px;
     bottom: 150px;
-    display: none;
+    display: none !important;
     position: fixed;
     background: var(--White);
     border: var(--Light-Border);
 }
 
-.Whiteboard_Area .Whiteboard {
+.Whiteboard_Area .Whiteboard,
+.Whiteboard_Area .White {
     width: 100%;
+    z-index: -999;
     height: 100dvh;
+    cursor: default;
+    position: fixed;
+    pointer-events: auto;
     background: var(--White);
 }
+
+.Whiteboard_Area .White.Pencil {
+    cursor: url("./Images/Pen Cursor.png") 12 12, crosshair;
+}
+
 .Whiteboard_Area .Whiteboard .Pen_Mark {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: var(--Orange);
+    background: var(--Main);
 }
-.Whiteboard_Area .Whiteboard .Text {
+
+.Whiteboard_Area .White .Text {
     padding: 18px;
     overflow: hidden;
     resize: both;
@@ -117,17 +180,22 @@ body.Scroll-None {
     position: relative;
     border: 2px solid var(--White);
 }
-.Whiteboard_Area .Whiteboard .Text::-webkit-resizer {
+
+.Whiteboard_Area .White .Text::-webkit-resizer {
     display: none;
 }
-.Whiteboard_Area .Whiteboard .Text:hover {
-    border: 2px dotted var(--Orange);
+
+.Whiteboard_Area .White .Text:hover {
+    border: 2px dotted var(--Main);
 }
-.Whiteboard_Area .Whiteboard .Text:focus {
+
+.Whiteboard_Area .White .Text:focus {
     outline: inherit;
-    border: 2px dotted var(--Orange);
+    cursor: text;
+    border: 2px dotted var(--Main);
 }
-.Whiteboard_Area .Whiteboard .Text::after {
+
+.Whiteboard_Area .White .Text::after {
     content: "";
     width: 7px;
     height: 7px;
@@ -136,21 +204,24 @@ body.Scroll-None {
     bottom: 0;
     cursor: se-resize;
     background: var(--White);
-    border: 3px solid var(--Orange);
+    border: 3px solid var(--Main);
 
     display: none;
 }
-.Whiteboard_Area .Whiteboard .Text::before {
+
+.Whiteboard_Area .White .Text::before {
     content: "🗑️";
     width: 7px;
     height: 7px;
     display: none;
     position: absolute;
     top: 0;
-    right: 5px;
+    right: 15px;
     border-radius: 5px;
     background: var(--White);
 }
-.Whiteboard_Area .Whiteboard .Text:focus::after, .Whiteboard_Area .Whiteboard .Text:focus:before {
+
+.Whiteboard_Area .White .Text:focus::after,
+.Whiteboard_Area .White .Text:focus:before {
     display: block;
 }

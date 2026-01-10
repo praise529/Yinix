@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Links!!! 🔗 -->
+    <link rel="stylesheet" href="../Index.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Yinix</title>
+</head>
+
+<body>
+    <div class="Account_Form">
+        <h2>Sign Up</h2>
+
+        <form method="post" id="Signin_Form">
+            <input type="text" name="Signup_Name" id="Signup_Name" maxlength="100" required placeholder="Your Name...">
+            <input type="email" name="Signup_Email" id="Signin_Email" maxlength="255" minlength="5"
+            placeholder="Your Email (if you have one)...">
+            <input type="password" name="Signup_Password" id="Signin_Password" placeholder="Create a password, you NEED this...">
+            <input type="number" name="Signup_Age" id="Signup_Age" placeholder="How old are you?">
+            <label for="Role">Who ARE you?</label>
+            <select name="Role" id="Role">
+                <option value="Student">Student</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Parent">Parent/Guardian</option>
+            </select>
+
+            <button type="submit">Sign Up!</button>
+        </form>
+
+        <div class="Social_Buttons">
+            <button class="OAuth2_Signin_Button" id="Google">Sign Up With Google</button>
+            <button class="OAuth2_Signin_Button" id="Apple">Sign Up With Apple</button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Links!!! 🔗 -->
+    <link rel="stylesheet" href="../Index.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0,0" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch - Yinix</title>
+
+    <style>
+        #Stopwatch {
+            z-index: 1000;
+            position: absolute;
+            width: 386px;
+            /* border-image: conic-gradient( var(--Main), var(--Secondary-Main), var(--Dark-White), var(--Main)) 1; */
+        }
+        #Stopwatch .Stopwatch-Controls .Stopwatch-Controls-Button {
+            padding: 12px;
+            border-radius: 500px;
+            background: var(--White);
+            color: var(--Text-Black);
+            border: var(--Light-Border);
+        }
+
+        #Stopwatch .Stopwatch-Controls .Stopwatch-Controls-Button#Stopwatch-Play {
+            border: none;
+            color: #FFF;
+            background: var(--Main);
+        }
+
+        #Stopwatch #Stopwatch-Laps {
+            width: 100%;
+            display: flex;
+            overflow-y: auto;
+            margin-top: 20px;
+            max-height: 300px;
+            height: max-content;
+            flex-direction: column;
+        }
+        #Stopwatch #Stopwatch-Laps::-webkit-scrollbar {
+            background: transparent;
+        }
+        #Stopwatch #Stopwatch-Laps::-webkit-scrollbar-thumb {
+            width: 20px;
+            border-radius: 10px;
+            background: var(--Teal-Black);
+        }
+        #Stopwatch #Stopwatch-Laps:not(:has(div)) {
+            display: none;
+        }
+
+        #Stopwatch #Stopwatch-Laps .Lap {
+            width: 80%;
+            display: flex;
+            padding: 16px;
+            align-self: center;
+            border-radius: 10px;
+            flex-direction: row;
+            border: var(--Light-Border);
+        }
+
+        #Stopwatch #Stopwatch-Laps .Lap p {
+            font-weight: bold;
+            font-size: 20px;
+        }
+        #Stopwatch #Stopwatch-Laps .Lap p.Muted {
+            margin-left: auto;
+            color: var(--Text-Muted);
+        }
+    </style>
+</head>
+<body class="Scroll-None">
+    <div class="Tool-Box" id="Stopwatch">
+        <h2><span class="material-symbols-rounded">timer</span></h2>
+        <h1 id="Stopwatch_Time">00:00:00</h1><br><br>
+
+        <div class="Stopwatch-Controls">
+            <button class="Stopwatch-Controls-Button" id="Stopwatch-Lap" onclick="Lap()"><span class="material-symbols-rounded">laps</span></button>
+            <button class="Stopwatch-Controls-Button" id="Stopwatch-Play" onclick="Start()"><span class="material-symbols-rounded">play_arrow</span></button>
+            <button class="Stopwatch-Controls-Button" id="Stopwatch-Restart"><span class="material-symbols-rounded">replay</span></button>
+        </div>
+
+        <div id="Stopwatch-Laps"></div>
+    </div>
+
+    <script>
+        let Interval = null;
+        var Stopwatch_Minutes = 0;
+        var Stopwatch_Seconds = 0;
+        var Stopwatch_Milliseconds = 0;
+        const Laps = [];
+        const Stopwatch_Laps = document.getElementById("Stopwatch-Laps");
+        const Stopwatch_Play = document.getElementById("Stopwatch-Play");
+        const Stopwatch_Time_Element = document.getElementById("Stopwatch_Time");
+
+        function PadStart(String) {
+            return String.toString().padStart(2, "0");
+        }
+        function Update() {
+            Stopwatch_Time_Element.innerText = `${PadStart(Stopwatch_Minutes)}:${PadStart(Stopwatch_Seconds)}:${PadStart(Stopwatch_Milliseconds)}`;
+        }
+        Update();
+
+
+        function Correct_Count() {
+            if (Stopwatch_Milliseconds >= 11) {
+                Stopwatch_Milliseconds = 0;
+                Stopwatch_Seconds++;
+            }
+            if (Stopwatch_Seconds >= 60) {
+                Stopwatch_Seconds = 0;
+                Stopwatch_Minutes++;
+            }
+        }
+        function Count_Up() {
+            Stopwatch_Milliseconds++;
+            Correct_Count();
+            Update();
+        }
+
+
+        function Start() {
+            if (Interval !== null) {
+                return;
+            }
+
+            Stopwatch_Play.addEventListener("click", Stop);
+            Stopwatch_Play.innerHTML = `<span class="material-symbols-rounded">pause</span>`;
+
+            Interval = setInterval(Count_Up, 100);
+        }
+
+        function Stop() {
+            Stopwatch_Play.removeEventListener("click", Stop);
+            Stopwatch_Play.innerHTML = `<span class="material-symbols-rounded">play_arrow</span>`;
+            clearInterval(Interval);
+            Interval = null;
+        }
+
+
+        
+        function Update_Laps() {
+            Stopwatch_Laps.innerHTML = ``;
+            Laps.forEach(Lap => {
+                Stopwatch_Laps.innerHTML += `
+                    <div class="Lap">
+                        <p>${Lap.Name}</p>
+                        <p class="Muted">${Lap.Time}</p>
+                    </div><br>
+                `;
+            });
+        }
+        function Lap() {
+            Laps.unshift({
+                Name: `Lap ${Laps.length + 1}`,
+                Time: `${PadStart(Stopwatch_Minutes)}:${PadStart(Stopwatch_Seconds)}:${PadStart(Stopwatch_Milliseconds)}`
+            });
+            Update_Laps();
+        }
+
+    </script>
+</body>
+</html>

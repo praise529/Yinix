@@ -68,11 +68,20 @@ const Sign_In = async (req: Request, res: Response, Next: NextFunction) => {
 
     const { Email, Password, Code } = req.body;
 
-    const Existing_Account = await Account.findOne({ Email });
+    let Existing_Account = await Account.findOne({
+      $or: [
+        { Email: Email },
+        { Code: Code }
+      ]
+    });
+
     console.timeLog("SignIn", "After DB lookup");
 
     if (!Existing_Account) {
-      return res.status(404).json({ Yinix: false, Chat: "No one's here..." });
+      Existing_Account = await Account.findOne({ Code });
+      if (!Existing_Account) {
+          return res.status(404).json({ Yinix: false, Chat: "No one's here..." });
+      }
     }
 
     const IsPasswordRight = await bcrypt.compare(Password, Existing_Account.Password);

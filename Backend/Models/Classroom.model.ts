@@ -10,10 +10,10 @@ const Classroom_Schema = new mongoose.Schema({
     trim: true,
     minLength: 2,
     maxLength: 100,
-    required: [true, "Do you have NO name?"],
+    required: [true, "Does your classroom have NO name?"],
   },
   Room: {
-    type: Number,
+    type: String,
     required: false,
     default: "N/A"
   },
@@ -24,4 +24,6 @@ const Classroom_Schema = new mongoose.Schema({
   Students: [Student_Schema],
 }, { timestamps: true });
 
-const Classroom = mongoose.model("Classroom", Classroom_Schema)
+const Classroom = mongoose.model("Classroom", Classroom_Schema);
+
+export default Classroom;

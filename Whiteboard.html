@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Links!!! 🔗 -->
     <link rel="stylesheet" href="Index.css">
@@ -11,19 +12,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{Name} - Whiteboard - Yinix</title>
 </head>
+
 <body class="Scroll-None">
     <div class="Whiteboard_Area">
         <div class="Whiteboard" id="Whiteboard"></div>
 
-        <div class="Tool_Element" id="Color_Creator" data-Connect="Pencil_Marker_Colour">
-            <input type="color" name="Color_Creator" id="Color_Creator" value="#68838b">
+        <div class="Tool_Element" id="Colour_Creator" data-Connect="Pencil_Marker_Colour">
+            <input type="color" name="Colour_Creator_Selector" id="Colour_Creator_Selector" value="#68838b">
         </div>
 
         <div class="Whiteboard_Tools">
-            <div class="Active Tool" data-Tool="Pencil" title="Pencil"><span class="material-symbols-rounded">stylus_pen</span></div>
-            <div class="Tool" data-Tool="Marker" title="Marker"><span class="material-symbols-rounded">ink_marker</span></div>
-            <div class="Tool" data-Tool="Pencil_Marker_Colour" title="Pencil_Marker_Colour"><span class="material-symbols-rounded">format_color_text</span></div>
-            <div class="Tool" data-Tool="Text" title="Text" onclick="CreateTextBlock()"><span class="material-symbols-rounded">text_fields</span></div>
+            <div class="Active Tool" data-Tool="Pencil" title="Pencil"><span
+                    class="material-symbols-rounded">stylus_pen</span></div>
+            <div class="Tool" data-Tool="Marker" title="Marker"><span class="material-symbols-rounded">ink_marker</span>
+            </div>
+            <div class="Tool" data-Tool="Pencil_Marker_Colour" title="Pencil_Marker_Colour"><span
+                    class="material-symbols-rounded">format_color_text</span></div>
+            <div class="Tool" data-Tool="Text" title="Text" onclick="CreateTextBlock()"><span
+                    class="material-symbols-rounded">text_fields</span></div>
             <div class="Whiteboard_Divider">|</div>
             <div><span class="material-symbols-rounded">undo</span></div>
             <div><span class="material-symbols-rounded">redo</span></div>
@@ -34,4 +40,5 @@
 
     <script src="./Index.js"></script>
 </body>
+
 </html>
