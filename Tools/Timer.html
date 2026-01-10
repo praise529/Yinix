@@ -53,6 +53,10 @@
             border: var(--Light-Border);
         }
 
+        #Timer .Timer-Controls .Timer-Controls-Button:hover {
+            background: var(--Dark-White);
+        }
+
         #Timer .Timer-Controls .Timer-Controls-Button#Timer-Play {
             border: none;
             color: #FFF;
@@ -66,7 +70,7 @@
         <h1 id="Time"><input type="number" id="Timer_Hours" onchange="Correct_Inputs()">:<input type="number" id="Timer_Minutes" onchange="Correct_Inputs()">:<input type="number" id="Timer_Seconds" onchange="Correct_Inputs()"></h1><br><br>
 
         <div class="Timer-Controls">
-            <button class="Timer-Controls-Button" id="Timer-Plus-10"><span class="material-symbols-rounded">exposure_plus_2</span></button>
+            <button class="Timer-Controls-Button" id="Timer-Plus-10" onclick="Add2Secs()"><span class="material-symbols-rounded">exposure_plus_2</span></button>
             <button class="Timer-Controls-Button" id="Timer-Play"><span class="material-symbols-rounded">play_arrow</span></button>
             <button class="Timer-Controls-Button" id="Timer-Restart" onclick="Reset()"><span class="material-symbols-rounded">replay</span></button>
         </div><br><br>
@@ -136,6 +140,19 @@
         function Reset() {
             Stop();
             Timer_Hours = Timer_Minutes = Timer_Seconds = 0;
+            Update();
+        }
+
+        function Add2Secs() {
+            Timer_Seconds += 2;
+            if (Timer_Seconds >= 60) {
+                Timer_Seconds = 0;
+                Timer_Minutes++;
+            }
+            if (Timer_Minutes >= 60) {
+                Timer_Minutes = 0;
+                Timer_Hours++;
+            }
             Update();
         }
 
