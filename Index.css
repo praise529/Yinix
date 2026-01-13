@@ -7,8 +7,8 @@
 }
 
 :root {
-    --White: hsl(10, 100%, 100%);
-    --Dark-White: hsl(10, 0%, 97%);
+    --White: hsl(0, 100%, 100%);
+    --Dark-White: hsl(245, 15%, 92%);
 
     --Main: hsl(0, 100%, 68%);
     --Secondary-Main: hsl(350, 100%, 68%);
@@ -87,6 +87,80 @@ button {
 }
 
 
+
+
+
+.Side_Bar {
+    gap: 1rem;
+    display: flex;
+    position: absolute;
+    left: 0;
+    height: 100dvh;
+    overflow-y: hidden;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    align-items: center;
+    flex-direction: column;
+    /* justify-content: center; */
+    border-right: var(--Light-Border);
+}
+
+.Side_Bar.Expanded button {
+    width: 12rem;
+}
+
+.Side_Bar button {
+    border: none;
+    cursor: pointer;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.Side_Bar button:first-child {
+    margin-top: 5rem;
+}
+
+.Side_Bar button.Yinix {
+    border-radius: 10rem;
+    background: hsla(0, 100%, 68%, 10%);
+}
+.Side_Bar button.Yinix span, .Side_Bar button.Yinix h2 {
+    color: var(--Main);
+}
+
+
+.Side_Bar button span {
+    font-size: 2rem;
+    color: hsl(245, 15%, 68%);
+}
+
+.Side_Bar button h2 {
+    display: none;
+    align-self: center;
+    margin-left: 0.5rem;
+    color: hsl(245, 15%, 68%);
+}
+.Side_Bar.Expanded button h2 {
+    display: inline-flex;
+}
+
+
+
+.Main {
+    padding-top: 5rem;
+    margin-left: 20rem;
+}
+
+.Main .Classes .Class {
+    width: 10rem;
+    height: 15rem;
+    padding: 2.5rem;
+    background: var(--White);
+    border: var(--Light-Border);
+    border-radius: var(--Radius-2);
+}
+
+
+/* =====================================Whiteboard Area===================================== */
 
 
 .Whiteboard_Area {
