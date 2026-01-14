@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../Index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Meeting</title>
+</head>
+<body class="Scroll-None">
+
+    <div class="Video_Meeting">
+      <div class="Video_Box" style="background: var(--Dark-White);">
+        <video id="Webcam_Video" src="" autoplay></video>
+      </div>
+  
+      <div class="Bottom_Menu">
+        <button id="Video_Button" onclick="Toggle_Video()"><span class="material-symbols-rounded">videocam</span>Video On</button>
+        <button><span class="material-symbols-rounded">mic</span>Mic</button>
+
+        <span class="Divider">|</span>
+
+        <button><span class="material-symbols-rounded">chat</span>Chat</button>
+      </div>
+    </div>
+
+    <div class="Video_Meeting_Chat_Sidebar">
+      <h2 class="Center">Chat</h2>
+
+      <div class="Chat_Container" id="Chat_Container">
+        <div class="Chat_Bubble">
+          <h3>Welcome to the David Bum Meeting :)</h3>
+        </div>
+      </div>
+
+      <div class="Chat_Input_Area">
+        <input type="text" name="Chat_Input" id="Chat_Input">
+      </div>
+    </div>
+
+    <script src="../Index.js"></script>
+    <script>Start_Video();</script>
+</body>
+</html>

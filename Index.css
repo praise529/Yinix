@@ -13,6 +13,7 @@
     --Main: hsl(0, 100%, 68%);
     --Secondary-Main: hsl(350, 100%, 68%);
 
+    --Purple-Black: hsl(245, 15%, 68%);
     --Text-Black: hsl(0, 100%, 10%);
     --Text-White: hsl(0, 100%, 99%);
     --Teal-Black: hsl(195, 14%, 50%);
@@ -22,15 +23,20 @@
 
     --Radius-1: 10px;
     --Radius-2: 20px;
+
+    --Spacing-1: 1rem;
+    --Spacing-2: 2rem;
+    --Spacing-3: 5rem;
 }
 
-:root.Dark_Mode {
-    --White: hsl(10, 0%, 20%);
-    --Dark-White: hsl(10, 0%, 10%);
+:root {
+    --White: hsl(0, 0%, 10%);
+    --Dark-White: hsl(0, 0%, 20%);
 
     --Main: hsl(0, 100%, 78%);
     --Secondary-Main: hsl(350, 100%, 78%);
 
+    --Purple-Black: hsl(245, 15%, 88%);
     --Text-Black: hsl(0, 100%, 99%);
     --Text-White: hsl(0, 100%, 99%);
     --Teal-Black: hsl(195, 14%, 50%);
@@ -39,6 +45,10 @@
 
     --Radius-1: 10px;
     --Radius-2: 20px;
+
+    --Spacing-1: 1rem;
+    --Spacing-2: 2rem;
+    --Spacing-3: 5rem;
 }
 
 body {
@@ -60,12 +70,17 @@ button {
     align-items: center;
     display: inline-flex;
     justify-content: center;
+    color: var(--Text-Black);
     background: var(--White);
     border: var(--Light-Border);
     border-radius: var(--Radius-1);
 }
 .Muted {
     color: var(--Text-Muted);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--Text-Black);
 }
 
 
@@ -91,7 +106,7 @@ button {
 
 
 .Side_Bar {
-    gap: 1rem;
+    gap: var(--Spacing-1);
     display: flex;
     position: absolute;
     left: 0;
@@ -130,14 +145,14 @@ button {
 
 .Side_Bar button span {
     font-size: 2rem;
-    color: hsl(245, 15%, 68%);
+    color: var(--Purple-Black);
 }
 
 .Side_Bar button h2 {
     display: none;
     align-self: center;
     margin-left: 0.5rem;
-    color: hsl(245, 15%, 68%);
+    color: var(--Purple-Black);
 }
 .Side_Bar.Expanded button h2 {
     display: inline-flex;
@@ -301,4 +316,71 @@ button {
 .Whiteboard_Area .White .Text:focus::after,
 .Whiteboard_Area .White .Text:focus:before {
     display: block;
+}
+
+
+
+
+/* =====================================Video Meeting Area===================================== */
+
+.Video_Meeting {
+    height: 100vh;
+}
+
+.Video_Meeting .Video_Box{
+  margin: var(--Spacing-1);
+  width: 25rem;
+  height: 300px;
+  border-radius: var(--Radius-1);
+}
+.Video_Meeting .Video_Box #Webcam_Video {
+  width: 100%;
+  border-radius: var(--Radius-1);
+}
+
+.Video_Meeting button {
+    border-radius: var(--Radius-2);
+}
+
+
+.Video_Meeting .Bottom_Menu {
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    gap: var(--Spacing-1);
+    padding: var(--Spacing-1);
+    border-top: var(--Light-Border);
+}
+.Video_Meeting .Bottom_Menu .Divider {
+    font-size: 2.5rem;
+    color: var(--Dark-White);
+}
+
+
+
+.Video_Meeting_Chat_Sidebar {
+    gap: var(--Spacing-1);
+    display: flex;
+    padding: 2rem;
+    height: 100dvh;
+    position: fixed;
+    right: 0; top: 0;
+    flex-direction: column;
+    color: var(--Text-Black);
+    background: var(--White);
+    border-left: var(--Light-Border);
+}
+
+.Video_Meeting_Chat_Sidebar .Center {
+    text-align: center;
+    align-items: center;
+}
+
+.Video_Meeting_Chat_Sidebar .Chat_Container .Chat_Bubble {
+    max-width: 10rem;
+    border-radius: 67rem;
+    padding: var(--Spacing-1);
+    border: var(--Light-Border);
 }
