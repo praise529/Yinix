@@ -20,6 +20,7 @@
     --Text-Muted: hsl(0, 0%, 50%);
 
     --Light-Border: 4px solid var(--Dark-White);
+    --Main-Border: 4px solid var(--Main);
 
     --Radius-1: 10px;
     --Radius-2: 20px;
@@ -27,6 +28,8 @@
     --Spacing-1: 1rem;
     --Spacing-2: 2rem;
     --Spacing-3: 5rem;
+
+    --Transition: 300ms ease-in-out;
 }
 
 :root {
@@ -42,6 +45,7 @@
     --Teal-Black: hsl(195, 14%, 50%);
 
     --Light-Border: 4px solid var(--Dark-White);
+    --Main-Border: 4px solid var(--Main);
 
     --Radius-1: 10px;
     --Radius-2: 20px;
@@ -49,6 +53,8 @@
     --Spacing-1: 1rem;
     --Spacing-2: 2rem;
     --Spacing-3: 5rem;
+
+    --Transition: 200ms ease-in-out;
 }
 
 body {
@@ -57,9 +63,7 @@ body {
 }
 
 body.Scroll-None {
-    overflow: hidden;
-    /* min-height: 100vh;
-    min-height: 100dvh; */
+    overflow: hidden !important;
 }
 
 
@@ -73,14 +77,28 @@ button {
     color: var(--Text-Black);
     background: var(--White);
     border: var(--Light-Border);
-    border-radius: var(--Radius-1);
+    transition: var(--Transition);
+    border-radius: var(--Radius-2);
 }
+button:hover {
+    scale: 1.05;
+}
+button:active {
+    scale: 0.95;
+}
+
 .Muted {
     color: var(--Text-Muted);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, label, p, input {
     color: var(--Text-Black);
+}
+
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 
@@ -90,8 +108,10 @@ h1, h2, h3, h4, h5, h6 {
     position: fixed;
     top: 50%;
     left: 50%;
+    width: 50%;
     padding: 64px;
     z-index: 1000;
+    max-width: 386px;
     text-align: center;
     translate: -50% -50%;
     border: var(--Light-Border);
@@ -383,4 +403,70 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 67rem;
     padding: var(--Spacing-1);
     border: var(--Light-Border);
+}
+
+
+
+
+
+
+
+#Randomizer input[type="number"] {
+    width: 1.5rem;
+    text-align: center;
+    color: var(--Text-Black);
+    background: var(--White);
+    padding: var(--Spacing-1);
+    border: var(--Light-Border);
+    transition: var(--Transition);
+    border-radius: var(--Radius-1);
+}
+#Randomizer input[type="number"]:focus {
+    outline: none;
+    border: var(--Main-Border);
+}
+
+#Randomizer input[type="range"] {
+    appearance: none;
+    width: 80%;
+    background: var(--White);
+    border: var(--Light-Border);
+    border-radius: var(--Radius-1);
+}
+
+#Randomizer input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    background: var(--Main);
+}
+
+
+#Randomizer #Random_Number {
+    user-select: all;
+    animation: Random_Appear 0.3s ease-in-out;
+}
+
+@keyframes Random_Appear {
+    0% {
+        opacity: 0;
+        scale: 1.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+
+@media (max-width: 425px) {
+    .Tool-Box {
+        padding: 0;
+        border: none;
+    }
 }

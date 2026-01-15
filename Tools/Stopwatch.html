@@ -14,12 +14,16 @@
         #Stopwatch {
             z-index: 1000;
             position: absolute;
-            width: 386px;
             /* border-image: conic-gradient( var(--Main), var(--Secondary-Main), var(--Dark-White), var(--Main)) 1; */
         }
+        #Stopwatch #Stopwatch_Time {
+            font-size: clamp(2.5rem, 5vw, 10rem);
+        }
+
+        
         #Stopwatch .Stopwatch-Controls .Stopwatch-Controls-Button {
-            padding: 12px;
             border-radius: 500px;
+            padding: min(12px, 6px);
             background: var(--White);
             color: var(--Text-Black);
             border: var(--Light-Border);
