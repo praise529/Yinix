@@ -4,11 +4,12 @@ const Signup_Password = document.getElementById("Signup_Password");
 const Signup_Age = document.getElementById("Signup_Age");
 const Role = document.getElementById("Role");
 
-
-
 const Video_Box = document.getElementById("Video_Box");
 const Video_Button = document.getElementById("Video_Button");
 const Webcam_Video = document.querySelector("#Webcam_Video");
+
+const Side_Bar = document.getElementById("Side_Bar");
+
 
 async function Start_Video() 
 {
@@ -38,4 +39,9 @@ async function Toggle_Video() {
   }
 }
 
-Start_Video();
+
+
+
+function Toggle_Side_Bar() {
+  Side_Bar.classList.toggle("Expanded");
+}

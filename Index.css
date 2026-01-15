@@ -57,6 +57,33 @@
     --Transition: 200ms ease-in-out;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --White: hsl(0, 0%, 10%);
+        --Dark-White: hsl(0, 0%, 20%);
+    
+        --Main: hsl(0, 100%, 78%);
+        --Secondary-Main: hsl(350, 100%, 78%);
+    
+        --Purple-Black: hsl(245, 15%, 88%);
+        --Text-Black: hsl(0, 100%, 99%);
+        --Text-White: hsl(0, 100%, 99%);
+        --Teal-Black: hsl(195, 14%, 50%);
+    
+        --Light-Border: 4px solid var(--Dark-White);
+        --Main-Border: 4px solid var(--Main);
+    
+        --Radius-1: 10px;
+        --Radius-2: 20px;
+    
+        --Spacing-1: 1rem;
+        --Spacing-2: 2rem;
+        --Spacing-3: 5rem;
+    
+        --Transition: 200ms ease-in-out;
+    }
+}
+
 body {
     overflow-x: hidden;
     background: var(--White);
@@ -126,7 +153,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 .Side_Bar {
-    gap: var(--Spacing-1);
     display: flex;
     position: absolute;
     left: 0;
@@ -135,13 +161,18 @@ input[type="number"]::-webkit-outer-spin-button {
     padding-left: 2rem;
     padding-right: 2rem;
     align-items: center;
+    gap: var(--Spacing-1);
     flex-direction: column;
-    /* justify-content: center; */
+    transition: var(--Transition);
     border-right: var(--Light-Border);
 }
 
 .Side_Bar.Expanded button {
     width: 12rem;
+}
+
+.Side_Bar.Expanded ~ .Main {
+    margin-left: 20rem;
 }
 
 .Side_Bar button {
@@ -182,7 +213,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .Main {
     padding-top: 5rem;
-    margin-left: 20rem;
+    margin-left: 10rem;
 }
 
 .Main .Classes .Class {
