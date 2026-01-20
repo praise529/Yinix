@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+    <!-- Links! 🔗 -->
+    <link rel="stylesheet" href="./Test.css">
+</head>
+<body>
+    <input type="file" id="File_Chooser" name="File_Chooser" accept="image/*"><br>
+    <img src="" alt="Preview Image" id="Preview_Image" width="200" height="200">
+
+    <script>
+        const File_Chooser = document.getElementById("File_Chooser");
+        const Preview_Image = document.getElementById("Preview_Image");
+
+        File_Chooser.addEventListener("change", (Event) => {
+            console.log(File_Chooser.value);
+            Process_File(Event);
+        });
+
+        function Process_File(Yinix_Event) {
+            const File = Yinix_Event.target.files[0];
+
+            if (!File) {
+                console.warn("No file...");
+                return;
+            }
+
+            console.table(File);
+            Preview(File);
+        }
+        function Preview(File) {
+            const Reader = new FileReader();
+            console.log(Reader.readyState);
+
+            Reader.addEventListener("load", () => {
+                console.log(Reader.result.length);
+                Preview_Image.src = Reader.result;
+            });
+
+            if (File) {
+                Reader.readAsDataURL(File);
+            }
+        }
+    </script>
+</body>
+</html>

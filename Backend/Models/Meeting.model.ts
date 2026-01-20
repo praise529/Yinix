@@ -2,27 +2,21 @@ import mongoose from "mongoose";
 
 const Meeting_Schema = new mongoose.Schema({
     Name: {
+        unique: true,
         type: String,
         minLength: 2,
         maxLength: 50,
         required: true,
     },
 
-    Time: {
+    Date_Time: {
+        type: Date,
+    },
+
+    Status: {
         type: String,
-        required: false,
-        default: Date.now()
-    },
-
-    Participants: {
-        type: Array
-    },
-    Participants_Number: {
-        type: Number,
-    },
-
-    Host: {
-        type: mongoose.Types.ObjectId
+        default: "Inactive",
+        enum: ["Active", "Inactive"]
     }
 }, { timestamps: true });
 

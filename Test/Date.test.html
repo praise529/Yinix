@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+    <!-- Links! 🔗 -->
+    <link rel="stylesheet" href="./Test.css">
+</head>
+<body>  
+    <div id="Dates"></div>
+
+    <script>
+        const Yinix = new Date();
+        const Time_Array = Yinix.toLocaleTimeString()
+        .replace("PM", "").replace("AM", "").replace(" ", "").split(":");
+        const Dates = document.getElementById("Dates");
+
+        function Yinix_Element(Text) {
+            const Element = document.createElement("div");
+            Element.classList.add("Element");
+            
+            Element.innerHTML = `⭐ ${Text?.toString()}`;
+
+            Dates.appendChild(Element);
+        }
+        function Pad_Start(Text) {
+            return Text?.toString().padStart(2, "0");
+        }
+
+        Yinix_Element(Yinix);
+        Yinix_Element(`${Yinix.getFullYear()}-${Pad_Start(Yinix.getMonth() + 1)}-${Pad_Start(Yinix.getDate())}`);
+        Yinix_Element(Yinix.toLocaleTimeString());
+        Yinix_Element(Time_Array);
+        Yinix_Element(Date.now());
+    </script>
+</body>
+</html>

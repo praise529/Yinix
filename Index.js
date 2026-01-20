@@ -45,3 +45,20 @@ async function Toggle_Video() {
 function Toggle_Side_Bar() {
   Side_Bar.classList.toggle("Expanded");
 }
+
+
+class SideBar extends HTMLElement {
+  connectedCallback() {
+    const Selected = this.getAttribute("Selected");
+    this.innerHTML = `
+      <div class="Side_Bar" id="Side_Bar">
+        <a href="./index.html"><button ${Selected === "Home" && "class='Yinix'"}><i class="ph-bold ph-house-simple"></i><p>Home</p></button></a>
+        <a href="./Tools.html"><button ${Selected === "Tools" && "class='Yinix'"}><i class="ph-bold ph-pencil-ruler"></i><p>Tools</p></button></a>
+        <a href="#"><button ${Selected === "Your_Work" && "class='Yinix'"}><i class="ph-bold ph-clipboard-text"></i><p>Your Work</p></button></a>
+        <a href="#"><button ${Selected === "Account" && "class='Yinix'"}><i class="ph-bold ph-user"></i><p>Account</p></button></a>
+      </div>
+    `;
+  }
+}
+
+customElements.define("side-bar", SideBar);

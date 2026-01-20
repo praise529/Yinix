@@ -12,6 +12,7 @@
 
     --Main: hsl(0, 100%, 68%);
     --Secondary-Main: hsl(350, 100%, 68%);
+    --Transparent-Main: hsla(0, 100%, 68%, 10%);
 
     --Purple-Black: hsl(245, 15%, 68%);
     --Text-Black: hsl(0, 100%, 10%);
@@ -22,7 +23,7 @@
     --Light-Border: 4px solid var(--Dark-White);
     --Main-Border: 4px solid var(--Main);
 
-    --Radius-1: 10px;
+    --Radius-1: 15px;
     --Radius-2: 20px;
 
     --Spacing-1: 1rem;
@@ -32,12 +33,13 @@
     --Transition: 300ms ease-in-out;
 }
 
-:root {
+:root.Dark {
     --White: hsl(0, 0%, 10%);
     --Dark-White: hsl(0, 0%, 20%);
 
     --Main: hsl(0, 100%, 78%);
     --Secondary-Main: hsl(350, 100%, 78%);
+    
 
     --Purple-Black: hsl(245, 15%, 88%);
     --Text-Black: hsl(0, 100%, 99%);
@@ -107,9 +109,6 @@ button {
     transition: var(--Transition);
     border-radius: var(--Radius-2);
 }
-button:hover {
-    scale: 1.05;
-}
 button:active {
     scale: 0.95;
 }
@@ -156,10 +155,11 @@ input[type="number"]::-webkit-outer-spin-button {
     display: flex;
     position: absolute;
     left: 0;
+    height: 100vh;
     height: 100dvh;
     overflow-y: hidden;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     align-items: center;
     gap: var(--Spacing-1);
     flex-direction: column;
@@ -167,46 +167,39 @@ input[type="number"]::-webkit-outer-spin-button {
     border-right: var(--Light-Border);
 }
 
-.Side_Bar.Expanded button {
-    width: 12rem;
-}
-
-.Side_Bar.Expanded ~ .Main {
-    margin-left: 20rem;
-}
-
 .Side_Bar button {
     border: none;
     cursor: pointer;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
-.Side_Bar button:first-child {
+.Side_Bar a:first-child {
     margin-top: 5rem;
 }
 
-.Side_Bar button.Yinix {
+.Side_Bar button.Yinix i {
+    width: 100%;
+    padding: 1rem;
+    color: var(--Main);
+    align-items: center;
+    display: inline-flex;
     border-radius: 10rem;
-    background: hsla(0, 100%, 68%, 10%);
+    justify-content: center;
+    background: var(--Transparent-Main);
 }
 .Side_Bar button.Yinix span, .Side_Bar button.Yinix h2 {
     color: var(--Main);
 }
 
 
-.Side_Bar button span {
+.Side_Bar button i {
     font-size: 2rem;
-    color: var(--Purple-Black);
+    color: var(--Text-Black);
 }
 
-.Side_Bar button h2 {
-    display: none;
-    align-self: center;
-    margin-left: 0.5rem;
-    color: var(--Purple-Black);
-}
-.Side_Bar.Expanded button h2 {
-    display: inline-flex;
+.Side_Bar button p {
+    font-size: 1rem;
 }
 
 
@@ -220,6 +213,7 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 10rem;
     height: 15rem;
     padding: 2.5rem;
+    position: relative;
     background: var(--White);
     border: var(--Light-Border);
     border-radius: var(--Radius-2);
@@ -262,9 +256,6 @@ input[type="number"]::-webkit-outer-spin-button {
     transition: color 0.2s ease-in-out;
 }
 
-.Whiteboard_Area .Whiteboard_Tools div span:hover {
-    color: #47595e;
-}
 
 .Whiteboard_Area .Whiteboard_Tools div span:active {
     opacity: 0.5;
@@ -328,9 +319,6 @@ input[type="number"]::-webkit-outer-spin-button {
     display: none;
 }
 
-.Whiteboard_Area .White .Text:hover {
-    border: 2px dotted var(--Main);
-}
 
 .Whiteboard_Area .White .Text:focus {
     outline: inherit;
@@ -348,7 +336,7 @@ input[type="number"]::-webkit-outer-spin-button {
     cursor: se-resize;
     background: var(--White);
     border: 3px solid var(--Main);
-
+    
     display: none;
 }
 
@@ -379,14 +367,14 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .Video_Meeting .Video_Box{
-  margin: var(--Spacing-1);
-  width: 25rem;
-  height: 300px;
-  border-radius: var(--Radius-1);
+    margin: var(--Spacing-1);
+    width: 25rem;
+    height: 300px;
+    border-radius: var(--Radius-1);
 }
 .Video_Meeting .Video_Box #Webcam_Video {
-  width: 100%;
-  border-radius: var(--Radius-1);
+    width: 100%;
+    border-radius: var(--Radius-1);
 }
 
 .Video_Meeting button {
@@ -486,7 +474,7 @@ input[type="number"]::-webkit-outer-spin-button {
         opacity: 0;
         scale: 1.5;
     }
-
+    
     100% {
         opacity: 1;
     }
@@ -499,5 +487,27 @@ input[type="number"]::-webkit-outer-spin-button {
     .Tool-Box {
         padding: 0;
         border: none;
+    }
+}
+@media (max-width: 425px) {
+    .Side_Bar {
+        display: none;
+    }
+    
+    .Main {
+        margin-left: 1rem;
+    }
+}
+@media (hover: hover) {
+    .Whiteboard_Area .White .Text:hover {
+        border: 2px dotted var(--Main);
+    }
+
+    .Whiteboard_Area .Whiteboard_Tools div span:hover {
+        color: #47595e;
+    }
+    
+    button:hover {
+        scale: 1.05;
     }
 }

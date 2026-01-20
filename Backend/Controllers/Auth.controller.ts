@@ -109,3 +109,23 @@ const Sign_Out = async (req: Request, res: Response) => {
 }
 
 export { Sign_Up, Sign_In, Sign_Out }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+  {
+  "Code": "0773465",
+  "Email": "praiseo5@educbe.ca",
+  "Password": "Yini#92Y"
+}
+*/

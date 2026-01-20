@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+    <!-- Links! 🔗 -->
+    <link rel="stylesheet" href="./Test.css">
+</head>
+<body>
+    <form method="post" class="Row" id="Chat_Form">
+        <input type="text" id="Chat_Input" name="Chat_Input"
+        placeholder="Type anything..." autocomplete="off" required>
+
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M792-443 176-183q-20 8-38-3.5T120-220v-520q0-22 18-33.5t38-3.5l616 260q25 11 25 37t-25 37ZM200-280l474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/></svg>
+        </button>
+    </form><br><br>
+
+    <div id="Chats_Container" class="Chats_Container"></div>
+
+    <script>
+        const Account = { Name: "Praise" };
+        const Chat_Form = document.getElementById("Chat_Form");
+        const Chat_Input = document.getElementById("Chat_Input");
+        const Chats_Container = document.getElementById("Chats_Container");
+        const Chats = [{ Chat_ID: "TEST", Content: "none", Made: "never" }];
+
+        function Create_Chat_ID() {
+            let Chat_ID = "";
+
+            for (let y = 0; y < 10; y++) {
+                Chat_ID += Math.floor(Math.random() * 10);
+            }
+
+            return Chat_ID;
+        }
+
+        function Clear_Container() {
+            Chats_Container.innerHTML = "";
+        }
+        function Update_Chat_Box() {
+            Clear_Container();
+
+            Chats.forEach(Chat => {
+                if (
+                    Chat.Chat_ID === "TEST" &&
+                    Chat.Content === "none" &&
+                    Chat.Made === "never"
+                ) return;
+
+                Chats_Container.innerHTML += `
+                    <div class="Chat_Container">
+                        <span>${Account.Name} ${Chat.Made}</span>
+                        <div class="Chat_Box" data-Chat-ID="${Chat.Chat_ID}">
+                            <p>${Chat.Content}</p>
+                        </div>
+                    </div><br><br><br><br><br><br><br>
+                `;
+            });
+        }
+
+        function Create_Chat() {
+            Chats.unshift(
+                { Chat_ID: Create_Chat_ID, Content: Chat_Input.value, Made: new Date().toLocaleTimeString() }
+            );
+            Update_Chat_Box();
+            Chat_Input.value = "";
+        }
+    
+        Chat_Form.addEventListener("submit", (E) => {
+            E.preventDefault();
+            Create_Chat();
+        });
+    </script>
+</body>
+</html>

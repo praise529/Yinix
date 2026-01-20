@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+    <!-- Links! 🔗 -->
+    <link rel="stylesheet" href="./Test.css">
+</head>
+<body>
+
+    <video src="./Videos/Video Loading.mp4" width="300" id="Videocam" autoplay muted></video>
+    <button onclick="Stop_Video()">Stop Video</button>
+    
+    <script>
+        var Streams = null;
+        const Video = document.getElementById("Videocam");
+
+        async function Start_Video() {
+            await navigator.mediaDevices.getUserMedia({ video: true })
+            .then((Stream) => {
+                if (!Streams == null) return;
+                
+                Streams = Stream;
+                Video.srcObject = Streams;
+            })
+            .catch((Err) => {
+                console.error(`Sorry, the video couldn't start because ${Err}`);
+            });
+        }
+
+        function Stop_Video() {
+            Streams = null;
+        }
+
+        Start_Video();
+    </script>
+</body>
+</html>
