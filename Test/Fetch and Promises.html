@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+    <!-- Links! 🔗 -->
+    <link rel="stylesheet" href="./Test.css">
+</head>
+<body>
+    <p id="Test_Message"></p>
+
+    <script>
+        const API_URL = "http://localhost:1100";
+        const Test_Message = document.getElementById("Test_Message");
+
+        async function Fetch_Random() {
+            try {
+                const Yinix_Res = await fetch(API_URL);
+                
+                if (!Yinix_Res.ok) {
+                    console.error("... not this time ...");
+                }
+
+                console.log(`[${new Date().toLocaleTimeString()}] ${Yinix_Res.status} OK`);
+                console.log(Yinix_Res.json().then((Yinix) => console.log(Yinix)));
+            } catch (Err) {
+                console.error(`Sorry... ${Err}`);
+            }
+        }
+
+        Fetch_Random();
+    </script>
+</body>
+</html>

@@ -188,7 +188,7 @@ input[type="number"]::-webkit-outer-spin-button {
     justify-content: center;
     background: var(--Transparent-Main);
 }
-.Side_Bar button.Yinix span, .Side_Bar button.Yinix h2 {
+.Side_Bar button.Yinix span, .Side_Bar button.Yinix p {
     color: var(--Main);
 }
 
