@@ -10,12 +10,12 @@
     --White: hsl(0, 100%, 100%);
     --Dark-White: hsl(245, 15%, 92%);
 
-    --Main: hsl(0, 100%, 68%);
-    --Secondary-Main: hsl(350, 100%, 68%);
-    --Transparent-Main: hsla(0, 100%, 68%, 10%);
+    --Main: hsl(220, 100%, 68%);
+    --Secondary-Main: hsl(200, 100%, 68%);
+    --Transparent-Main: hsla(220, 100%, 68%, 10%);
 
     --Purple-Black: hsl(245, 15%, 68%);
-    --Text-Black: hsl(0, 100%, 10%);
+    --Text-Black: hsl(220, 100%, 10%);
     --Text-White: hsl(0, 100%, 99%);
     --Teal-Black: hsl(195, 14%, 50%);
     --Text-Muted: hsl(0, 0%, 50%);
@@ -23,7 +23,7 @@
     --Light-Border: 4px solid var(--Dark-White);
     --Main-Border: 4px solid var(--Main);
 
-    --Radius-1: 15px;
+    --Radius-1: 1rem;
     --Radius-2: 20px;
 
     --Spacing-1: 1rem;
@@ -35,11 +35,9 @@
 
 :root.Dark {
     --White: hsl(0, 0%, 10%);
-    --Dark-White: hsl(0, 0%, 20%);
+    --Dark-White: hsl(0, 0%, 20%);    
 
-    --Main: hsl(0, 100%, 78%);
-    --Secondary-Main: hsl(350, 100%, 78%);
-    
+    --Main: hsl(220, 100%, 78%);
 
     --Purple-Black: hsl(245, 15%, 88%);
     --Text-Black: hsl(0, 100%, 99%);
@@ -113,11 +111,24 @@ button:active {
     scale: 0.95;
 }
 
+select {
+    color: var(--Text-Black);
+    background: var(--White);
+    padding: var(--Spacing-1);
+    border: var(--Light-Border);
+    border-radius: var(--Radius-1);
+}
+
+li {
+    list-style-type: none;
+}
+
 .Muted {
     color: var(--Text-Muted);
 }
 
-h1, h2, h3, h4, h5, h6, label, p, input {
+h1, h2, h3, h4, h5, h6, label, p, input,
+li {
     color: var(--Text-Black);
 }
 
@@ -126,6 +137,19 @@ input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.Bold {
+    font-weight: bold;
+}
+.Underlined {
+    text-decoration: underline;
+}
+
+.None {
+    display: none;
+}
+
+
 
 
 
@@ -479,6 +503,22 @@ input[type="number"]::-webkit-outer-spin-button {
         opacity: 1;
     }
 }
+
+
+
+.Attendance_Session_List {
+    display: flex;
+}
+
+.Attendance_Session_List div {
+    display: flex;
+    flex-direction: row;
+    padding: var(--Spacing-2);
+    justify-content: space-between;
+}
+/* 
+.Attendance_Session_List div select {
+} */
 
 
 

@@ -13,6 +13,10 @@ const Meeting_Schema = new mongoose.Schema({
         type: Date,
     },
 
+    Participants: {
+        type: Array,
+    },
+
     Status: {
         type: String,
         default: "Inactive",

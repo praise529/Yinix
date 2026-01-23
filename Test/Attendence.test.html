@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+    <!-- Links! 🔗 -->
+    <link rel="stylesheet" href="./Test.css">
+</head>
+<body>
+    <h1>Attendance</h1>
+    <p id="Attendance_Chat"></p>
+
+    <button onclick="Yinix_Request(Base_URL + '/' + Attendance_Endpoint)">Send!</button>
+
+
+    <script>
+        const Attendance_Endpoint = "API/Attendance";
+
+        const Base_URL = "http://localhost:1100";
+        const Attendance_Chat = document.getElementById("Attendance_Chat");
+        Attendance_Chat.innerText = "Request not sent yet...";
+        
+        const Attendance_Array = ["Olatope, Praise", null];
+
+
+        async function Yinix_Request(URL, Method = "GET") {
+
+            try {
+                const Res = await fetch(URL, { method: Method });
+
+                Attendance_Chat.innerText = `${Res.status} ${Res.statusText}`;
+                Attendance_Chat.innerText += `\n Check the console!`;
+
+                Res.json().then((Value) => {
+                    console.log(Value);
+                });
+            } catch (Err) {
+                Attendance_Chat.innerText = Err;
+            }
+        }
+
+        function Filter() {
+            Attendance_Array.filter((Value) => {return Value})
+        }
+    </script>
+</body>
+</html>
