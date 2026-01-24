@@ -7,20 +7,27 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yinix - For Schools!</title>
+    <title>Attendance - Yinix!</title>
 </head>
 <body>
-    <ul id="Attendance_Session_List" class="Attendance_Session_List">
-        <div>
-            <li data-Name="Praise" data-Index="1" class="Bold">Olatope, Praise</li>
-            <select data-for="1">
-                <option value="Present">✅ Present</option>
-                <option value="Absent">Absent</option>
-                <option value="Left_Early">Left Early</option>
-                <option value="Parents_Called">Parents Called</option>
-                <option value="Ill">Ill</option>
-            </select>
-        </div>
-    </ul>
+    <!-- Sidebar -->
+    <side-bar Selected="Tools"></side-bar>
+
+    <div class="Main">
+        <!-- Title -->
+        <h1>Period 1 Attendance - Ms. Cook 5-34</h1>
+
+        <!-- Attendance List -->
+        <ul class="Attendance_Session_List">
+            <li>
+                <span class="Bold">Olatope, Praise</span>
+                <select>
+                    <option value="Present">Present</option>
+                </select>
+            </li>
+        </ul>
+
+    <!-- Script Link Tag -->
+    <script src="./Index.js"></script>
 </body>
 </html>

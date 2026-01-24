@@ -7,9 +7,10 @@
 }
 
 :root {
-    --White: hsl(0, 100%, 100%);
-    --Dark-White: hsl(245, 15%, 92%);
+    --White: hsl(220, 100%, 100%);
+    --Dark-White: hsl(220, 75%, 95%);
 
+    /* #5c92ff */
     --Main: hsl(220, 100%, 68%);
     --Secondary-Main: hsl(200, 100%, 68%);
     --Transparent-Main: hsla(220, 100%, 68%, 10%);
@@ -20,11 +21,12 @@
     --Teal-Black: hsl(195, 14%, 50%);
     --Text-Muted: hsl(0, 0%, 50%);
 
-    --Light-Border: 4px solid var(--Dark-White);
-    --Main-Border: 4px solid var(--Main);
+    --Light-Border: 2px solid var(--Dark-White);
+    --Main-Border: 2px solid var(--Main);
 
     --Radius-1: 1rem;
-    --Radius-2: 20px;
+    --Radius-2: 2rem;
+    --Radius-3: 5rem;
 
     --Spacing-1: 1rem;
     --Spacing-2: 2rem;
@@ -45,7 +47,7 @@
     --Teal-Black: hsl(195, 14%, 50%);
 
     --Light-Border: 4px solid var(--Dark-White);
-    --Main-Border: 4px solid var(--Main);
+    --Main-Border: 2px solid var(--Main);
 
     --Radius-1: 10px;
     --Radius-2: 20px;
@@ -147,6 +149,72 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .None {
     display: none;
+}
+
+
+.Item_Card {
+    width: 12rem;
+    padding: 2.5rem;
+    position: relative;
+    text-decoration: none;
+    background: var(--White);
+    border: var(--Light-Border);
+    border-radius: var(--Radius-2);
+}
+
+.Item_Card .Top_Bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    margin-bottom: 1rem;
+}
+.Item_Card .Top_Bar button {
+    border: none;
+    font-size: 1.25rem;
+}
+
+
+.Grid {
+    gap: 1rem;
+    width: 98%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+
+.Select {
+    height: 1rem;
+    max-width: 10rem;
+    color: var(--Text-Black);
+    background: var(--White);
+    padding: var(--Spacing-1);
+    border: var(--Light-Border);
+    border-radius: var(--Radius-1);
+}
+
+.Select .Select_Popover {
+    display: none;
+    width: 100%;
+    translate: -10%;
+    margin-top: 1rem;
+    padding: var(--Spacing-1);
+    border: var(--Light-Border);
+    border-radius: var(--Radius-1);
+}
+.Select .Select_Popover .Select_Item {
+    padding: 0.5rem;
+}
+.Select .Select_Popover .Select_Item:hover {
+    background: var(--Dark-White);
+}
+
+.Select.Open {
+    margin-bottom: 14rem;
+}
+.Select.Open .Select_Popover {
+    display: block;
 }
 
 
@@ -253,50 +321,59 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .Whiteboard_Area .Whiteboard_Tools {
     gap: 32px;
-    padding: 25px;
     display: flex;
     position: fixed;
-    left: 50px;
-    bottom: 50px;
+    left: 50%;
+    bottom: 0;
+    translate: -50%;
     max-height: 30px;
     text-align: center;
     align-items: center;
     flex-direction: row;
-    border-radius: 15px;
+    margin-bottom: 50px;
     justify-content: center;
     background: var(--White);
-    box-shadow: 0 4px 8px 0 var(--Light), 0 6px 20px 0 var(--Light);
+    padding: var(--Spacing-2);
+    border: var(--Light-Border);
+    border-radius: var(--Radius-2);
+
+    padding-left: 4rem;
+    padding-right: 4rem;
 }
 
-.Whiteboard_Area .Whiteboard_Tools div {
+.Whiteboard_Area .Whiteboard_Tools .Tool {
     transition: 0.01s ease-in-out;
 }
 
-.Whiteboard_Area .Whiteboard_Tools div span {
+.Whiteboard_Area .Whiteboard_Tools div i {
     font-size: 32px;
     cursor: pointer;
     user-select: none;
-    color: var(--Teal-Black);
-    transition: color 0.2s ease-in-out;
+    color: var(--Text-Black);
+    transition: var(--Transition);
 }
 
 
-.Whiteboard_Area .Whiteboard_Tools div span:active {
+.Whiteboard_Area .Whiteboard_Tools .Tool i:active {
     opacity: 0.5;
 }
 
-.Whiteboard_Area .Whiteboard_Tools div.Active {
+.Whiteboard_Area .Whiteboard_Tools .Tool.Active {
+    padding: 0.5rem;
     color: var(--Main);
-    transform: translateY(-10px);
+    border-radius: 2rem;
+    padding-left: var(--Spacing-2);
+    padding-right: var(--Spacing-2);
+    background: var(--Transparent-Main);
 }
 
-.Whiteboard_Area .Whiteboard_Tools div.Active span {
+.Whiteboard_Area .Whiteboard_Tools div.Active i {
     color: var(--Main);
 }
 
 .Whiteboard_Area .Whiteboard_Tools .Whiteboard_Divider {
     font-size: 28px;
-    color: var(--Light);
+    color: var(--Dark-White);
 }
 
 .Whiteboard_Area #Colour_Creator {
@@ -319,8 +396,21 @@ input[type="number"]::-webkit-outer-spin-button {
     background: var(--White);
 }
 
-.Whiteboard_Area .White.Pencil {
-    cursor: url("./Images/Pen Cursor.png") 12 12, crosshair;
+#Pen_Cursor {
+    width: 20px;
+    height: 20px;
+    z-index: 99999;
+    position: absolute;
+    pointer-events: none;
+    translate: 0 -1.8rem;
+    transition: 50ms ease-in-out;
+    transition-property: transform, width, border, background-color;
+}
+#Pen_Cursor img {
+    width: 1.5rem;
+}
+.Whiteboard_Area .Whiteboard_Tools:hover #Pen_Cursor img {
+    display: none;
 }
 
 .Whiteboard_Area .Whiteboard .Pen_Mark {
@@ -453,7 +543,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 
-
 #Randomizer input[type="number"] {
     width: 1.5rem;
     text-align: center;
@@ -488,6 +577,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
+
 #Randomizer #Random_Number {
     user-select: all;
     animation: Random_Appear 0.3s ease-in-out;
@@ -508,17 +598,24 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .Attendance_Session_List {
     display: flex;
+    flex-direction: column;
+    border: var(--Light-Border);
+    border-radius: var(--Radius-1);
 }
 
-.Attendance_Session_List div {
+.Attendance_Session_List li {
     display: flex;
+    position: relative;
     flex-direction: row;
     padding: var(--Spacing-2);
     justify-content: space-between;
+    border-bottom: var(--Light-Border);
 }
-/* 
+
 .Attendance_Session_List div select {
-} */
+    right: 0;
+    position: absolute;
+}
 
 
 
@@ -549,5 +646,30 @@ input[type="number"]::-webkit-outer-spin-button {
     
     button:hover {
         scale: 1.05;
+    }
+}
+@media (max-width: 641px) {
+    .Whiteboard_Area .Whiteboard_Tools {
+        padding: 0;
+        border: none;
+    }
+}
+@media (max-width: 551px) {
+    .Whiteboard_Area .Whiteboard_Tools .Tool {
+        display: none;
+    }
+    .Whiteboard_Area .Whiteboard_Tools div:first-child,
+    .Whiteboard_Area .Whiteboard_Tools div:last-child {
+        display: inline;
+    }
+}
+@media (pointer: coarse) {
+    #Pen_Cursor {
+        display: none;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    #Pen_Cursor {
+        display: none;
     }
 }

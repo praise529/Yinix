@@ -61,4 +61,67 @@ class SideBar extends HTMLElement {
   }
 }
 
+class Whiteboard_Tool extends HTMLElement {
+  connectedCallback() {
+    const Name = this.getAttribute("name");
+    const Icon = this.getAttribute("icon");
+    const Active = this.getAttribute("active");
+    const Click_Event = this.getAttribute("click");
+
+    this.innerHTML = `
+        <div class="${Active && "Active"} Tool" data-Tool="${Name}" title="${Name}" ${Click_Event && `onclick="${Click_Event}"`}>
+          <i class="ph-bold ph-${Icon}"></i>
+        </div>
+    `;
+  }
+}
+
 customElements.define("side-bar", SideBar);
+customElements.define("whiteboard-tool", Whiteboard_Tool);
+
+
+
+
+
+var Yinix_Tool = document.querySelector(".Whiteboard_Area .Whiteboard_Tools .Tool.Active")
+.getAttribute("data-Tool");
+
+const Whiteboard = document.getElementById("Whiteboard");
+const Pen_Cursor = document.getElementById("Pen_Cursor");
+const Whiteboard_Tools = document.querySelectorAll(".Whiteboard_Area .Whiteboard_Tools .Tool");
+
+Pen_Cursor.style.display = "none";
+
+function Activate_Tool() {
+  if (Yinix_Tool === "Pen") {
+    Activate_Pen();
+  } else {
+    Deactivate_All();
+  }
+}
+
+Whiteboard_Tools.forEach(Tool => {
+  Tool.addEventListener("click", () => {
+    Whiteboard_Tools.forEach(Tool => Tool.classList.remove("Active"));
+    Tool.classList.add("Active");
+    Yinix_Tool = Tool.getAttribute("data-Tool");
+
+    Activate_Tool();
+  });
+});
+
+function Activate_Pen() {
+  Whiteboard.style.cursor = "none";
+  Pen_Cursor.style.display = "block";
+}
+
+function Deactivate_All() {
+  Pen_Cursor.style.display = "none";
+}
+
+Activate_Tool();
+
+window.addEventListener("mousemove", (E) => {
+  Pen_Cursor.style.left = E.clientX + "px";
+  Pen_Cursor.style.top = E.clientY + "px";
+});
