@@ -64,8 +64,6 @@ const Sign_Up = async (req: Request, res: Response, Next: NextFunction) => {
 
 const Sign_In = async (req: Request, res: Response, Next: NextFunction) => {
   try {
-    console.time("SignIn");
-
     const { Email, Password, Code } = req.body;
 
     let Existing_Account = await Account.findOne({
@@ -75,8 +73,6 @@ const Sign_In = async (req: Request, res: Response, Next: NextFunction) => {
       ]
     });
 
-    console.timeLog("SignIn", "After DB lookup");
-
     if (!Existing_Account) {
       Existing_Account = await Account.findOne({ Code });
       if (!Existing_Account) {
@@ -85,8 +81,7 @@ const Sign_In = async (req: Request, res: Response, Next: NextFunction) => {
     }
 
     const IsPasswordRight = await bcrypt.compare(Password, Existing_Account.Password);
-    console.timeLog("SignIn", "After password check");
-
+      
     if (!IsPasswordRight) {
       return res.status(401).json({ Yinix: false, Chat: "Wrong password!" });
     }
@@ -97,7 +92,6 @@ const Sign_In = async (req: Request, res: Response, Next: NextFunction) => {
 
     const { Password: _, ...SafeAccount } = Existing_Account.toObject();
 
-    console.timeEnd("SignIn");
     return res.status(200).json({ Yinix: true, Chat: "Welcome back!", Info: SafeAccount });
   } catch (Err) {
     Next(Err);

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+    <!-- Links! 🔗 -->
+    <link rel="stylesheet" href="./Test.css">
+</head>
+<body>
+    <h1>Arrays</h1>
+
+    <div id="Items"></div>
+
+    <script>
+        function Table(Text) {
+            console.table(Text);
+        }
+        function Log(Text) {
+            console.log(Text);
+        }
+        const Items_Element = document.getElementById("Items");
+        const Yinix_Array = [
+            { Name: "Praise", Email: "praiseo5@educbe.ca", Age: 10 },
+            { Name: "David", Email: "davido66@educbe.ca", Age: 8 },
+        ];
+
+        Table(Yinix_Array);
+        Log(Yinix_Array[0]);
+        Yinix_Array.forEach((Item) => {
+            Items_Element.innerHTML += `
+                <div class="Element">
+                    <h2>${Item.Name}</h2>
+                    <p>${Item.Email}</p>
+                    <p><span class="Bold">Age</span>: ${Item.Age}</p>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>

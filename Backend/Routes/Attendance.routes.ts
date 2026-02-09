@@ -1,5 +1,4 @@
-import { Router, type Request, type Response } from "express";
-import Create_Attendance_Session_Code from "../Config/Attendance_Code";
+import { Router } from "express";
 import { Clear_Sessions, Create_Attendance, Create_Attendance_Session, Delete_Attendance, Get_ALL_Attendances, Get_Attendance, Get_Attendance_Sessions, Update_Attendance } from "../Controllers/Attendance.controller";
 
 const Attendance_Router = Router();

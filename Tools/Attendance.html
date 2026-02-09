@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Links!!! 🔗 -->
+    <link rel="stylesheet" href="../Index.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance - Yinix!</title>
+</head>
+<body>
+    <!-- Sidebar -->
+    <side-bar Selected="Tools"></side-bar>
+
+    <div class="Main">
+        <!-- Title -->
+        <h1 id="Attendance_Title">...</h1><br><br>
+
+        <!-- Attendance List -->
+        <ul class="Attendance_Session_List" id="Attendance_Session_List">
+        </ul><br><br>
+        <button style="width: 10rem; position: absolute;
+        right: 0; margin-right: 13rem">Apply for all</button>
+        <button class="Main_Button" style="width: 10rem; position: absolute;
+        right: 0; margin-right: var(--Spacing-2);">Submit</button><br><br><br><br>
+
+    <!-- Script Link Tag -->
+    <script src="../Index.js"></script>
+    <script>
+        const Params = new URLSearchParams(window.location.search);
+        const Attendance_ID = Params.get("ID");
+        const Attendance_Session_List = document.getElementById("Attendance_Session_List");
+        const Attendance_Title = document.getElementById("Attendance_Title");
+
+        console.log(Attendance_ID);
+
+        fetch(`http://localhost:1100/API/Attendance/${Attendance_ID}`)
+        .then((Json) => { return Json.json(); })
+        .then((Data) => {
+            Attendance_Session_List.innerHTML = "";
+            console.log("✅ " + Data);
+            Attendance_Title.innerText = Data.Attendance.Name;
+            Data.Attendance.Students.forEach(Student => {
+                Attendance_Session_List.innerHTML += `
+                    <li>
+                        <span class="Bold">${Student}</span>
+                        <attendance-select></attendance-select>
+                    </li>
+                `;
+            });
+
+        })
+        .catch((Err) => console.error(Err));
+
+        async function Submit() {
+            fetch(`http://localhost:1100/API/Attendance/697038b6f26274b398ab9270/Sessions`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ Students })
+            });
+        }
+    </script>
+</body>
+</html>

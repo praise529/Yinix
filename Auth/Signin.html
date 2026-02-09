@@ -3,6 +3,7 @@
 <head>
     <!-- Links!!! 🔗 -->
     <link rel="stylesheet" href="../Index.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
 </head>
 <body>
     <div class="Account_Form">
-        <h2>Sign In</h2>
+        <h1>Sign In</h1><br>
         
         <form method="post" id="Signin_Form">
             <input type="number" name="Signin_Code" id="Signin_Code" 
@@ -21,19 +22,19 @@
             placeholder="You NEED this...">
 
             <button type="submit">Signin!</button>
-        </form>
+        </form><br><br>
 
         <div class="Social_Buttons">
-            <button class="OAuth2_Signin_Button" id="Google">Sign In With Google</button>
-            <button class="OAuth2_Signin_Button" id="Apple">Sign In With Apple</button>
+            <button class="OAuth2_Signin_Button" id="Google"><i class="ph-bold ph-google-logo"></i> Sign In With Google</button>
+            <button class="OAuth2_Signin_Button" id="Apple"><i class="ph-bold ph-apple-logo"></i> Sign In With Apple</button>
         </div>
     </div>
 
     <script>
         const Signin_Form = document.getElementById("Signin_Form");
-        const Signin_Code = document.getElementById("Signin_Code").value;
-        const Signin_Email = document.getElementById("Signin_Email").value;
-        const Signin_Password = document.getElementById("Signin_Password").value;
+        const Signin_Code = document.getElementById("Signin_Code");
+        const Signin_Email = document.getElementById("Signin_Email");
+        const Signin_Password = document.getElementById("Signin_Password");
 
         Signin_Form.addEventListener("submit", async (Event) => {
             Event.preventDefault();
@@ -46,17 +47,18 @@
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ Code: Signin_Code, Email: Signin_Email, Password: Signin_Password })
+                body: JSON.stringify({ Code: Signin_Code.value, Email: Signin_Email.value, Password: Signin_Password.value })
             })
+            .then((Json) => { return Json.json() })
             .then((Yinix_Data) => {
                 console.log("YYYYYYYYAAAAAAAAAAAAAYYYYYYYYYYYY!!!!!!!");
                 console.log(Yinix_Data);
 
-                sessionStorage.setItem("Name", Yinix_Data.Info.Name);
-                sessionStorage.setItem("Email", Yinix_Data.Info.Email);
-                sessionStorage.setItem("Code", Yinix_Data.Info.Code);
+                localStorage.setItem("Name", Yinix_Data.Info.Name);
+                localStorage.setItem("Email", Yinix_Data.Info.Email);
+                localStorage.setItem("Code", Yinix_Data.Info.Code);
 
-                return Yinix_Data.json();
+                setTimeout(() => { document.location = "../index.html" }, 1000);
             })
             .catch((Err) => {
                 console.error(`We couldn't sign you in because ${Err}`);
@@ -65,14 +67,6 @@
                 console.info("Sign in complete");
             });
         }
-
-        // async function Add_Classroom() {
-        //     try {
-        //         const Yinix_Response = fetch()
-        //     } catch (Err) {
-                
-        //     }
-        // }
     </script>
 </body>
 </html>

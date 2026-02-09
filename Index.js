@@ -55,7 +55,7 @@ class SideBar extends HTMLElement {
         <a href="./index.html"><button ${Selected === "Home" && "class='Yinix'"}><i class="ph-bold ph-house-simple"></i><p>Home</p></button></a>
         <a href="./Tools.html"><button ${Selected === "Tools" && "class='Yinix'"}><i class="ph-bold ph-pencil-ruler"></i><p>Tools</p></button></a>
         <a href="#"><button ${Selected === "Your_Work" && "class='Yinix'"}><i class="ph-bold ph-clipboard-text"></i><p>Your Work</p></button></a>
-        <a href="#"><button ${Selected === "Account" && "class='Yinix'"}><i class="ph-bold ph-user"></i><p>Account</p></button></a>
+        <a href="./Account.html"><button ${Selected === "Account" && "class='Yinix'"}><i class="ph-bold ph-user"></i><p>Account</p></button></a>
       </div>
     `;
   }
@@ -76,8 +76,21 @@ class Whiteboard_Tool extends HTMLElement {
   }
 }
 
+class Attendance_Select extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+      <select>
+          <option value="Present">Present</option>
+          <option value="Absent">Absent</option>
+          <option value="Late">Late</option>
+      </select>
+    `;
+  }
+}
+
 customElements.define("side-bar", SideBar);
 customElements.define("whiteboard-tool", Whiteboard_Tool);
+customElements.define("attendance-select", Attendance_Select);
 
 
 
@@ -87,13 +100,14 @@ var Yinix_Tool = document.querySelector(".Whiteboard_Area .Whiteboard_Tools .Too
 .getAttribute("data-Tool");
 
 const Whiteboard = document.getElementById("Whiteboard");
+const Whiteboard_Context = Whiteboard.getContext("2d");
 const Pen_Cursor = document.getElementById("Pen_Cursor");
 const Whiteboard_Tools = document.querySelectorAll(".Whiteboard_Area .Whiteboard_Tools .Tool");
 
 Pen_Cursor.style.display = "none";
 
 function Activate_Tool() {
-  if (Yinix_Tool === "Pen") {
+  if (Yinix_Tool === "Pencil") {
     Activate_Pen();
   } else {
     Deactivate_All();
@@ -113,15 +127,28 @@ Whiteboard_Tools.forEach(Tool => {
 function Activate_Pen() {
   Whiteboard.style.cursor = "none";
   Pen_Cursor.style.display = "block";
+
+  Whiteboard.addEventListener("mousemove", (E) => {
+    Pen_Cursor.style.left = `${E.clientX}px`;
+    Pen_Cursor.style.top = `${E.clientY}px`;
+  });
+
 }
 
 function Deactivate_All() {
   Pen_Cursor.style.display = "none";
-}
+  Whiteboard.style.cursor = "default";
+  Writing = false;
+  Whiteboard.removeEventListener("mousedown", () => Writing = true);
+  Whiteboard.removeEventListener("mouseup", () => Writing = false);
+}  
 
 Activate_Tool();
 
-window.addEventListener("mousemove", (E) => {
-  Pen_Cursor.style.left = E.clientX + "px";
-  Pen_Cursor.style.top = E.clientY + "px";
-});
+
+
+
+
+
+
+var Is_Signed_In = false;

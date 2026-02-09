@@ -4,7 +4,7 @@
 <head>
     <!-- Links!!! 🔗 -->
     <link rel="stylesheet" href="Index.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
 
 
     <meta charset="UTF-8">
@@ -13,16 +13,27 @@
 </head>
 
 <body class="Scroll-None">
+    <div style="display: flex; position: fixed;
+    z-index: 999; align-items: center; height: 100vh; height: 100dvh; justify-content: center;
+    width: 100%; background: var(--White);" id="Loading">
+        <i class="ph-bold ph-spinner" style="font-size: 4rem; color: var(--Text-Black);
+        animation: Spin 1s ease-in-out infinite;"></i>
+    </div>
     <div class="Whiteboard_Area">
-        <div class="Whiteboard" id="Whiteboard"></div>
-
-        <div class="Tool_Element" id="Colour_Creator" data-Connect="Pencil_Marker_Colour">
-            <input type="color" name="Colour_Creator_Selector" id="Colour_Creator_Selector" value="#68838b">
+        <div class="Top_Bar">
+            <input type="text" maxlength="20" value="Whiteboard 1" id="Whiteboard_Name">
+            <button><i class="ph-bold ph-dots-three-vertical"></i></button>
         </div>
 
+        <button id="Back"><i class="ph-bold ph-caret-left"></i> Back</button>
+        <button id="Comment"><i class="ph-bold ph-chat-circle-text"></i></button>
+
+        <canvas class="Whiteboard" id="Whiteboard"></canvas>
+
         <div class="Whiteboard_Tools">
-            <whiteboard-tool name="Pen" icon="pen" active="true"></whiteboard-tool>
-            <whiteboard-tool name="Highlighter" icon="highlighter"></whiteboard-tool>
+            <whiteboard-tool name="Pencil" icon="pencil-line" active="true"></whiteboard-tool>
+            <whiteboard-tool name="Eraser" icon="eraser"></whiteboard-tool>
+            <div class="Whiteboard_Divider">|</div>
             <whiteboard-tool name="Text" icon="text-aa"></whiteboard-tool>
             <div class="Whiteboard_Divider">|</div>
             <div><i class="ph-bold ph-arrow-u-up-left"></i></div>
@@ -38,6 +49,68 @@
     </div>
 
     <script src="./Index.js"></script>
+    <script>
+        const Params = new URLSearchParams(window.location.search);
+        const Whiteboard_ID = Params.get("ID") ?? undefined;
+        const Yinix_URL = "http://localhost:1100/API/Whiteboards";
+        const Whiteboard_Name = document.getElementById("Whiteboard_Name");
+
+        if (Whiteboard_ID === undefined) {
+            fetch(Yinix_URL, { 
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then((Yinix) => { return Yinix.json() })
+            .then((Data) => {
+                console.log("Fetch Complete!!!");
+                console.log(Data);
+                Whiteboard_Name.value = Data.Info.Name;
+                document.title = Data.Info.Name;
+            })
+            .catch((Err) => {
+                console.error("Sorry... " + Err);
+            })
+            .finally(() => {
+                document.getElementById("Loading").style.display = "none";
+            });
+        } else {
+            fetch(`${Yinix_URL}/${Whiteboard_ID}`)
+            .then((Yinix) => { return Yinix.json() })
+            .then((Data) => {
+                console.log("Fetch Complete!!!");
+                console.log(Data);
+                Whiteboard_Name.value = Data.Info.Name;
+            })
+            .catch((Err) => {
+                console.error("Sorry... " + Err);
+            })
+            .finally(() => {
+                document.getElementById("Loading").style.display = "none";
+            });
+        }
+
+        Whiteboard_Name.addEventListener("change", () => {
+            setTimeout(async () => {
+                fetch(`${Yinix_URL}/${Whiteboard_ID}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ Name: Whiteboard_Name.value })
+                })
+                .then((Yinix) => { return Yinix.json() })
+                .then((Data) => {
+                    console.log("Fetch Complete!!!");
+                    console.log(Data);
+                    Whiteboard_Name.value = Data.Info.Name;
+                    document.title = Data.Info.Name;
+                })
+                .catch((Err) => console.error(Err));
+            }, 1000);
+        })
+    </script>
 </body>
 
 </html>

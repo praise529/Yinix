@@ -109,16 +109,24 @@ button {
     transition: var(--Transition);
     border-radius: var(--Radius-2);
 }
+button.Main_Button {
+    color: #FFF;
+    background: var(--Main);
+}
 button:active {
     scale: 0.95;
 }
 
 select {
+    outline: none;
     color: var(--Text-Black);
     background: var(--White);
     padding: var(--Spacing-1);
     border: var(--Light-Border);
     border-radius: var(--Radius-1);
+}
+select:focus {
+    border-color: var(--Main);
 }
 
 li {
@@ -149,6 +157,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .None {
     display: none;
+}
+.Main_Colour {
+    color: var(--Main);
 }
 
 
@@ -217,6 +228,22 @@ input[type="number"]::-webkit-outer-spin-button {
     display: block;
 }
 
+.Border {
+    padding: var(--Spacing-2);
+    border: var(--Light-Border);
+    border-radius: var(--Radius-1);
+}
+
+.h1_Font_Size {
+    font-size: 5rem;
+}
+
+.Center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 
 
@@ -245,7 +272,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .Side_Bar {
     display: flex;
-    position: absolute;
+    position: fixed;
     left: 0;
     height: 100vh;
     height: 100dvh;
@@ -301,6 +328,14 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-left: 10rem;
 }
 
+.Main .Row {
+    display: flex;
+    flex-direction: row;
+}
+.Main .Row div {
+    flex-direction: column;
+}
+
 .Main .Classes .Class {
     width: 10rem;
     height: 15rem;
@@ -337,8 +372,8 @@ input[type="number"]::-webkit-outer-spin-button {
     border: var(--Light-Border);
     border-radius: var(--Radius-2);
 
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
 }
 
 .Whiteboard_Area .Whiteboard_Tools .Tool {
@@ -469,6 +504,56 @@ input[type="number"]::-webkit-outer-spin-button {
 .Whiteboard_Area .White .Text:focus::after,
 .Whiteboard_Area .White .Text:focus:before {
     display: block;
+}
+
+
+.Whiteboard_Area .Top_Bar {
+    width: 40%;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    translate: -50%;
+    margin-top: 2.5rem;
+    text-align: center;
+    padding: var(--Spacing-2);
+    border: var(--Light-Border);
+    border-radius: var(--Radius-2);
+}
+
+.Whiteboard_Area .Top_Bar input {
+    font-weight: bold;
+    font-size: xx-large;
+    width: 70%;
+    border: 2px solid var(--White);
+}
+
+.Whiteboard_Area .Top_Bar input:hover {
+    border: var(--Main-Border);
+}
+
+.Whiteboard_Area .Top_Bar button {
+    padding: 0;
+    border: none;
+    font-size: 2rem;
+    border-radius: 0;
+}
+.Whiteboard_Area .Top_Bar button:hover {
+    background: var(--Dark-White);
+}
+
+.Whiteboard_Area #Comment, .Whiteboard_Area #Back {
+    right: 0;
+    width: 5rem;
+    margin: 1rem;
+    position: fixed;
+    font-size: 2rem;
+    border-radius: 2.5rem;
+}
+
+.Whiteboard_Area #Back {
+    left: 0;
+    width: 6rem;
+    font-size: 1rem;
 }
 
 
@@ -604,17 +689,53 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .Attendance_Session_List li {
+    height: 1rem;
     display: flex;
     position: relative;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     padding: var(--Spacing-2);
     justify-content: space-between;
     border-bottom: var(--Light-Border);
+}
+.Attendance_Session_List li:last-child {
+    border-bottom: none;
 }
 
 .Attendance_Session_List div select {
     right: 0;
     position: absolute;
+}
+
+
+
+
+#Signin_Form, #Signup_Form {
+    display: flex;
+    flex-direction: column;
+}
+.Account_Form {
+    padding: var(--Spacing-2);
+}
+.Account_Form input {
+    padding: var(--Spacing-1);
+    border: var(--Light-Border);
+    transition: var(--Transition);
+    border-radius: var(--Radius-1);
+    margin-bottom: var(--Spacing-1);
+}
+.Account_Form input:hover {
+    scale: 1.02;
+}
+
+
+
+button.OAuth2_Signin_Button#Google {
+    border-top: 2px solid #176ced;
+    border-left: 2px solid #d9432f;
+    border-bottom: 2px solid #ffb700;
+    border-right: 2px solid #009a57;
 }
 
 
@@ -671,5 +792,13 @@ input[type="number"]::-webkit-outer-spin-button {
 @media (prefers-reduced-motion: reduce) {
     #Pen_Cursor {
         display: none;
+    }
+}
+@keyframes Spin {
+    from {
+        rotate: 0deg;
+    }
+    to {
+        rotate: 360deg;
     }
 }

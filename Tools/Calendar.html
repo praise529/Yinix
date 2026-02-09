@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Links!!! 🔗 -->
+    <link rel="stylesheet" href="../Index.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - Yinix</title>
+
+    <style>
+        #Calendar {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .Date {
+            margin: 0.1rem;
+            padding: var(--Spacing-1);
+            border-radius: var(--Radius-1);
+        }
+        .Date.Today {
+            border: var(--Main-Border);
+        }
+        .Date:hover {
+            background: var(--Dark-White);
+        }
+    </style>
+</head>
+<body>
+    <side-bar Selected="Tools"></side-bar>
+    <div class="Main">
+        <div id="Calendar_Area">
+            <div>
+                <span>Sun</span>
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+            </div>
+            <div id="Calendar"></div>
+        </div>
+    </div>
+
+    <script>
+        const Today = new Date();
+        const Calendar_Element = document.getElementById("Calendar");
+
+        for (let y = 0; y < 30; y++) {
+            Calendar_Element.innerHTML += `
+                <div class="Date ${y === Today.getDate() - 1 ? "Today" : ""}">${y + 1}</div>
+            `;
+        }
+    </script>
+    <script src="../Index.js"></script>
+</body>
+</html>

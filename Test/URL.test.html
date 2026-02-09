@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+    <!-- Links! 🔗 -->
+    <link rel="stylesheet" href="./Test.css">
+</head>
+<body>
+    <h1>Period <span id="Attendance_Period"></span> - <span id="Attendance_Class"></span></h1>
+    <p class="Muted" id="Attendance_Date"></p>
+    <script>
+        function Create_Attendance_Session_Code() {
+            let ID = "";
+
+            for (let y = 0; y < 21; y++) {
+                ID += "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"[Math.floor(Math.random() * 62)]
+            }
+        
+            return ID;
+        }
+        function Pad_Start(Text) {
+            return Text?.toString().padStart(2, "0");
+        }
+        const Yinix = new Date();
+        const Sessions = [];
+        const Attendance_Date = document.getElementById("Attendance_Date");
+        const Attendance_Class = document.getElementById("Attendance_Class");
+        const Attendance_Period = document.getElementById("Attendance_Period");
+        const Params = new URLSearchParams(window.location.search);
+        console.log(Params);
+
+        if (!Params.get("attendance-session")) {
+            for (let y = 0; y < 10; y++) {
+                console.error("No session...");
+            }
+        } else {
+            Sessions.unshift(Params.get("attendance-session"));
+        }
+
+        Attendance_Date.innerText = Params.get("attendance-date");
+        Attendance_Class.innerText = Params.get("attendance-class")
+        .replace('"', "").replace('"', "");
+        Attendance_Period.innerText = Params.get("attendance-period");
+
+        console.log(Params.get("attendance-date"));
+        console.log(Params.get("attendance-class"));
+        console.log(Params.get("attendance-period"));
+        console.log(Params.get("attendance-session"));
+        
+    </script>
+</body>
+</html>

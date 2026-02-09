@@ -35,6 +35,13 @@ label {
     margin-bottom: 1.25rem;
 }
 
+.Bold {
+    font-weight: bold;
+}
+.Muted {
+    color: hsl(0, 0%, 50%);
+}
+
 button {
     border: none;
     color: white;

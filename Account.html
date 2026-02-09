@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Links!!! 🔗 -->
+    <link rel="stylesheet" href="Index.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yinix - For Schools!</title>
+</head>
+<body>
+    <side-bar Selected="Account"></side-bar>
+
+    <div class="Main">
+        <h1>Account</h1>
+        <p class="Name"></p>
+    </div>
+    
+
+    <script src="./Index.js"></script>
+    <script>
+        const Name_Elements = document.querySelectorAll(".Name");
+
+        Name_Elements.forEach(Name => {
+            Name.innerHTML = localStorage.getItem("Name") || null;
+        });
+
+        const Email_Elements = document.querySelectorAll(".Email");
+
+        Email_Elements.forEach(Email => {
+            Email.innerHTML = localStorage.getItem("Email") || null;
+        });
+    </script>
+</body>
+</html>
