@@ -8,7 +8,7 @@ const Video_Box = document.getElementById("Video_Box");
 const Video_Button = document.getElementById("Video_Button");
 const Webcam_Video = document.querySelector("#Webcam_Video");
 
-const Side_Bar = document.getElementById("Side_Bar");
+const Side_Bar = document.querySelector("side-bar .Side_Bar");
 
 
 async function Start_Video() 
@@ -43,7 +43,7 @@ async function Toggle_Video() {
 
 
 function Toggle_Side_Bar() {
-  Side_Bar.classList.toggle("Expanded");
+  Side_Bar.classList.toggle("None");
 }
 
 
@@ -57,6 +57,7 @@ class SideBar extends HTMLElement {
         <a href="#"><button ${Selected === "Your_Work" && "class='Yinix'"}><i class="ph-bold ph-clipboard-text"></i><p>Your Work</p></button></a>
         <a href="./Account.html"><button ${Selected === "Account" && "class='Yinix'"}><i class="ph-bold ph-user"></i><p>Account</p></button></a>
       </div>
+      <button id="Side_Bar_Button" onclick="Toggle_Side_Bar()"><i class="ph-bold ph-list"></i></button>
     `;
   }
 }
@@ -95,55 +96,6 @@ customElements.define("attendance-select", Attendance_Select);
 
 
 
-
-var Yinix_Tool = document.querySelector(".Whiteboard_Area .Whiteboard_Tools .Tool.Active")
-.getAttribute("data-Tool");
-
-const Whiteboard = document.getElementById("Whiteboard");
-const Whiteboard_Context = Whiteboard.getContext("2d");
-const Pen_Cursor = document.getElementById("Pen_Cursor");
-const Whiteboard_Tools = document.querySelectorAll(".Whiteboard_Area .Whiteboard_Tools .Tool");
-
-Pen_Cursor.style.display = "none";
-
-function Activate_Tool() {
-  if (Yinix_Tool === "Pencil") {
-    Activate_Pen();
-  } else {
-    Deactivate_All();
-  }
-}
-
-Whiteboard_Tools.forEach(Tool => {
-  Tool.addEventListener("click", () => {
-    Whiteboard_Tools.forEach(Tool => Tool.classList.remove("Active"));
-    Tool.classList.add("Active");
-    Yinix_Tool = Tool.getAttribute("data-Tool");
-
-    Activate_Tool();
-  });
-});
-
-function Activate_Pen() {
-  Whiteboard.style.cursor = "none";
-  Pen_Cursor.style.display = "block";
-
-  Whiteboard.addEventListener("mousemove", (E) => {
-    Pen_Cursor.style.left = `${E.clientX}px`;
-    Pen_Cursor.style.top = `${E.clientY}px`;
-  });
-
-}
-
-function Deactivate_All() {
-  Pen_Cursor.style.display = "none";
-  Whiteboard.style.cursor = "default";
-  Writing = false;
-  Whiteboard.removeEventListener("mousedown", () => Writing = true);
-  Whiteboard.removeEventListener("mouseup", () => Writing = false);
-}  
-
-Activate_Tool();
 
 
 

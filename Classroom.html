@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Links!!! 🔗 -->
+    <link rel="stylesheet" href="Index.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <side-bar Selected="Home"></side-bar>
+
+    <i class="ph-bold ph-spinner" style="font-size: 4rem; position: fixed;
+    z-index: 999; display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 100vh; animation: Spin 1s ease-in-out infinite;" id="Loading"></i>
+
+    <div class="Main">
+        <div class="Class_Intro">
+            <h1 id="Class_Name"></h1>
+        </div>
+
+        <div class="Class_Stream" id="Class_Stream"></div>
+
+        <nav class="Class_Nav">
+            <li class="Active">Stream</li>
+            <li>Attendance</li>
+            <li>People</li>
+        </nav>
+    </div>
+    <script>
+        const Redirecting = "Redirecting..."
+        const Params = new URLSearchParams(window.location.search);
+        const Classroom_ID = Params.get("ID");
+
+        if (!Classroom_ID) {
+            document.title = Redirecting;
+            setTimeout(() => document.location = "../404.html", 1000)
+        }
+
+        console.log(Classroom_ID);
+        document.title = Classroom_ID ? `${Classroom_ID} - Yinix!` : Redirecting;
+    </script>
+    <script>
+        const Class_Stream = document.getElementById("Class_Stream")
+        const Class_Name = document.getElementById("Class_Name");
+        const Loading_Wheel = document.getElementById("Loading");
+
+        async function Create() {
+            fetch(`http://localhost:1100/API/Classrooms/${Classroom_ID}`)
+            .then((Json) => { return Json.json() })
+            .then((Data) => {
+                console.log(Data);
+                if (Data.Class.Stream.length === 0) {
+                    Class_Stream.innerHTML = `
+                    <div class="Stream_Empty">
+                        <img src="./Images/Stream Empty IMG Light Mode.png" width="300">
+                        <h2>No Chats... YET</h2>
+                        <p class="Muted">Send a message to start!</p>
+                    </div>
+                    `;
+                }
+                
+                Class_Name.innerText = Data.Class.Name;
+                document.title = `${Data.Class.Name} - Yinix`;
+            })
+            .catch((Err) => console.error(Err))
+            .finally(() => Loading_Wheel.style.display = "none");
+        }
+        Create();
+    </script>
+    <script src="./Index.js"></script>
+</body>
+</html>

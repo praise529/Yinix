@@ -3,6 +3,11 @@ import mongoose from "mongoose";
 const Student_Schema = new mongoose.Schema({
   Name: { type: String, required: true },
 });
+const Stream_Schema = new mongoose.Schema({
+  Content: { type: String, required: true },
+  Classroom: { type: mongoose.Types.ObjectId, required: true },
+  Account: { type: mongoose.Types.ObjectId, required: true },
+})
 
 const Classroom_Schema = new mongoose.Schema({
   Name: {
@@ -22,6 +27,8 @@ const Classroom_Schema = new mongoose.Schema({
     required: false,
   },
   Students: [Student_Schema],
+
+  Stream: [Stream_Schema]
 }, { timestamps: true });
 
 const Classroom = mongoose.model("Classroom", Classroom_Schema);

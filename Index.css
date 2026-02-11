@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    outline: none;
     font-family: "Fredoka", sans-serif;
 }
 
@@ -12,8 +13,8 @@
 
     /* #5c92ff */
     --Main: hsl(220, 100%, 68%);
-    --Secondary-Main: hsl(200, 100%, 68%);
-    --Transparent-Main: hsla(220, 100%, 68%, 10%);
+    --Secondary-Main: hsl(240, 100%, 68%);
+    --Transparent-Main: hsla(from var(--Main) H S L / 0.10);
 
     --Purple-Black: hsl(245, 15%, 68%);
     --Text-Black: hsl(220, 100%, 10%);
@@ -27,12 +28,28 @@
     --Radius-1: 1rem;
     --Radius-2: 2rem;
     --Radius-3: 5rem;
+    --Radius-4: 10rem;
 
-    --Spacing-1: 1rem;
-    --Spacing-2: 2rem;
-    --Spacing-3: 5rem;
+    --Spacing-1: 0.25rem;
+    --Spacing-2: 0.5rem;
+    --Spacing-3: 0.75rem;
+    --Spacing-4: 1rem;
+    --Spacing-5: 1.25rem;
+    --Spacing-6: 1.5rem;
+    --Spacing-7: 1.75rem;
+    --Spacing-8: 2rem;
+    --Spacing-9: 5rem;
+    --Spacing-10: 10rem;
+    --Spacing-11: 20rem;
 
     --Transition: 300ms ease-in-out;
+    --Transition-2: 1s ease-in-out;
+
+    --Font-Medium: 500;
+    --Font-Bold: bold;
+
+    --Thickness-1: 2px;
+    --Thickness-2: 4px;
 }
 
 :root.Dark {
@@ -42,21 +59,38 @@
     --Main: hsl(220, 100%, 78%);
 
     --Purple-Black: hsl(245, 15%, 88%);
-    --Text-Black: hsl(0, 100%, 99%);
+    --Text-Black: hsl(0, 0%, 80%);
     --Text-White: hsl(0, 100%, 99%);
     --Teal-Black: hsl(195, 14%, 50%);
 
-    --Light-Border: 4px solid var(--Dark-White);
+    --Light-Border: 2px solid var(--Dark-White);
     --Main-Border: 2px solid var(--Main);
 
-    --Radius-1: 10px;
-    --Radius-2: 20px;
+    --Radius-1: 1rem;
+    --Radius-2: 2rem;
+    --Radius-3: 5rem;
+    --Radius-4: 10rem;
 
-    --Spacing-1: 1rem;
-    --Spacing-2: 2rem;
-    --Spacing-3: 5rem;
+    --Spacing-1: 0.25rem;
+    --Spacing-2: 0.5rem;
+    --Spacing-3: 0.75rem;
+    --Spacing-4: 1rem;
+    --Spacing-5: 1.25rem;
+    --Spacing-6: 1.5rem;
+    --Spacing-7: 1.75rem;
+    --Spacing-8: 2rem;
+    --Spacing-9: 5rem;
+    --Spacing-10: 10rem;
+    --Spacing-11: 20rem;
 
-    --Transition: 200ms ease-in-out;
+    --Transition: 300ms ease-in-out;
+    --Transition-2: 1s ease-in-out;
+
+    --Font-Medium: 500;
+    --Font-Bold: bold;
+
+    --Thickness-1: 2px;
+    --Thickness-2: 4px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -97,24 +131,33 @@ body.Scroll-None {
 
 
 button {
-    gap: 5px;
-    padding: 16px;
-    font-weight: 500;
     align-items: center;
     display: inline-flex;
+    gap: var(--Spacing-2);
     justify-content: center;
     color: var(--Text-Black);
     background: var(--White);
+    padding: var(--Spacing-4);
     border: var(--Light-Border);
     transition: var(--Transition);
     border-radius: var(--Radius-2);
+    font-weight: var(--Font-Medium);
 }
 button.Main_Button {
     color: #FFF;
     background: var(--Main);
 }
+button:hover {
+    scale: 1.01 !important;
+}
 button:active {
-    scale: 0.95;
+    animation: Sink-And-Pop 1s ease-in-out;
+}
+
+@keyframes Sink-And-Pop {
+    0%, 100% { scale: 1; }
+    50% { scale: 0.95; }
+    75% { scale: 1.05; }
 }
 
 select {
@@ -177,52 +220,52 @@ input[type="number"]::-webkit-outer-spin-button {
     position: absolute;
     top: 0;
     right: 0;
-    margin: 1rem;
-    margin-bottom: 1rem;
+    margin: var(--Spacing-4);
+    margin-bottom: var(--Spacing-4);
 }
 .Item_Card .Top_Bar button {
     border: none;
-    font-size: 1.25rem;
+    font-size: var(--Spacing-5);
 }
 
 
 .Grid {
-    gap: 1rem;
     width: 98%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    gap: var(--Spacing-4);
 }
 
 
 .Select {
-    height: 1rem;
-    max-width: 10rem;
+    height: var(--Spacing-4);
     color: var(--Text-Black);
     background: var(--White);
     padding: var(--Spacing-1);
     border: var(--Light-Border);
+    max-width: var(--Spacing-10);
     border-radius: var(--Radius-1);
 }
 
 .Select .Select_Popover {
-    display: none;
     width: 100%;
+    display: none;
     translate: -10%;
-    margin-top: 1rem;
     padding: var(--Spacing-1);
     border: var(--Light-Border);
+    margin-top: var(--Spacing-4);
     border-radius: var(--Radius-1);
 }
 .Select .Select_Popover .Select_Item {
-    padding: 0.5rem;
+    padding: var(--Spacing-1);
 }
 .Select .Select_Popover .Select_Item:hover {
     background: var(--Dark-White);
 }
 
 .Select.Open {
-    margin-bottom: 14rem;
+    margin-bottom: var(--Spacing-10);
 }
 .Select.Open .Select_Popover {
     display: block;
@@ -235,7 +278,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .h1_Font_Size {
-    font-size: 5rem;
+    font-size: var(--Spacing-9);
 }
 
 .Center {
@@ -249,7 +292,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 .Tool-Box {
-    gap: 12px;
+    gap: 0.8rem;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -277,13 +320,16 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 100vh;
     height: 100dvh;
     overflow-y: hidden;
-    padding-left: 1rem;
-    padding-right: 1rem;
     align-items: center;
     gap: var(--Spacing-1);
     flex-direction: column;
     transition: var(--Transition);
+    padding-left: var(--Spacing-4);
+    padding-right: var(--Spacing-4);
     border-right: var(--Light-Border);
+}
+.Side_Bar.None {
+    display: none;
 }
 
 .Side_Bar button {
@@ -294,7 +340,7 @@ input[type="number"]::-webkit-outer-spin-button {
     justify-content: center;
 }
 .Side_Bar a:first-child {
-    margin-top: 5rem;
+    margin-top: var(--Spacing-9);
 }
 
 .Side_Bar button.Yinix i {
@@ -303,8 +349,8 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--Main);
     align-items: center;
     display: inline-flex;
-    border-radius: 10rem;
     justify-content: center;
+    border-radius: var(--Spacing-10);
     background: var(--Transparent-Main);
 }
 .Side_Bar button.Yinix span, .Side_Bar button.Yinix p {
@@ -313,19 +359,19 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 .Side_Bar button i {
-    font-size: 2rem;
     color: var(--Text-Black);
+    font-size: var(--Spacing-8);
 }
 
 .Side_Bar button p {
-    font-size: 1rem;
+    font-size: var(--Spacing-4);
 }
 
 
 
 .Main {
-    padding-top: 5rem;
-    margin-left: 10rem;
+    padding-top: var(--Spacing-9);
+    margin-left: var(--Spacing-10);
 }
 
 .Main .Row {
@@ -337,11 +383,11 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .Main .Classes .Class {
-    width: 10rem;
-    height: 15rem;
     padding: 2.5rem;
     position: relative;
     background: var(--White);
+    width: var(--Spacing-10);
+    height: var(--Spacing-10);
     border: var(--Light-Border);
     border-radius: var(--Radius-2);
 }
@@ -716,26 +762,125 @@ input[type="number"]::-webkit-outer-spin-button {
     flex-direction: column;
 }
 .Account_Form {
+    
     padding: var(--Spacing-2);
 }
 .Account_Form input {
-    padding: var(--Spacing-1);
+    background: var(--White);
+    padding: var(--Spacing-4);
     border: var(--Light-Border);
     transition: var(--Transition);
     border-radius: var(--Radius-1);
-    margin-bottom: var(--Spacing-1);
+    margin-bottom: var(--Spacing-4);
 }
 .Account_Form input:hover {
-    scale: 1.02;
+    scale: 1.01;
+}
+.Account_Form input:active {
+    animation: Sink-And-Pop 1s ease-in-out;
+}
+.Account_Form input:focus {
+    border: var(--Main-Border);
 }
 
 
+
+@keyframes Google-Animation {
+    0% {
+        border-top: 2px solid #176ced;
+        border-left: 2px solid #d9432f;
+        border-bottom: 2px solid #ffb700;
+        border-right: 2px solid #009a57;
+    }
+    25% {
+        border-right: 2px solid #176ced;
+        border-top: 2px solid #ffb700;
+        border-left: 2px solid #d9432f;
+        border-bottom: 2px solid #009a57;
+    }
+    50% {
+        border-bottom: 2px solid #176ced;
+        border-right: 2px solid #d9432f;
+        border-top: 2px solid #009a57;
+        border-left: 2px solid #ffb700;
+    }
+    75% {
+        border-bottom: 2px solid #d9432f;
+        border-right: 2px solid #ffb700;
+        border-left: 2px solid #009a57;
+        border-top: 2px solid #176ced;
+    }
+    100% {
+        border-top: 2px solid #176ced;
+        border-left: 2px solid #d9432f;
+        border-bottom: 2px solid #ffb700;
+        border-right: 2px solid #009a57;
+    }
+}
 
 button.OAuth2_Signin_Button#Google {
     border-top: 2px solid #176ced;
     border-left: 2px solid #d9432f;
     border-bottom: 2px solid #ffb700;
     border-right: 2px solid #009a57;
+}
+button.OAuth2_Signin_Button#Google:hover {
+    animation: Google-Animation 1s infinite;
+}
+
+
+
+
+
+.Class_Intro {
+    display: flex;
+    top: 0; width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: var(--Spacing-2);
+    height: var(--Spacing-10);
+    margin-bottom: var(--Spacing-9);
+    border-bottom: var(--Light-Border);
+}
+
+.Stream_Empty {
+    display: flex;
+    align-items: center;
+    gap: var(--Spacing-4);
+    flex-direction: column;
+    justify-content: center;
+    height: var(--Spacing-10);
+}
+
+.Class_Nav {
+    width: 70%;
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    font-weight: 500;
+    left: 50%;
+    translate: -50% 0;
+    justify-content: space-around;
+    bottom: 0; margin-bottom: var(--Spacing-8);
+}
+.Class_Nav li {
+    cursor: pointer;
+    user-select: none;
+}
+.Class_Nav li.Active {
+    width: 1rem;
+    display: inline-flex;
+    padding-bottom: 0.2rem;
+    justify-content: center;
+    border-bottom: var(--Thickness-2) solid var(--Main);
+}
+
+
+#Side_Bar_Button {
+    margin: var(--Spacing-4);
+}
+.Side_Bar:not(.None) ~ #Side_Bar_Button {
+    margin-left: var(--Spacing-10);
 }
 
 
@@ -747,12 +892,17 @@ button.OAuth2_Signin_Button#Google {
         border: none;
     }
 }
-@media (max-width: 425px) {
+@media (max-width: 640px) {
     .Side_Bar {
         display: none;
     }
+
+    #Side_Bar_Button {
+        margin-left: var(--Spacing-4) !important;
+    }
     
     .Main {
+        padding-top: 1rem;
         margin-left: 1rem;
     }
 }
