@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <video id="Screen_Video" autoplay muted src="./Videos/Video Loading.mp4" 
+    width="500" style="border: 1px solid;"></video>
+    <button onclick="Start_Mirroring()">Start</button>
+
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <script>
+        const Screen_Video = document.getElementById('Screen_Video')
+        const Yinix_Peer = new Peer(); 
+            
+        let Peer_ID;
+        Yinix_Peer.on('open', (ID) => {
+            Peer_ID = ID;
+            console.log('My Peer ID is: ' + ID);
+        });
+        
+        async function Start_Mirroring() {
+          try {
+            const Capture_Screen = await navigator.mediaDevices.getDisplayMedia({ video: true });
+            Screen_Video.srcObject = Capture_Screen;
+          
+            await fetch('http://localhost:1100/API/Screens/Start', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    Account_ID: "695e6739da8c72da1206c85e",
+                    Peer_ID: Peer_ID
+                })
+            });
+          
+            Yinix_Peer.on('call', (Call) => {
+                Call.answer(Capture_Screen);
+            });
+          
+          } catch (Err) {
+            console.error("Error:", Err);
+          }
+        }
+
+    </script>
+</body>
+</html>

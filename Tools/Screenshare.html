@@ -7,25 +7,41 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar - Yinix</title>
+    <title>Screen Share - Yinix</title>
 </head>
 <body>
     <side-bar Selected="Tools"></side-bar>
 
-    <div class="Main">
-        <div class="Row">
-            <div>
-                <h2><i class="ph-bold ph-screencast Main_Colour"></i> Share your screen</h2>
-                <h1 style="font-size: 5rem;">2049802</h1>
-            </div>
-    
-            <div class="Border Center">
-                <i class="h1_Font_Size Main_Colour ph-bold ph-users-three"></i>
-                <h2>Waiting for Participants</h2>
-            </div>
-        </div>
+    <div class="Main" id="Screen-Share-Form">
+        <h1><i class="ph-bold ph-screencast Main-Colour"></i> Start A Session</h1><br>
+
+        <form method="post" id="Screen-Share-Form">
+
+            <label for="Screen-Share-Code-Input">Code</label><br>
+            <input type="number" name="Screen-Share-Code-Input" id="Screen-Share-Code-Input" placeholder="e.g., 123456" required><br>
+            <label for="Screen-Share-Name-Input">Name</label><br>
+            <input type="text" name="Screen-Share-Name-Input" id="Screen-Share-Name-Input" placeholder="e.g., Praise Olatope" required><br>
+
+            <button type="submit">Create</button>
+        </form>
     </div>
 
     <script src="../Index.js"></script>
+    <script>
+        const ScreenShareForm = document.getElementById("Screen-Share-Form");
+        const ScreenShareCodeInput = document.getElementById("Screen-Share-Code-Input");
+        const ScreenShareNameInput = document.getElementById("Screen-Share-Name-Input");
+
+        function Validate() {
+            console.log("later");
+            console.log(ScreenShareCodeInput.value);
+            console.log(ScreenShareNameInput.value);
+        }
+
+        ScreenShareForm.addEventListener("submit", (E) => {
+            E.preventDefault();
+            Validate();
+        });
+    </script>
 </body>
 </html>

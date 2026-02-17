@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi :)</title>
+    <link rel="stylesheet" href="Test.css">
+</head>
+<body>
+    <div id="Notifications_Area"></div>
+    <script>
+        const Notifications_Area = document.getElementById("Notifications_Area");
+        fetch("http://localhost:1100/API/Accounts/695e6739da8c72da1206c85e/")
+        .then((Json) => { return Json.json() })
+        .then((Data) => {
+            const Notifications = Data.Account.Notifications;
+            console.table(Notifications);
+
+            Notifications.forEach(Notification => {
+                Notifications_Area.innerHTML += `
+                    <div class="Element">
+                        <h3>${Notification.Title}</h3>
+                        <p>${Notification.Content || ""}</p>
+                        <p>${Notification.createdAt.slice(0, 10)}</p>
+                        <button>${Notification.Action}</button>
+                    </div>
+                `;
+            });
+        })
+        .catch((Err) => console.error(Err));
+    </script>
+</body>
+</html>

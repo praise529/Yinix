@@ -1,5 +1,26 @@
 import mongoose from "mongoose";
 
+const Notification_Schema = new mongoose.Schema({
+    Title: {
+        type: String,
+        required: true
+    },
+    Content: {
+        type: String,
+        required: false
+    },
+    Status: {
+        type: String,
+        default: "INFO",
+        enum: ["ERROR", "SUCCESS", "INFO", "WARNING"]
+    },
+    Action: {
+        type: String,
+        default: "OK",
+        enum: ["Start Now", "Double Check", "View", "OK"]
+    }
+}, { timestamps: true });
+
 const Account_Schema = new mongoose.Schema({
     Code: {
         type: String,
@@ -34,7 +55,8 @@ const Account_Schema = new mongoose.Schema({
     Role: {
         type: String,
         enum: ["Student", "Teacher", "Parent", "Other"],
-    }
+    },
+    Notifications: [Notification_Schema]
 }, { timestamps: true });
 
 const Account = mongoose.model("Account", Account_Schema);

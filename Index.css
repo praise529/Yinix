@@ -9,10 +9,12 @@
 
 :root {
     --White: hsl(220, 100%, 100%);
-    --Dark-White: hsl(220, 75%, 95%);
+    --Light-BG: hsl(220, 0%, 96%);
+    --Dark-White: hsl(220, 75%, 98%);
 
-    /* #5c92ff */
+    /* #5c92ff! */
     --Main: hsl(220, 100%, 68%);
+    --Light-Main: hsl(220, 100%, 88%);
     --Secondary-Main: hsl(240, 100%, 68%);
     --Transparent-Main: hsla(from var(--Main) H S L / 0.10);
 
@@ -21,15 +23,20 @@
     --Text-White: hsl(0, 100%, 99%);
     --Teal-Black: hsl(195, 14%, 50%);
     --Text-Muted: hsl(0, 0%, 50%);
-
-    --Light-Border: 2px solid var(--Dark-White);
-    --Main-Border: 2px solid var(--Main);
+    
+    --Outline-Thickness: 3px;
+    --Outline-Colour: hsl(0, 0%, 20%);  
+    --Outline-Light-Colour: hsl(0, 0%, 80%);
+    --Outline-Black: var(--Outline-Thickness) solid var(--Outline-Colour);
+    --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Light-Colour);
+    --Outline-Main: var(--Outline-Thickness) solid var(--Main);
+    --Outline-Shadow: 4px 4px var(--Outline-Colour);
 
     --Radius-1: 1rem;
     --Radius-2: 2rem;
     --Radius-3: 5rem;
     --Radius-4: 10rem;
-
+    
     --Spacing-1: 0.25rem;
     --Spacing-2: 0.5rem;
     --Spacing-3: 0.75rem;
@@ -54,17 +61,24 @@
 
 :root.Dark {
     --White: hsl(0, 0%, 10%);
+    --Light-BG: hsl(220, 0%, 15%);
     --Dark-White: hsl(0, 0%, 20%);    
 
     --Main: hsl(220, 100%, 78%);
+    --Light-Main: hsla(220, 100%, 10%);
 
     --Purple-Black: hsl(245, 15%, 88%);
     --Text-Black: hsl(0, 0%, 80%);
     --Text-White: hsl(0, 100%, 99%);
     --Teal-Black: hsl(195, 14%, 50%);
 
-    --Light-Border: 2px solid var(--Dark-White);
-    --Main-Border: 2px solid var(--Main);
+    --Outline-Thickness: 3px;
+    --Outline-Colour: hsl(0, 0%, 80%);  
+    --Outline-Light-Colour: hsl(0, 0%, 20%);
+    --Outline-Black: var(--Outline-Thickness) solid var(--Outline-Colour);
+    --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Light-Colour);
+    --Outline-Main: var(--Outline-Thickness) solid var(--Main);
+    --Outline-Shadow: 4px 4px var(--Outline-Colour);
 
     --Radius-1: 1rem;
     --Radius-2: 2rem;
@@ -96,29 +110,47 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --White: hsl(0, 0%, 10%);
-        --Dark-White: hsl(0, 0%, 20%);
     
-        --Main: hsl(0, 100%, 78%);
-        --Secondary-Main: hsl(350, 100%, 78%);
-    
+        --Main: hsl(220, 100%, 78%);
+        
         --Purple-Black: hsl(245, 15%, 88%);
-        --Text-Black: hsl(0, 100%, 99%);
+        --Text-Black: hsl(0, 0%, 80%);
         --Text-White: hsl(0, 100%, 99%);
         --Teal-Black: hsl(195, 14%, 50%);
-    
-        --Light-Border: 4px solid var(--Dark-White);
-        --Main-Border: 4px solid var(--Main);
-    
-        --Radius-1: 10px;
-        --Radius-2: 20px;
-    
-        --Spacing-1: 1rem;
-        --Spacing-2: 2rem;
-        --Spacing-3: 5rem;
-    
-        --Transition: 200ms ease-in-out;
+        
+        --Outline-Colour: hsl(0, 0%, 20%);    
+        --Outline-Black: 2px solid var(--Dark-White);
+        --Outline-Main: 2px solid var(--Main);
+
+        --Radius-1: 1rem;
+        --Radius-2: 2rem;
+        --Radius-3: 5rem;
+        --Radius-4: 10rem;
+
+        --Spacing-1: 0.25rem;
+        --Spacing-2: 0.5rem;
+        --Spacing-3: 0.75rem;
+        --Spacing-4: 1rem;
+        --Spacing-5: 1.25rem;
+        --Spacing-6: 1.5rem;
+        --Spacing-7: 1.75rem;
+        --Spacing-8: 2rem;
+        --Spacing-9: 5rem;
+        --Spacing-10: 10rem;
+        --Spacing-11: 20rem;
+
+        --Transition: 300ms ease-in-out;
+        --Transition-2: 1s ease-in-out;
+
+        --Font-Medium: 500;
+        --Font-Bold: bold;
+
+        --Thickness-1: 2px;
+        --Thickness-2: 4px;
     }
 }
+
+/* Body Styles! */
 
 body {
     overflow-x: hidden;
@@ -130,30 +162,28 @@ body.Scroll-None {
 }
 
 
+/* 🔲 Buttons! */
 button {
     align-items: center;
     display: inline-flex;
     gap: var(--Spacing-2);
     justify-content: center;
     color: var(--Text-Black);
-    background: var(--White);
     padding: var(--Spacing-4);
-    border: var(--Light-Border);
+    border: var(--Outline-Black);
     transition: var(--Transition);
+    background: var(--Light-Main);
     border-radius: var(--Radius-2);
-    font-weight: var(--Font-Medium);
+    font-weight: var(--Font-Bold);
 }
-button.Main_Button {
-    color: #FFF;
-    background: var(--Main);
-}
-button:hover {
-    scale: 1.01 !important;
+button.White-Button {
+    background: var(--White);
 }
 button:active {
     animation: Sink-And-Pop 1s ease-in-out;
 }
 
+/* 🔄️ Sink and Pop Animation */
 @keyframes Sink-And-Pop {
     0%, 100% { scale: 1; }
     50% { scale: 0.95; }
@@ -161,11 +191,10 @@ button:active {
 }
 
 select {
-    outline: none;
     color: var(--Text-Black);
     background: var(--White);
     padding: var(--Spacing-1);
-    border: var(--Light-Border);
+    border: var(--Outline-Black);
     border-radius: var(--Radius-1);
 }
 select:focus {
@@ -176,10 +205,8 @@ li {
     list-style-type: none;
 }
 
-.Muted {
-    color: var(--Text-Muted);
-}
 
+/* 🎨 Colour Styles! */
 h1, h2, h3, h4, h5, h6, label, p, input,
 li {
     color: var(--Text-Black);
@@ -191,20 +218,43 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
+
+/* 🅰️ Preset Text Styles! */
+
 .Bold {
     font-weight: bold;
 }
 .Underlined {
     text-decoration: underline;
 }
+.Muted {
+    color: var(--Text-Muted);
+}
+
+
+/* Normal Preset Styles! */
 
 .None {
     display: none;
 }
-.Main_Colour {
+.Main-Colour {
     color: var(--Main);
 }
 
+.Outline_Shadow {
+    box-shadow: var(--Outline-Shadow);
+}
+
+.Row {
+    gap: var(--Spacing-4);
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* 🔲 Item Cards! */
 
 .Item_Card {
     width: 12rem;
@@ -212,7 +262,7 @@ input[type="number"]::-webkit-outer-spin-button {
     position: relative;
     text-decoration: none;
     background: var(--White);
-    border: var(--Light-Border);
+    border: var(--Outline-Black);
     border-radius: var(--Radius-2);
 }
 
@@ -229,6 +279,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
+/* 🖼️ Grid Styles! */
 .Grid {
     width: 98%;
     display: flex;
@@ -238,12 +289,14 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
+/* Select Styles! */
+
 .Select {
     height: var(--Spacing-4);
     color: var(--Text-Black);
     background: var(--White);
     padding: var(--Spacing-1);
-    border: var(--Light-Border);
+    border: var(--Outline-Black);
     max-width: var(--Spacing-10);
     border-radius: var(--Radius-1);
 }
@@ -253,16 +306,14 @@ input[type="number"]::-webkit-outer-spin-button {
     display: none;
     translate: -10%;
     padding: var(--Spacing-1);
-    border: var(--Light-Border);
+    border: var(--Outline-Black);
     margin-top: var(--Spacing-4);
     border-radius: var(--Radius-1);
 }
 .Select .Select_Popover .Select_Item {
     padding: var(--Spacing-1);
 }
-.Select .Select_Popover .Select_Item:hover {
-    background: var(--Dark-White);
-}
+
 
 .Select.Open {
     margin-bottom: var(--Spacing-10);
@@ -271,10 +322,16 @@ input[type="number"]::-webkit-outer-spin-button {
     display: block;
 }
 
-.Border {
-    padding: var(--Spacing-2);
-    border: var(--Light-Border);
+
+/* Input Styles! */
+
+input {
+    background: var(--Light-BG);
+    padding: var(--Spacing-4);
+    border: var(--Outline-Light);
+    transition: var(--Transition);
     border-radius: var(--Radius-1);
+    margin-bottom: var(--Spacing-4);
 }
 
 .h1_Font_Size {
@@ -302,7 +359,7 @@ input[type="number"]::-webkit-outer-spin-button {
     max-width: 386px;
     text-align: center;
     translate: -50% -50%;
-    border: var(--Light-Border);
+    border: var(--Outline-Black);
     border-radius: var(--Radius-2);
 }
 .Tool-Box h1 {
@@ -313,65 +370,63 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 
-.Side_Bar {
+.Side-Bar {
     display: flex;
     position: fixed;
     left: 0;
     height: 100vh;
+    z-index: 99999;
     height: 100dvh;
+    width: 12.9rem;
     overflow-y: hidden;
-    align-items: center;
     gap: var(--Spacing-1);
     flex-direction: column;
+    background: var(--White);
     transition: var(--Transition);
     padding-left: var(--Spacing-4);
     padding-right: var(--Spacing-4);
-    border-right: var(--Light-Border);
+    border-right: var(--Outline-Light);
 }
-.Side_Bar.None {
+.Side-Bar.None {
     display: none;
 }
 
-.Side_Bar button {
+.Side-Bar button {
+    width: 100%;
     border: none;
     cursor: pointer;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+    background: none;
+    flex-direction: row;
+    justify-content: flex-start;
 }
-.Side_Bar a:first-child {
+.Side-Bar a:first-child {
     margin-top: var(--Spacing-9);
 }
 
-.Side_Bar button.Yinix i {
-    width: 100%;
-    padding: 1rem;
-    color: var(--Main);
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    border-radius: var(--Spacing-10);
+.Side-Bar button.Yinix {
+    padding: var(--Spacing-4);
     background: var(--Transparent-Main);
 }
-.Side_Bar button.Yinix span, .Side_Bar button.Yinix p {
+.Side-Bar button.Yinix i, .Side-Bar button.Yinix p {
     color: var(--Main);
 }
 
 
-.Side_Bar button i {
+.Side-Bar button i {
     color: var(--Text-Black);
     font-size: var(--Spacing-8);
 }
 
-.Side_Bar button p {
+.Side-Bar button p {
     font-size: var(--Spacing-4);
 }
 
 
 
 .Main {
-    padding-top: var(--Spacing-9);
-    margin-left: var(--Spacing-10);
+    margin-bottom: var(--Spacing-9);
+    padding-top: var(--Spacing-10);
+    margin-left: var(--Spacing-11);
 }
 
 .Main .Row {
@@ -388,12 +443,12 @@ input[type="number"]::-webkit-outer-spin-button {
     background: var(--White);
     width: var(--Spacing-10);
     height: var(--Spacing-10);
-    border: var(--Light-Border);
+    border: var(--Outline-Black);
     border-radius: var(--Radius-2);
 }
 
 
-/* =====================================Whiteboard Area===================================== */
+/* =====================================Whiteboard Area=====================================! */
 
 
 .Whiteboard_Area {
@@ -415,7 +470,7 @@ input[type="number"]::-webkit-outer-spin-button {
     justify-content: center;
     background: var(--White);
     padding: var(--Spacing-2);
-    border: var(--Light-Border);
+    border: var(--Outline-Black);
     border-radius: var(--Radius-2);
 
     padding-left: 2.25rem;
@@ -463,7 +518,7 @@ input[type="number"]::-webkit-outer-spin-button {
     display: none !important;
     position: fixed;
     background: var(--White);
-    border: var(--Light-Border);
+    border: var(--Outline-Black);
 }
 
 .Whiteboard_Area .Whiteboard,
@@ -489,9 +544,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 #Pen_Cursor img {
     width: 1.5rem;
-}
-.Whiteboard_Area .Whiteboard_Tools:hover #Pen_Cursor img {
-    display: none;
 }
 
 .Whiteboard_Area .Whiteboard .Pen_Mark {
@@ -562,7 +614,7 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-top: 2.5rem;
     text-align: center;
     padding: var(--Spacing-2);
-    border: var(--Light-Border);
+    border: var(--Outline-Black);
     border-radius: var(--Radius-2);
 }
 
@@ -573,18 +625,13 @@ input[type="number"]::-webkit-outer-spin-button {
     border: 2px solid var(--White);
 }
 
-.Whiteboard_Area .Top_Bar input:hover {
-    border: var(--Main-Border);
-}
+
 
 .Whiteboard_Area .Top_Bar button {
     padding: 0;
     border: none;
     font-size: 2rem;
     border-radius: 0;
-}
-.Whiteboard_Area .Top_Bar button:hover {
-    background: var(--Dark-White);
 }
 
 .Whiteboard_Area #Comment, .Whiteboard_Area #Back {
@@ -605,7 +652,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 
-/* =====================================Video Meeting Area===================================== */
+/* =====================================Video Meeting Area=====================================! */
 
 .Video_Meeting {
     height: 100vh;
@@ -635,7 +682,7 @@ input[type="number"]::-webkit-outer-spin-button {
     flex-direction: row;
     gap: var(--Spacing-1);
     padding: var(--Spacing-1);
-    border-top: var(--Light-Border);
+    border-top: var(--Outline-Black);
 }
 .Video_Meeting .Bottom_Menu .Divider {
     font-size: 2.5rem;
@@ -654,7 +701,7 @@ input[type="number"]::-webkit-outer-spin-button {
     flex-direction: column;
     color: var(--Text-Black);
     background: var(--White);
-    border-left: var(--Light-Border);
+    border-left: var(--Outline-Black);
 }
 
 .Video_Meeting_Chat_Sidebar .Center {
@@ -666,7 +713,7 @@ input[type="number"]::-webkit-outer-spin-button {
     max-width: 10rem;
     border-radius: 67rem;
     padding: var(--Spacing-1);
-    border: var(--Light-Border);
+    border: var(--Outline-Black);
 }
 
 
@@ -677,23 +724,18 @@ input[type="number"]::-webkit-outer-spin-button {
 #Randomizer input[type="number"] {
     width: 1.5rem;
     text-align: center;
-    color: var(--Text-Black);
-    background: var(--White);
-    padding: var(--Spacing-1);
-    border: var(--Light-Border);
-    transition: var(--Transition);
-    border-radius: var(--Radius-1);
 }
 #Randomizer input[type="number"]:focus {
     outline: none;
-    border: var(--Main-Border);
+    border: var(--Outline-Main);
 }
 
 #Randomizer input[type="range"] {
-    appearance: none;
     width: 80%;
+    appearance: none;
     background: var(--White);
-    border: var(--Light-Border);
+    padding: var(--Spacing-1);
+    border: var(--Outline-Black);
     border-radius: var(--Radius-1);
 }
 
@@ -730,7 +772,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .Attendance_Session_List {
     display: flex;
     flex-direction: column;
-    border: var(--Light-Border);
+    border: var(--Outline-Black);
     border-radius: var(--Radius-1);
 }
 
@@ -743,7 +785,7 @@ input[type="number"]::-webkit-outer-spin-button {
     justify-content: center;
     padding: var(--Spacing-2);
     justify-content: space-between;
-    border-bottom: var(--Light-Border);
+    border-bottom: var(--Outline-Black);
 }
 .Attendance_Session_List li:last-child {
     border-bottom: none;
@@ -762,25 +804,13 @@ input[type="number"]::-webkit-outer-spin-button {
     flex-direction: column;
 }
 .Account_Form {
-    
     padding: var(--Spacing-2);
-}
-.Account_Form input {
-    background: var(--White);
-    padding: var(--Spacing-4);
-    border: var(--Light-Border);
-    transition: var(--Transition);
-    border-radius: var(--Radius-1);
-    margin-bottom: var(--Spacing-4);
-}
-.Account_Form input:hover {
-    scale: 1.01;
 }
 .Account_Form input:active {
     animation: Sink-And-Pop 1s ease-in-out;
 }
 .Account_Form input:focus {
-    border: var(--Main-Border);
+    border: var(--Outline-Main);
 }
 
 
@@ -824,9 +854,6 @@ button.OAuth2_Signin_Button#Google {
     border-bottom: 2px solid #ffb700;
     border-right: 2px solid #009a57;
 }
-button.OAuth2_Signin_Button#Google:hover {
-    animation: Google-Animation 1s infinite;
-}
 
 
 
@@ -840,7 +867,7 @@ button.OAuth2_Signin_Button#Google:hover {
     padding: var(--Spacing-2);
     height: var(--Spacing-10);
     margin-bottom: var(--Spacing-9);
-    border-bottom: var(--Light-Border);
+    border-bottom: var(--Outline-Black);
 }
 
 .Stream_Empty {
@@ -876,34 +903,65 @@ button.OAuth2_Signin_Button#Google:hover {
 }
 
 
-#Side_Bar_Button {
+#Side-Bar-Button {
     margin: var(--Spacing-4);
 }
-.Side_Bar:not(.None) ~ #Side_Bar_Button {
+.Side-Bar:not(.None) ~ #Side-Bar-Button {
     margin-left: var(--Spacing-10);
 }
 
 
+#Screen-Share-Form {
+    width: 80%;
+}
+#Screen-Share-Form input {
+    width: 100%;
+}
 
 
-@media (max-width: 425px) {
+
+.Top-Bar {
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    position: fixed;
+    background: var(--White);
+    padding: var(--Spacing-5);
+    border-bottom: var(--Outline-Light);
+}
+
+.Top-Bar .Account-Picture {
+    width: 3rem;
+    margin-left: auto;
+    border-radius: 50%;
+    display: inline-flex;
+    border: var(--Outline-Black);
+    transition: var(--Transition);
+    margin-right: var(--Spacing-9);
+    box-shadow: var(--Outline-Shadow);
+}
+
+
+
+
+@media (max-width: 425px) or (max-height: 633px) {
     .Tool-Box {
         padding: 0;
         border: none;
     }
 }
 @media (max-width: 640px) {
-    .Side_Bar {
+    .Side-Bar {
         display: none;
     }
 
-    #Side_Bar_Button {
+    #Side-Bar_Button {
         margin-left: var(--Spacing-4) !important;
     }
     
     .Main {
-        padding-top: 1rem;
-        margin-left: 1rem;
+        margin-left: var(--Spacing-8);
+        padding-top: var(--Spacing-10);
     }
 }
 @media (hover: hover) {
@@ -916,6 +974,34 @@ button.OAuth2_Signin_Button#Google:hover {
     }
     
     button:hover {
+        scale: 1.05;
+    }
+
+    button.OAuth2_Signin_Button#Google:hover {
+        animation: Google-Animation 1s infinite;
+    }
+
+    .Account_Form input:hover {
+        scale: 1.01;
+    }
+
+    .Whiteboard_Area .Top_Bar button:hover {
+        background: var(--Dark-White);
+    }
+
+    .Whiteboard_Area .Top_Bar input:hover {
+        border: var(--Outline-Main);
+    }
+
+    .Select .Select_Popover .Select_Item:hover {
+        background: var(--Dark-White);
+    }
+
+    .Whiteboard_Area .Whiteboard_Tools:hover #Pen_Cursor img {
+        display: none;
+    }
+
+    .Top-Bar .Account-Picture:hover {
         scale: 1.05;
     }
 }

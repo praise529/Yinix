@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #Video-Dialog {
+            padding: 0;
+            position: fixed;
+            top: 50%; left: 50%;
+            border-radius: 1rem;
+            background: black;
+            translate: -50% -50%;
+            width: clamp(40rem, 60rem, 80rem);
+            border: 2px solid hsl(220, 0%, 20%);
+        }
+
+        #Video-Dialog video, #Video-Dialog iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: inherit;
+        }
+
+        #Video-Dialog .Close-Video-Dialog {
+            right: 0;
+            border: none;
+            padding: 1rem;
+            color: white;
+            font-size: large;
+            background: none;
+            position: absolute;
+            border-radius: inherit;
+        }
+    </style>
+</head>
+<body>
+    <dialog id="Video-Dialog">
+        <button onclick="VideoDialogClose()" class="Close-Video-Dialog">x</button>
+        <iframe title="What IS Math? - Yuo Academy" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="Yinix-Video"></iframe>
+    </dialog>
+
+    <script>
+        const Params = new URLSearchParams(window.location.search);
+        const VideoURLID = Params.get("video-id");
+        const VideoElement = document.getElementById("Yinix-Video");
+        const VideoDialog = document.getElementById("Video-Dialog");
+        const VideoURL = `https://www.youtube.com/embed/${VideoURLID}?rel=0`;
+
+        function VideoDialogClose() {
+            VideoDialog.close();
+        }
+
+        VideoDialog.showModal();
+        VideoElement.src = VideoURL;
+    </script>
+</body>
+</html>

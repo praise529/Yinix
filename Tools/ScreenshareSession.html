@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Links!!! 🔗 -->
+    <link rel="stylesheet" href="../Index.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Share - Yinix</title>
+</head>
+<body>
+    <side-bar Selected="Tools"></side-bar>
+
+    <div class="Main">
+        <p>In another device, go to {some-url.com/whatever} and enter...</p>
+        <h1 id="SessionID"></h1>
+    </div>
+
+    <script src="../Index.js"></script>
+    <script>
+        const SessionIDElement = document.getElementById("SessionID");
+        const Params = new URLSearchParams(window.location.search);
+        const SessionID = Params.get("session-id");
+
+        SessionIDElement.innerHTML = SessionID;
+    </script>
+</body>
+</html>

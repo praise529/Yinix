@@ -1,39 +1,41 @@
-const Signup_Name = document.getElementById("Signup_Name");
-const Signup_Email = document.getElementById("Signup_Email");
-const Signup_Password = document.getElementById("Signup_Password");
-const Signup_Age = document.getElementById("Signup_Age");
+const SignupName = document.getElementById("SignupName");
+const SignupEmail = document.getElementById("SignupEmail");
+const SignupPassword = document.getElementById("SignupPassword");
+const SignupAge = document.getElementById("SignupAge");
 const Role = document.getElementById("Role");
 
-const Video_Box = document.getElementById("Video_Box");
-const Video_Button = document.getElementById("Video_Button");
-const Webcam_Video = document.querySelector("#Webcam_Video");
+const VideoBox = document.getElementById("VideoBox");
+const VideoButton = document.getElementById("VideoButton");
+const WebcamVideo = document.querySelector("#WebcamVideo");
 
-const Side_Bar = document.querySelector("side-bar .Side_Bar");
+const SideBar = document.querySelector("side-bar");
+
+const Root = document.documentElement;
 
 
-async function Start_Video() 
+async function StartVideo() 
 {
   navigator.mediaDevices.getUserMedia({ video: true })
   .then((Stream) => {
-    Webcam_Video.srcObject = Stream;
+    WebcamVideo.srcObject = Stream;
   })
   .catch((Err) => {
     console.error(Err);
   });
 }
 
-async function Toggle_Video() {
-  const Stream = Webcam_Video.srcObject;
+async function ToggleVideo() {
+  const Stream = WebcamVideo.srcObject;
 
   if (Stream) {
     Stream.getTracks().forEach(Track => Track.stop());
-    Webcam_Video.srcObject = null;
-    Video_Button.innerHTML = `
-    <span class="material-symbols-rounded">videocam_off</span>Video Off
+    WebcamVideo.srcObject = null;
+    VideoButton.innerHTML = `
+    <span class="material-symbols-rounded">videocamoff</span>Video Off
     `;
   } else {
-    await Start_Video();
-    Video_Button.innerHTML = `
+    await StartVideo();
+    VideoButton.innerHTML = `
     <span class="material-symbols-rounded">videocam</span> Video On
     `;
   }
@@ -42,42 +44,56 @@ async function Toggle_Video() {
 
 
 
-function Toggle_Side_Bar() {
-  Side_Bar.classList.toggle("None");
+function ToggleSideBar() {
+  SideBar.classList.toggle("None");
 }
 
 
-class SideBar extends HTMLElement {
+class SideBarElement extends HTMLElement {
   connectedCallback() {
-    const Selected = this.getAttribute("Selected");
+    const Selected = this.getAttribute("selected");
     this.innerHTML = `
-      <div class="Side_Bar" id="Side_Bar">
+      <div class="Side-Bar" id="Side-Bar"><br>
+        <div class="Row">
+          <img src="/Images/Favicon.png" width="40">
+          <h2>Yinix</h2>
+        </div><br>
         <a href="./index.html"><button ${Selected === "Home" && "class='Yinix'"}><i class="ph-bold ph-house-simple"></i><p>Home</p></button></a>
         <a href="./Tools.html"><button ${Selected === "Tools" && "class='Yinix'"}><i class="ph-bold ph-pencil-ruler"></i><p>Tools</p></button></a>
-        <a href="#"><button ${Selected === "Your_Work" && "class='Yinix'"}><i class="ph-bold ph-clipboard-text"></i><p>Your Work</p></button></a>
-        <a href="./Account.html"><button ${Selected === "Account" && "class='Yinix'"}><i class="ph-bold ph-user"></i><p>Account</p></button></a>
+        <a href="#"><button ${Selected === "Your-Work" && "class='Yinix'"}><i class="ph-bold ph-clipboard-text"></i><p>Your Work</p></button></a>
+        <a href="#"><button ${Selected === "Settings" && "class='Yinix'"}><i class="ph-bold ph-gear-six"></i><p>Settings</p></button></a>
       </div>
-      <button id="Side_Bar_Button" onclick="Toggle_Side_Bar()"><i class="ph-bold ph-list"></i></button>
+      <!-- <button id="Side-Bar-Button" class="White-Button Outline-Shadow" onclick="ToggleSideBar()"><i class="ph-bold ph-list"></i></button> -->
+    `;
+  }
+}
+class TopBarElement extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+      <nav id="Top-Bar" class="Top-Bar">
+        <button class="White-Button" onclick="ToggleSideBar()"><i class="ph-bold ph-list"></i></button>
+        <img id="Account-Picture" class="Account-Picture" src="./Images/Favicon BG.png">
+      </nav>
     `;
   }
 }
 
-class Whiteboard_Tool extends HTMLElement {
+class WhiteboardTool extends HTMLElement {
   connectedCallback() {
     const Name = this.getAttribute("name");
     const Icon = this.getAttribute("icon");
     const Active = this.getAttribute("active");
-    const Click_Event = this.getAttribute("click");
+    const ClickEvent = this.getAttribute("click");
 
     this.innerHTML = `
-        <div class="${Active && "Active"} Tool" data-Tool="${Name}" title="${Name}" ${Click_Event && `onclick="${Click_Event}"`}>
+        <div class="${Active && "Active"} Tool" data-Tool="${Name}" title="${Name}" ${ClickEvent && `onclick="${ClickEvent}"`}>
           <i class="ph-bold ph-${Icon}"></i>
         </div>
     `;
   }
 }
 
-class Attendance_Select extends HTMLElement {
+class AttendanceSelect extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <select>
@@ -89,18 +105,21 @@ class Attendance_Select extends HTMLElement {
   }
 }
 
-customElements.define("side-bar", SideBar);
-customElements.define("whiteboard-tool", Whiteboard_Tool);
-customElements.define("attendance-select", Attendance_Select);
+customElements.define("top-bar", TopBarElement);
+customElements.define("side-bar", SideBarElement);
+customElements.define("whiteboard-tool", WhiteboardTool);
+customElements.define("attendance-select", AttendanceSelect);
 
 
 
 
 
+function Theme() {
+  Root.classList.toggle("Dark");
+}
 
 
 
 
 
-
-var Is_Signed_In = false;
+var IsSignedIn = false;
