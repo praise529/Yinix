@@ -14,7 +14,7 @@
 
     <i class="ph-bold ph-spinner" style="font-size: 4rem; position: fixed;
     z-index: 999; display: flex; align-items: center; justify-content: center;
-    width: 100%; height: 100vh; animation: Spin 1s ease-in-out infinite;" id="Loading"></i>
+    width: 100%; height: 100vh; animation: Spin 1s ease-in-out infinite; color: var(--Text-Black);" id="Loading"></i>
 
     <div class="Main">
         <div class="Class_Intro">
@@ -23,11 +23,11 @@
 
         <div class="Class_Stream" id="Class_Stream"></div>
 
-        <nav class="Class_Nav">
+        <!-- <nav class="Class_Nav">
             <li class="Active">Stream</li>
             <li>Attendance</li>
             <li>People</li>
-        </nav>
+        </nav> -->
     </div>
     <script>
         const Redirecting = "Redirecting..."
@@ -55,7 +55,7 @@
                 if (Data.Class.Stream.length === 0) {
                     Class_Stream.innerHTML = `
                     <div class="Stream_Empty">
-                        <img src="./Images/Stream Empty IMG Light Mode.png" width="300">
+                        <img src="./Images/Stream Empty IMG ${localStorage.getItem("Yinix-Mode")} Mode.png" width="300">
                         <h2>No Chats... YET</h2>
                         <p class="Muted">Send a message to start!</p>
                     </div>

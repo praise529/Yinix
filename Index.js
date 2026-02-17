@@ -11,7 +11,13 @@ const WebcamVideo = document.querySelector("#WebcamVideo");
 const SideBar = document.querySelector("side-bar");
 
 const Root = document.documentElement;
+var Mode = localStorage.getItem("Yinix-Mode") || "White";
 
+if (Mode === "White") {
+  Root.classList.remove("Dark");
+} else {
+  Root.classList.add("Dark");
+}
 
 async function StartVideo() 
 {
@@ -44,41 +50,44 @@ async function ToggleVideo() {
 
 
 
-function ToggleSideBar() {
+function ToggleSideBar()
+{
   SideBar.classList.toggle("None");
 }
 
 
-class SideBarElement extends HTMLElement {
+class SideBarElement extends HTMLElement
+{
   connectedCallback() {
     const Selected = this.getAttribute("selected");
     this.innerHTML = `
       <div class="Side-Bar" id="Side-Bar"><br>
-        <div class="Row">
+        <a href="/index.html" class="Row" style="cursor: pointer; user-select: none; text-decoration: none;">
           <img src="/Images/Favicon.png" width="40">
           <h2>Yinix</h2>
-        </div><br>
+        </a><br>
         <a href="./index.html"><button ${Selected === "Home" && "class='Yinix'"}><i class="ph-bold ph-house-simple"></i><p>Home</p></button></a>
         <a href="./Tools.html"><button ${Selected === "Tools" && "class='Yinix'"}><i class="ph-bold ph-pencil-ruler"></i><p>Tools</p></button></a>
         <a href="#"><button ${Selected === "Your-Work" && "class='Yinix'"}><i class="ph-bold ph-clipboard-text"></i><p>Your Work</p></button></a>
-        <a href="#"><button ${Selected === "Settings" && "class='Yinix'"}><i class="ph-bold ph-gear-six"></i><p>Settings</p></button></a>
+        <a href="/Settings.html"><button ${Selected === "Settings" && "class='Yinix'"}><i class="ph-bold ph-gear-six"></i><p>Settings</p></button></a>
       </div>
-      <!-- <button id="Side-Bar-Button" class="White-Button Outline-Shadow" onclick="ToggleSideBar()"><i class="ph-bold ph-list"></i></button> -->
     `;
   }
 }
-class TopBarElement extends HTMLElement {
+class TopBarElement extends HTMLElement
+{
   connectedCallback() {
     this.innerHTML = `
       <nav id="Top-Bar" class="Top-Bar">
-        <button class="White-Button" onclick="ToggleSideBar()"><i class="ph-bold ph-list"></i></button>
+        <button class="White-Button" style="border: none; font-size: 1.5rem;" onclick="ToggleSideBar()"><i class="ph-bold ph-list"></i></button>
         <img id="Account-Picture" class="Account-Picture" src="./Images/Favicon BG.png">
       </nav>
     `;
   }
 }
 
-class WhiteboardTool extends HTMLElement {
+class WhiteboardTool extends HTMLElement
+{
   connectedCallback() {
     const Name = this.getAttribute("name");
     const Icon = this.getAttribute("icon");
@@ -93,7 +102,8 @@ class WhiteboardTool extends HTMLElement {
   }
 }
 
-class AttendanceSelect extends HTMLElement {
+class AttendanceSelect extends HTMLElement
+{
   connectedCallback() {
     this.innerHTML = `
       <select>
@@ -115,7 +125,9 @@ customElements.define("attendance-select", AttendanceSelect);
 
 
 function Theme() {
+  const NewMode = Mode === "White" ? "Black" : "White";
   Root.classList.toggle("Dark");
+  localStorage.setItem("Yinix-Mode", NewMode)
 }
 
 

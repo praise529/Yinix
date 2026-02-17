@@ -58,3 +58,30 @@ export const Get_ALL_Classrooms = async (req: Request, res: Response) => {
         });
     }
 }
+
+
+
+
+export const AddStudentToClassroom = async (req: Request, res: Response) => {
+    try {
+        const { ID } = req.params;
+        const { StudentName, StudentID } = req.body;
+        const Class = await Classroom.findById(ID);
+        if (!Class) return;
+
+        Class.Students.unshift({ ID: StudentID, Name: StudentName });
+        Class.save();
+
+        res.status(201).send({
+            Yinix: true,
+            Info: "Welcome to your new classroom!",
+            Class: Class,
+        });
+    } catch (Err) {
+        console.error(`We couldn't create a classroom because... ${Err}`);
+        res.status(400).json({
+            Yinix: false,
+            Info: `We couldn't create a classroom because... ${Err}`
+        });
+    }
+}

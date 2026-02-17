@@ -1,4 +1,4 @@
-<img src="./Images/Favicon.png"></img>
+<img src="./Images/Favicon.png" width="100"></img>
 # Yinix!
 The site for teachers, parents, and students.
 
@@ -8,12 +8,14 @@ The site for teachers, parents, and students.
 
 # Colours
     --White: hsl(220, 100%, 100%);
-    --Dark-White: hsl(220, 75%, 95%);
+    --Light-BG: hsl(220, 0%, 96%);
+    --Dark-White: hsl(220, 75%, 98%);
 
-    /*  Main -> #5c92ff -> Blue */
+    /* #5c92ff -> Blue! */
     --Main: hsl(220, 100%, 68%);
-    --Secondary-Main: hsl(200, 100%, 68%);
-    --Transparent-Main: hsla(220, 100%, 68%, 10%);
+    --Light-Main: hsl(220, 100%, 88%);
+    --Secondary-Main: hsl(240, 100%, 68%);
+    --Transparent-Main: hsla(from var(--Main) H S L / 0.10);
 
     --Purple-Black: hsl(245, 15%, 68%);
     --Text-Black: hsl(220, 100%, 10%);

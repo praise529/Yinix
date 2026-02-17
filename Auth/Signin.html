@@ -10,24 +10,27 @@
     <title>Sign In - Yinix</title>
 </head>
 <body>
-    <div class="Account_Form">
-        <h1>Sign In</h1><br>
+    <br><br><div class="Account_Form">
+        <h1>Sign In</h1>
+        <p class="Muted">Get back access to whiteboards, attendance, classrooms, and more!</p><br>
         
         <form method="post" id="Signin_Form">
-            <label for="Signin_Code">Your Code</label>
+            <label for="Signin_Code">Your Code</label><br>
             <input type="number" name="Signin_Code" id="Signin_Code" 
             maxlength="7" required placeholder="010023">
+            <label for="Signin_Email">Your Email</label><br>
             <input type="email" name="Signin_Email" id="Signin_Email"
-            maxlength="255" minlength="5" placeholder="Your Email (if you have one)..." autocapitalize="off">
-            <input type="password" name="Signin_Code" id="Signin_Password"
-            placeholder="You NEED this...">
+            maxlength="255" minlength="5" placeholder="name@domain.com" autocapitalize="off">
+            <label for="Signin_Password">Your Password</label><br>
+            <input type="password" name="Signin_Password" id="Signin_Password"
+            placeholder="Cat@134">
 
             <button type="submit">Signin!</button>
         </form><br><br>
 
         <div class="Social_Buttons">
-            <button class="OAuth2_Signin_Button" id="Google"><i class="ph-bold ph-google-logo"></i> Sign In With Google</button>
-            <button class="OAuth2_Signin_Button" id="Apple"><i class="ph-bold ph-apple-logo"></i> Sign In With Apple</button>
+            <button class="OAuth2_Signin_Button White-Button" id="Google"><i class="ph-bold ph-google-logo"></i> Sign In With Google</button>
+            <button class="OAuth2_Signin_Button White-Button" id="Apple"><i class="ph-bold ph-apple-logo"></i> Sign In With Apple</button>
         </div>
     </div>
 
@@ -51,15 +54,12 @@
                 body: JSON.stringify({ Code: Signin_Code.value, Email: Signin_Email.value, Password: Signin_Password.value })
             })
             .then((Json) => { return Json.json() })
-            .then((Yinix_Data) => {
+            .then((Data) => {
                 console.log("YYYYYYYYAAAAAAAAAAAAAYYYYYYYYYYYY!!!!!!!");
-                console.log(Yinix_Data);
+                console.log(Data);
 
-                localStorage.setItem("Name", Yinix_Data.Info.Name);
-                localStorage.setItem("Email", Yinix_Data.Info.Email);
-                localStorage.setItem("Code", Yinix_Data.Info.Code);
-
-                setTimeout(() => { document.location = "../index.html" }, 1000);
+                localStorage.setItem("Yinix-Account", Data.Info);
+                setTimeout(() => { document.location = "../index.html" }, 500);
             })
             .catch((Err) => {
                 console.error(`We couldn't sign you in because ${Err}`);

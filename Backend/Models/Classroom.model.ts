@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 
 const Student_Schema = new mongoose.Schema({
+  ID: { type: mongoose.Types.ObjectId },
   Name: { type: String, required: true },
+  Active: { type: Boolean, default: false }
 });
 const Stream_Schema = new mongoose.Schema({
   Content: { type: String, required: true },
@@ -28,7 +30,13 @@ const Classroom_Schema = new mongoose.Schema({
   },
   Students: [Student_Schema],
 
-  Stream: [Stream_Schema]
+  Stream: [Stream_Schema],
+
+  Subject: {
+    type: String,
+    default: "ALL",
+    enum: ["ALL", "MATH", "SCIENCE", "LITERACY", "LANGUAGE LEARNING", "P.E.", "TECHNOLOGY", "ARTS"]
+  }
 }, { timestamps: true });
 
 const Classroom = mongoose.model("Classroom", Classroom_Schema);

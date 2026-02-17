@@ -68,7 +68,7 @@
     --Light-Main: hsla(220, 100%, 10%);
 
     --Purple-Black: hsl(245, 15%, 88%);
-    --Text-Black: hsl(0, 0%, 80%);
+    --Text-Black: hsl(0, 0%, 70%);
     --Text-White: hsl(0, 100%, 99%);
     --Teal-Black: hsl(195, 14%, 50%);
 
@@ -192,9 +192,9 @@ button:active {
 
 select {
     color: var(--Text-Black);
-    background: var(--White);
-    padding: var(--Spacing-1);
-    border: var(--Outline-Black);
+    padding: var(--Spacing-4);
+    background: var(--Light-BG);
+    border: var(--Outline-Light);
     border-radius: var(--Radius-1);
 }
 select:focus {
@@ -438,6 +438,7 @@ input {
 }
 
 .Main .Classes .Class {
+    cursor: pointer;
     padding: 2.5rem;
     position: relative;
     background: var(--White);
@@ -445,6 +446,21 @@ input {
     height: var(--Spacing-10);
     border: var(--Outline-Black);
     border-radius: var(--Radius-2);
+}
+.Main .Classes .Class .Subject {
+    position: absolute;
+    align-items: center;
+    bottom: 0; right: 0;
+    display: inline-flex;
+    border-radius: 50rem;
+    justify-content: center;
+    width: var(--Spacing-8);
+    color: var(--Text-Black);
+    height: var(--Spacing-8);
+    margin: var(--Spacing-4);
+    padding: var(--Spacing-2);
+    font-size: var(--Spacing-8);
+    background: var(--Transparent-Main);
 }
 
 
@@ -804,7 +820,18 @@ input {
     flex-direction: column;
 }
 .Account_Form {
+    width: 75%;
+    display: flex;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    translate: -50% 0;
+    gap: var(--Spacing-4);
+    flex-direction: column;
     padding: var(--Spacing-2);
+}
+.Account_Form input {
+    width: 100%;
 }
 .Account_Form input:active {
     animation: Sink-And-Pop 1s ease-in-out;
@@ -817,42 +844,42 @@ input {
 
 @keyframes Google-Animation {
     0% {
-        border-top: 2px solid #176ced;
-        border-left: 2px solid #d9432f;
-        border-bottom: 2px solid #ffb700;
-        border-right: 2px solid #009a57;
+        border-top: 3px solid #176ced;
+        border-left: 3px solid #d9432f;
+        border-bottom: 3px solid #ffb700;
+        border-right: 3px solid #009a57;
     }
     25% {
-        border-right: 2px solid #176ced;
-        border-top: 2px solid #ffb700;
-        border-left: 2px solid #d9432f;
-        border-bottom: 2px solid #009a57;
+        border-right: 3px solid #176ced;
+        border-top: 3px solid #ffb700;
+        border-left: 3px solid #d9432f;
+        border-bottom: 3px solid #009a57;
     }
     50% {
-        border-bottom: 2px solid #176ced;
-        border-right: 2px solid #d9432f;
-        border-top: 2px solid #009a57;
-        border-left: 2px solid #ffb700;
+        border-bottom: 3px solid #176ced;
+        border-right: 3px solid #d9432f;
+        border-top: 3px solid #009a57;
+        border-left: 3px solid #ffb700;
     }
     75% {
-        border-bottom: 2px solid #d9432f;
-        border-right: 2px solid #ffb700;
-        border-left: 2px solid #009a57;
-        border-top: 2px solid #176ced;
+        border-bottom: 3px solid #d9432f;
+        border-right: 3px solid #ffb700;
+        border-left: 3px solid #009a57;
+        border-top: 3px solid #176ced;
     }
     100% {
-        border-top: 2px solid #176ced;
-        border-left: 2px solid #d9432f;
-        border-bottom: 2px solid #ffb700;
-        border-right: 2px solid #009a57;
+        border-top: 3px solid #176ced;
+        border-left: 3px solid #d9432f;
+        border-bottom: 3px solid #ffb700;
+        border-right: 3px solid #009a57;
     }
 }
 
 button.OAuth2_Signin_Button#Google {
-    border-top: 2px solid #176ced;
-    border-left: 2px solid #d9432f;
-    border-bottom: 2px solid #ffb700;
-    border-right: 2px solid #009a57;
+    border-top: 3px solid #176ced;
+    border-left: 3px solid #d9432f;
+    border-bottom: 3px solid #ffb700;
+    border-right: 3px solid #009a57;
 }
 
 
@@ -880,13 +907,13 @@ button.OAuth2_Signin_Button#Google {
 }
 
 .Class_Nav {
-    width: 70%;
+    width: 50%;
     display: flex;
     position: fixed;
     flex-direction: row;
     font-weight: 500;
     left: 50%;
-    translate: -50% 0;
+    translate: -20% 0;
     justify-content: space-around;
     bottom: 0; margin-bottom: var(--Spacing-8);
 }

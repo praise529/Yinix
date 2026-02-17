@@ -14,9 +14,48 @@
     <top-bar></top-bar>
 
     <div class="Main">
-        
+        <div class="Classes" id="Classes"></div>
     </div>
 
     <script src="./Index.js"></script>
+    <script>
+        // "ALL", "MATH", "SCIENCE", "LITERACY", "LANGUAGE LEARNING", "P.E.", "TECHNOLOGY", "ARTS"
+        function FindSubject(Subject) {
+            if (Subject === "MATH") {
+                return `<i class="ph-bold ph-calculator"></i>`;
+            } else if (Subject === "SCIENCE") {
+                return `<i class="ph-bold ph-atom"></i>`;
+            } else if (Subject === "LITERACY") {
+                return `<i class="ph-bold ph-books"></i>`;
+            } else if (Subject === "LANGUAGE LEARNING") {
+                return `<i class="ph-bold ph-translate"></i>`;
+            } else if (Subject === "P.E.") {
+                return `<i class="ph-bold ph-basketball"></i>`;
+            } else if (Subject === "TECHNOLOGY") {
+                return `<i class="ph-bold ph-cpu"></i>`;
+            } else if (Subject === "ARTS") {
+                return `<i class="ph-bold ph-palette"></i>`;
+            } else {
+                return `<i class="ph-bold ph-graduation-cap"></i>`;
+            }
+        }
+        
+        const Classes_Area = document.getElementById("Classes");
+
+        fetch("http://localhost:1100/API/Accounts/695e6739da8c72da1206c85e/Classrooms")
+        .then((Json) => { return Json.json() })
+        .then((Data) => {
+            console.table(Data.Classrooms);
+            Data.Classrooms.forEach(Class => {
+                Classes_Area.innerHTML += `
+                    <div class="Class" onclick="document.location = './Classroom.html?ID=${Class._id}'">
+                        <h3>${Class.Name}</h3>
+                        <span class="Subject">${FindSubject(Class.Subject)}</span>
+                    </div>
+                `;
+            });
+        })
+        .catch((Err) => console.error(Err));
+    </script>
 </body>
 </html>
