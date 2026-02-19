@@ -186,7 +186,7 @@ button:active {
 /* 🔄️ Sink and Pop Animation */
 @keyframes Sink-And-Pop {
     0%, 100% { scale: 1; }
-    50% { scale: 0.95; }
+    50% { scale: 0.97; }
     75% { scale: 1.05; }
 }
 
@@ -229,6 +229,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .Muted {
     color: var(--Text-Muted);
+}
+
+p, label, span {
+    font-weight: 600;
 }
 
 
@@ -368,7 +372,7 @@ input {
 
 
 
-
+/* Side Bar! */
 
 .Side-Bar {
     display: flex;
@@ -398,6 +402,9 @@ input {
     background: none;
     flex-direction: row;
     justify-content: flex-start;
+}
+.Side-Bar a p {
+    font-weight: bold;
 }
 .Side-Bar a:first-child {
     margin-top: var(--Spacing-9);
