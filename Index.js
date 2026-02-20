@@ -80,7 +80,7 @@ class TopBarElement extends HTMLElement
     this.innerHTML = `
       <nav id="Top-Bar" class="Top-Bar">
         <button class="White-Button" style="border: none; font-size: 1.5rem;" onclick="ToggleSideBar()"><i class="ph-bold ph-list"></i></button>
-        <img id="Account-Picture" class="Account-Picture" src="./Images/Favicon BG.png">
+        <img id="Account-Picture" class="Account-Picture" src="/Images/Favicon BG.png">
       </nav>
     `;
   }

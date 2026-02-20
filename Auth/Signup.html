@@ -4,6 +4,7 @@
 <head>
     <!-- Links!!! 🔗 -->
     <link rel="stylesheet" href="../Index.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,30 +12,49 @@
 </head>
 
 <body>
-    <div class="Account_Form">
-        <h2>Sign Up</h2>
-
+    <br><br><div class="Account_Form">
+        <h1>Sign Up</h1>
+        <p class="Muted">Get access to whiteboards, attendance, classrooms, and more!</p><br>
+        
         <form method="post" id="Signin_Form">
-            <input type="text" name="Signup_Name" id="Signup_Name" maxlength="100" required placeholder="Your Name...">
-            <input type="email" name="Signup_Email" id="Signin_Email" maxlength="255" minlength="5"
-            placeholder="Your Email (if you have one)...">
-            <input type="password" name="Signup_Password" id="Signin_Password" placeholder="Create a password, you NEED this...">
-            <input type="number" name="Signup_Age" id="Signup_Age" placeholder="How old are you?">
-            <label for="Role">Who ARE you?</label>
-            <select name="Role" id="Role">
-                <option value="Student">Student</option>
-                <option value="Teacher">Teacher</option>
-                <option value="Parent">Parent/Guardian</option>
-                <option value="Other">Other</option>
-            </select>
+            <label for="Signup_Name">Your Name</label><br>
+            <input type="text" name="Signup_Name" id="Signup_Name" 
+            maxlength="7" required placeholder="Mary May">
 
-            <button type="submit">Sign Up!</button>
-        </form>
+            <label for="Signup_Email">Your Email</label><br>
+            <input type="email" name="Signup_Email" id="Signup_Email"
+            maxlength="255" minlength="5" placeholder="yourname@schooldomain.com" autocapitalize="off">
+
+            <label for="Signup_Password">Your New Secure Password</label><br>
+            <input type="password" name="Signup_Password" id="Signup_Password"
+            placeholder="This might be chosen by your teacher">
+
+            <div class="Row">
+                <div>
+                    <label for="Signup_Age">Your Age</label><br><br>
+                    <input type="number" name="Signup_Age" id="Signup_Age"
+                    placeholder="10">
+                </div>
+                <div>
+                    <label for="Signup_Role">Your Role</label><br><br>
+                    <select id="Signup_Role" name="Signup_Role">
+                        <option value="Student">Student</option>
+                        <option value="Teacher">Teacher</option>
+                        <option value="Parent">Parent/Guardian</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div><br><br>
+
+            <button type="submit">Signup!</button>
+        </form><br><br>
 
         <div class="Social_Buttons">
-            <button class="OAuth2_Signin_Button White-Button" id="Google"><i class="ph-bold ph-google-logo"></i> Sign In With Google</button>
-            <button class="OAuth2_Signin_Button White-Button" id="Apple"><i class="ph-bold ph-apple-logo"></i> Sign In With Apple</button>
-        </div>
+            <button class="OAuth2_Signin_Button White-Button" id="Google"><i class="ph-bold ph-google-logo"></i> Sign Up With Google</button>
+            <button class="OAuth2_Signin_Button White-Button" id="Apple"><i class="ph-bold ph-apple-logo"></i> Sign Up With Apple</button>
+        </div><br>
+
+        <p>In the wrong place? <a href="./Signin.html">Sign In</a>!</p><br><br>
     </div>
 </body>
 

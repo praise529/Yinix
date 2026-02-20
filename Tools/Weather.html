@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Links!!! 🔗 -->
+    <link rel="stylesheet" href="../Index.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather - Yinix</title>
+</head>
+<body>
+    <side-bar Selected="Tools"></side-bar>
+    <top-bar></top-bar>
+
+    <div class="Main">
+        <i class="ph-bold ph-spinner Spinner" id="Spinner"></i>
+
+        <i class="ph-bold ph-sun Big-Heading Text-Center Text-Width-100 Main-Colour" id="Weather-Icon"></i><br>
+        <h1 class="Weather-Temperature" id="Weather-Temperature"></h1><br>
+        <h2 class="Muted Text-Center" id="Weather-Desc">Sun</h2>
+    </div>
+
+    <script src="../Index.js"></script>
+    <script>
+        const _0x3e9c5d=_0x1d58;function _0x1d58(_0x40820b,_0x305b96){_0x40820b=_0x40820b-0x8c;const _0x2e333f=_0x2e33();let _0x1d58f6=_0x2e333f[_0x40820b];return _0x1d58f6;}(function(_0x263e1b,_0x5f4945){const _0x297b0f=_0x1d58,_0x42faab=_0x263e1b();while(!![]){try{const _0x2c2a7d=-parseInt(_0x297b0f(0xb5))/0x1*(parseInt(_0x297b0f(0xae))/0x2)+-parseInt(_0x297b0f(0x9c))/0x3+parseInt(_0x297b0f(0xa7))/0x4+parseInt(_0x297b0f(0x9a))/0x5+parseInt(_0x297b0f(0xac))/0x6+parseInt(_0x297b0f(0x9d))/0x7*(-parseInt(_0x297b0f(0xb6))/0x8)+parseInt(_0x297b0f(0xa9))/0x9*(-parseInt(_0x297b0f(0xab))/0xa);if(_0x2c2a7d===_0x5f4945)break;else _0x42faab['push'](_0x42faab['shift']());}catch(_0x3c7298){_0x42faab['push'](_0x42faab['shift']());}}}(_0x2e33,0x22be4));function ChangeIcon(_0x2ed9ef){const _0x5e840e=_0x1d58;if(_0x2ed9ef==='Clear')return _0x5e840e(0x93);else{if(_0x2ed9ef===_0x5e840e(0xa2))return'cloud-rain';else{if(_0x2ed9ef===_0x5e840e(0xb0))return _0x5e840e(0x8c);else{if(_0x2ed9ef==='Clouds')return _0x5e840e(0xa4);else return _0x2ed9ef==='Snow'?_0x5e840e(0xb4):_0x5e840e(0xa0);}}}}var Creating=!![];const Spinner=document['getElementById'](_0x3e9c5d(0xa3)),WeatherDesc=document[_0x3e9c5d(0xb2)]('Weather-Desc'),WeatherIcon=document[_0x3e9c5d(0xb2)](_0x3e9c5d(0x8d)),WeatherTemperatureElement=document[_0x3e9c5d(0xb2)](_0x3e9c5d(0xaf));function _0x2e33(){const _0x1d20ec=['ph-sun','ph-spinner','776640rtjyKD','innerHTML','3402hwhkuH','98161QZvtyK','description','then','sun','error','Rain','Spinner','cloud','json','weather','828980bYVZnE','classList','48969PcbPrO','log','210kqZeqf','335682vfebyK','toUpperCase','50mbXhzo','Weather-Temperature','Mist','temp','getElementById','add','snowflake','4189fPxabH','32ePdMnw','cloud-fog','Weather-Icon','color','remove','finally','0°C','red','sun-horizon','catch','getAnimations','ph-','main'];_0x2e33=function(){return _0x1d20ec;};return _0x2e33();}WeatherTemperatureElement[_0x3e9c5d(0x9b)]=_0x3e9c5d(0x91),fetch('https://api.openweathermap.org/data/2.5/weather?q=yellowknife&units=metric&appid=7a84119090d4225408ee9448da7ae453')[_0x3e9c5d(0x9f)](_0x342d0f=>{const _0x5fe3a4=_0x3e9c5d;return _0x342d0f[_0x5fe3a4(0xa5)]();})[_0x3e9c5d(0x9f)](_0x8ecd61=>{const _0x4896d8=_0x3e9c5d;console[_0x4896d8(0xaa)](_0x8ecd61),WeatherTemperatureElement['innerHTML']=Math['round'](Number(_0x8ecd61[_0x4896d8(0x97)][_0x4896d8(0xb1)]))+'°C',WeatherIcon['classList']['remove'](_0x4896d8(0x98)),WeatherIcon[_0x4896d8(0xa8)][_0x4896d8(0xb3)](_0x4896d8(0x96)+ChangeIcon(_0x8ecd61[_0x4896d8(0xa6)][0x0][_0x4896d8(0x97)])),WeatherDesc[_0x4896d8(0x9b)]=_0x8ecd61['weather'][0x0][_0x4896d8(0x9e)][_0x4896d8(0xad)](),Spinner[_0x4896d8(0xa8)]['add']('Hidden');})[_0x3e9c5d(0x94)](_0x277977=>{const _0x4144ea=_0x3e9c5d;console[_0x4144ea(0xa1)](_0x277977),Spinner[_0x4144ea(0xa8)][_0x4144ea(0x8f)](_0x4144ea(0x99)),Spinner[_0x4144ea(0x95)]()['forEach'](_0x94a9ea=>_0x94a9ea['cancel']()),Spinner[_0x4144ea(0xa8)]['add']('ph-warning-circle'),Spinner['style'][_0x4144ea(0x8e)]=_0x4144ea(0x92);})[_0x3e9c5d(0x90)](()=>{Creating=![];});
+    </script>
+</body>
+</html>
