@@ -14,12 +14,14 @@
 
     /* #5c92ff! */
     --Main: hsl(220, 100%, 68%);
-    --Light-Main: hsl(220, 100%, 88%);
+    --Main-White-1: hsl(220, 100%, 97%);
+    --Main-White-3: hsl(220, 100%, 88%);
     --Secondary-Main: hsl(240, 100%, 68%);
     --Transparent-Main: hsla(from var(--Main) H S L / 0.10);
 
     --Purple-Black: hsl(245, 15%, 68%);
     --Text-Black: hsl(220, 100%, 10%);
+    --Text-Dark-Main: hsl(220, 50%, 35%);
     --Text-White: hsl(0, 100%, 99%);
     --Teal-Black: hsl(195, 14%, 50%);
     --Text-Muted: hsl(0, 0%, 50%);
@@ -27,9 +29,11 @@
     --Outline-Thickness: 3px;
     --Outline-Colour: hsl(0, 0%, 20%);  
     --Outline-Light-Colour: hsl(0, 0%, 80%);
+    --Outline-White-Main-Colour: hsl(220, 100%, 92%);
+    --Outline-Main: var(--Outline-Thickness) solid var(--Main);
     --Outline-Black: var(--Outline-Thickness) solid var(--Outline-Colour);
     --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Light-Colour);
-    --Outline-Main: var(--Outline-Thickness) solid var(--Main);
+    --Outline-White-Main: var(--Outline-Thickness) solid var(--Outline-White-Main-Colour);
     --Outline-Shadow: 4px 4px var(--Outline-Colour);
 
     --Radius-1: 1rem;
@@ -65,7 +69,7 @@
     --Dark-White: hsl(0, 0%, 20%);    
 
     --Main: hsl(220, 100%, 78%);
-    --Light-Main: hsla(220, 100%, 10%);
+    --Main-White-3: hsla(220, 100%, 10%);
 
     --Purple-Black: hsl(245, 15%, 88%);
     --Text-Black: hsl(0, 0%, 70%);
@@ -190,7 +194,7 @@ button {
     padding: var(--Spacing-4);
     border: var(--Outline-Black);
     transition: var(--Transition);
-    background: var(--Light-Main);
+    background: var(--Main-White-3);
     border-radius: var(--Radius-2);
     font-weight: var(--Font-Bold);
 }
@@ -425,27 +429,30 @@ input {
     overflow-y: hidden;
     gap: var(--Spacing-1);
     flex-direction: column;
-    background: var(--White);
+    overflow: hidden !important;
     transition: var(--Transition);
     padding-left: var(--Spacing-4);
+    background: var(--Main-White-1);
     padding-right: var(--Spacing-4);
-    border-right: var(--Outline-Light);
+    border-right: var(--Outline-White-Main);
 }
-.Side-Bar.None {
+
+.Side-Bar.Hidden {
     display: none;
 }
 
-.Side-Bar button {
-    width: 100%;
-    border: none;
-    cursor: pointer;
-    background: none;
-    flex-direction: row;
-    justify-content: flex-start;
+.Side-Bar .Line {
+    height: 100px;
 }
+
 .Side-Bar a p {
     font-weight: bold;
 }
+.Side-Bar a button p, .Side-Bar a button i {
+    color: var(--Text-Dark-Main);
+}
+
+
 .Side-Bar a:first-child {
     margin-top: var(--Spacing-9);
 }
@@ -458,6 +465,26 @@ input {
     color: var(--Main);
 }
 
+
+.Side-Bar button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    background: none;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.Side-Bar a button.Dropdown i.Dropdown-Arrow {
+    font-size: var(--Spacing-6);
+    margin-left: auto;
+}
+
+.Side-Bar .Classes-Dropdown-Items.Hidden {
+    display: none;
+}
+.Side-Bar .Classes-Dropdown-Items .Classes-Dropdown-Item {
+    margin-left: 2rem;
+}
 
 .Side-Bar button i {
     color: var(--Text-Black);
@@ -502,7 +529,7 @@ input {
     position: absolute;
     text-align: center;
     display: inline-flex;
-    background: var(--Light-Main);
+    background: var(--Main-White-3);
     border-radius: 1.8rem 1.8rem 0 0;
     align-items: center; justify-content: center;
 }
@@ -1022,9 +1049,9 @@ button.OAuth2_Signin_Button#Google {
     z-index: 999;
     display: flex;
     position: fixed;
-    background: var(--White);
     padding: var(--Spacing-5);
-    border-bottom: var(--Outline-Light);
+    background: var(--Main-White-1);
+    border-bottom: var(--Outline-White-Main);
 }
 
 .Top-Bar .Account-Picture {
@@ -1041,13 +1068,6 @@ button.OAuth2_Signin_Button#Google {
 
 
 
-.Weather-Temperature {
-    font-size: 4rem;
-    text-align: center;
-}
-
-
-
 
 @media (max-width: 425px) or (max-height: 633px) {
     .Tool-Box {
@@ -1056,12 +1076,32 @@ button.OAuth2_Signin_Button#Google {
     }
 }
 @media (max-width: 640px) {
-    .Side-Bar {
-        display: none;
+    #Side-Bar-Close-Button {
+        display: block;
+        margin-left: auto;
     }
 
-    #Side-Bar_Button {
-        margin-left: var(--Spacing-4) !important;
+    .Side-Bar.Hidden {
+        left: -250px;
+    }
+    .Side-Bar.Open {
+        left: 0;
+        display: flex;
+        position: fixed;
+        z-index: 9999999;
+    }
+
+
+    .Side-Bar-Backdrop {
+        inset: 0;
+        display: block;
+        position: fixed;
+        z-index: 9999;
+        background: hsla(220, 100%, 10%, 0.5);
+    }
+
+    #Side-Bar-Button {
+        margin-left: var(--Spacing-4);
     }
     
     .Main {
