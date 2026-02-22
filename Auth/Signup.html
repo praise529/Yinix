@@ -16,28 +16,29 @@
         <h1>Sign Up</h1>
         <p class="Muted">Get access to whiteboards, attendance, classrooms, and more!</p><br>
         
-        <form method="post" id="Signin_Form">
-            <label for="Signup_Name">Your Name</label><br>
-            <input type="text" name="Signup_Name" id="Signup_Name" 
-            maxlength="7" required placeholder="Mary May">
+        <form method="post" id="SignupForm">
+            <label for="SignupName">Your Name</label><br>
+            <input type="text" name="SignupName" id="SignupName"
+            required placeholder="Mary May" autocomplete="name">
 
-            <label for="Signup_Email">Your Email</label><br>
-            <input type="email" name="Signup_Email" id="Signup_Email"
-            maxlength="255" minlength="5" placeholder="yourname@schooldomain.com" autocapitalize="off">
+            <label for="SignupEmail">Your Email</label><br>
+            <input type="email" name="SignupEmail" id="SignupEmail"
+            maxlength="255" minlength="5" placeholder="yourname@schooldomain.com" autocapitalize="off"
+            autocomplete="email">
 
-            <label for="Signup_Password">Your New Secure Password</label><br>
-            <input type="password" name="Signup_Password" id="Signup_Password"
-            placeholder="This might be chosen by your teacher">
+            <label for="SignupPassword">Your New Secure Password</label><br>
+            <input type="password" name="SignupPassword" id="SignupPassword"
+            placeholder="This might be chosen by your teacher" autocomplete="new-password">
 
             <div class="Row">
                 <div>
-                    <label for="Signup_Age">Your Age</label><br><br>
-                    <input type="number" name="Signup_Age" id="Signup_Age"
+                    <label for="SignupAge">Your Age</label><br><br>
+                    <input type="number" name="SignupAge" id="SignupAge"
                     placeholder="10">
                 </div>
                 <div>
-                    <label for="Signup_Role">Your Role</label><br><br>
-                    <select id="Signup_Role" name="Signup_Role">
+                    <label for="SignupRole">Your Role</label><br><br>
+                    <select id="SignupRole" name="SignupRole">
                         <option value="Student">Student</option>
                         <option value="Teacher">Teacher</option>
                         <option value="Parent">Parent/Guardian</option>
@@ -56,6 +57,42 @@
 
         <p>In the wrong place? <a href="./Signin.html">Sign In</a>!</p><br><br>
     </div>
+
+
+    <script>
+        async function Account(Name, Email, Password, Age, Role) {
+          try {
+            const Res = await fetch("http://localhost:1100/API/Auth/SignUp", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ Name: Name, Email: Email, Password: Password, Age: Age, Role: Role })
+            });
+            const Data = await Res.json();
+
+            console.log(Data);
+            localStorage.setItem("Yinix-Account", JSON.stringify(Data));
+            setTimeout(() => document.location = "../index.html", 500);
+            return Data;
+          } catch (Err) {
+            console.error(Err);
+            return null;
+          }
+        }
+        var YAccount = "";
+        const SignupName = document.getElementById("SignupName");
+        const SignupEmail = document.getElementById("SignupEmail");
+        const SignupPassword = document.getElementById("SignupPassword");
+        const SignupAge = document.getElementById("SignupAge");
+        const SignupRole = document.getElementById("SignupRole");
+        const SignupForm = document.getElementById("SignupForm");
+
+        SignupForm.addEventListener("submit", (E) => {
+            E.preventDefault();
+            YAccount = Account(SignupName.value, SignupEmail.value, SignupPassword.value, SignupAge.value, SignupRole.value);
+        });
+    </script>
 </body>
 
 </html>

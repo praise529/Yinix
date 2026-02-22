@@ -64,9 +64,10 @@
 }
 
 :root.Dark {
-    --White: hsl(0, 0%, 10%);
+    --White: hsl(220, 20%, 10%);
     --Light-BG: hsl(220, 0%, 15%);
-    --Dark-White: hsl(0, 0%, 20%);    
+    --Dark-White: hsl(0, 0%, 20%);
+    --Main-White-1: hsl(220, 20%, 17%);
 
     --Main: hsl(220, 100%, 78%);
     --Main-White-3: hsla(220, 100%, 10%);
@@ -75,10 +76,12 @@
     --Text-Black: hsl(0, 0%, 70%);
     --Text-White: hsl(0, 100%, 99%);
     --Teal-Black: hsl(195, 14%, 50%);
+    --Text-Dark-Main: hsl(220, 50%, 85%);
 
     --Outline-Thickness: 3px;
     --Outline-Colour: hsl(0, 0%, 80%);  
     --Outline-Light-Colour: hsl(0, 0%, 20%);
+    --Outline-White-Main-Colour: hsl(220, 0%, 60%);
     --Outline-Black: var(--Outline-Thickness) solid var(--Outline-Colour);
     --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Light-Colour);
     --Outline-Main: var(--Outline-Thickness) solid var(--Main);

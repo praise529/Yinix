@@ -1,9 +1,3 @@
-const SignupName = document.getElementById("SignupName");
-const SignupEmail = document.getElementById("SignupEmail");
-const SignupPassword = document.getElementById("SignupPassword");
-const SignupAge = document.getElementById("SignupAge");
-const Role = document.getElementById("Role");
-
 const VideoBox = document.getElementById("VideoBox");
 const VideoButton = document.getElementById("VideoButton");
 const WebcamVideo = document.querySelector("#WebcamVideo");
@@ -11,6 +5,7 @@ const WebcamVideo = document.querySelector("#WebcamVideo");
 const SideBar = document.querySelector("side-bar");
 
 const Root = document.documentElement;
+const Account = JSON.parse(localStorage.getItem("Yinix-Account"));
 var Mode = localStorage.getItem("Yinix-Mode") || "White";
 
 if (Mode === "White") {
@@ -154,7 +149,7 @@ const ClassesDropdownIcon = document.querySelector("#Classes-Dropdown .Dropdown-
 
 ClassesDropdownItems.classList.add("Hidden");
 
-fetch("http://localhost:1100/API/Accounts/695e6739da8c72da1206c85e/Classrooms")
+fetch(`http://localhost:1100/API/Accounts/${Account.Info[0]._id}/Classrooms`)
 .then((Json) => { return Json.json() })
 .then((Data) => {
     ClassesDropdownItems.innerHTML = "";
@@ -214,3 +209,12 @@ function HandleResize() {
 
 HandleResize();
 window.addEventListener("resize", HandleResize);
+
+
+
+
+
+
+
+
+
