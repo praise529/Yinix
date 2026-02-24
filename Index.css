@@ -1,3 +1,22 @@
+/* 
+    ################################
+        # Index.css — Table of Contents 📑
+    ################################
+    1.) Tokens & Variables!
+    2.) Reset & Base!
+    3.) Typography!
+    4.) Buttons & Inputs!
+    5.) Layout Utilities!
+    6.) Components - Sidebar!
+    7.) Components - Item Cards!
+    8.) Components - Whiteboard!
+    9.) Components - Video Meeting!
+    10.) Animations!
+    11.) Media Queries!
+    ###############################
+*/
+
+
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
@@ -9,15 +28,15 @@
 
 :root {
     --White: hsl(220, 100%, 100%);
-    --Light-BG: hsl(220, 0%, 96%);
+    --Light-BG: hsl(220, 20%, 97%);
     --Dark-White: hsl(220, 75%, 98%);
 
     /* #5c92ff! */
     --Main: hsl(220, 100%, 68%);
-    --Main-White-1: hsl(220, 100%, 97%);
+    --Main-White-BG: hsl(220, 20%, 99%);
     --Main-White-3: hsl(220, 100%, 88%);
     --Secondary-Main: hsl(240, 100%, 68%);
-    --Transparent-Main: hsla(from var(--Main) H S L / 0.10);
+    --Transparent-Main: hsla(from var(--Main) H S L / 0.05);
 
     --Purple-Black: hsl(245, 15%, 68%);
     --Text-Black: hsl(220, 100%, 10%);
@@ -27,12 +46,12 @@
     --Text-Muted: hsl(0, 0%, 50%);
     
     --Outline-Thickness: 3px;
-    --Outline-Colour: hsl(0, 0%, 20%);  
-    --Outline-Light-Colour: hsl(0, 0%, 80%);
-    --Outline-White-Main-Colour: hsl(220, 100%, 92%);
+    --Outline-Colour: hsl(220, 20%, 90%);
+    --Outline-Button-Colour: hsl(220, 75%, 80%);  
+    --Outline-White-Main-Colour: hsl(220, 20%, 92%);
     --Outline-Main: var(--Outline-Thickness) solid var(--Main);
-    --Outline-Black: var(--Outline-Thickness) solid var(--Outline-Colour);
-    --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Light-Colour);
+    --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
+    --Outline-Button: var(--Outline-Thickness) solid var(--Outline-Button-Colour);
     --Outline-White-Main: var(--Outline-Thickness) solid var(--Outline-White-Main-Colour);
     --Outline-Shadow: 4px 4px var(--Outline-Colour);
 
@@ -67,7 +86,7 @@
     --White: hsl(220, 20%, 10%);
     --Light-BG: hsl(220, 0%, 15%);
     --Dark-White: hsl(0, 0%, 20%);
-    --Main-White-1: hsl(220, 20%, 17%);
+    --Main-White-BG: hsl(220, 20%, 17%);
 
     --Main: hsl(220, 100%, 78%);
     --Main-White-3: hsla(220, 100%, 10%);
@@ -81,80 +100,11 @@
     --Outline-Thickness: 3px;
     --Outline-Colour: hsl(0, 0%, 80%);  
     --Outline-Light-Colour: hsl(0, 0%, 20%);
-    --Outline-White-Main-Colour: hsl(220, 0%, 60%);
-    --Outline-Black: var(--Outline-Thickness) solid var(--Outline-Colour);
+    --Outline-White-Main-Colour: hsl(220, 20%, 20%);
+    --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
     --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Light-Colour);
     --Outline-Main: var(--Outline-Thickness) solid var(--Main);
     --Outline-Shadow: 4px 4px var(--Outline-Colour);
-
-    --Radius-1: 1rem;
-    --Radius-2: 2rem;
-    --Radius-3: 5rem;
-    --Radius-4: 10rem;
-
-    --Spacing-1: 0.25rem;
-    --Spacing-2: 0.5rem;
-    --Spacing-3: 0.75rem;
-    --Spacing-4: 1rem;
-    --Spacing-5: 1.25rem;
-    --Spacing-6: 1.5rem;
-    --Spacing-7: 1.75rem;
-    --Spacing-8: 2rem;
-    --Spacing-9: 5rem;
-    --Spacing-10: 10rem;
-    --Spacing-11: 20rem;
-
-    --Transition: 300ms ease-in-out;
-    --Transition-2: 1s ease-in-out;
-
-    --Font-Medium: 500;
-    --Font-Bold: bold;
-
-    --Thickness-1: 2px;
-    --Thickness-2: 4px;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --White: hsl(0, 0%, 10%);
-    
-        --Main: hsl(220, 100%, 78%);
-        
-        --Purple-Black: hsl(245, 15%, 88%);
-        --Text-Black: hsl(0, 0%, 80%);
-        --Text-White: hsl(0, 100%, 99%);
-        --Teal-Black: hsl(195, 14%, 50%);
-        
-        --Outline-Colour: hsl(0, 0%, 20%);    
-        --Outline-Black: 2px solid var(--Dark-White);
-        --Outline-Main: 2px solid var(--Main);
-
-        --Radius-1: 1rem;
-        --Radius-2: 2rem;
-        --Radius-3: 5rem;
-        --Radius-4: 10rem;
-
-        --Spacing-1: 0.25rem;
-        --Spacing-2: 0.5rem;
-        --Spacing-3: 0.75rem;
-        --Spacing-4: 1rem;
-        --Spacing-5: 1.25rem;
-        --Spacing-6: 1.5rem;
-        --Spacing-7: 1.75rem;
-        --Spacing-8: 2rem;
-        --Spacing-9: 5rem;
-        --Spacing-10: 10rem;
-        --Spacing-11: 20rem;
-
-        --Transition: 300ms ease-in-out;
-        --Transition-2: 1s ease-in-out;
-
-        --Font-Medium: 500;
-        --Font-Bold: bold;
-
-        --Thickness-1: 2px;
-        --Thickness-2: 4px;
-    }
 }
 
 
@@ -175,11 +125,55 @@
     }
 }
 
+@keyframes Google-Animation {
+    0% {
+        border-top: 3px solid #176ced;
+        border-left: 3px solid #d9432f;
+        border-bottom: 3px solid #ffb700;
+        border-right: 3px solid #009a57;
+    }
+    25% {
+        border-right: 3px solid #176ced;
+        border-top: 3px solid #ffb700;
+        border-left: 3px solid #d9432f;
+        border-bottom: 3px solid #009a57;
+    }
+    50% {
+        border-bottom: 3px solid #176ced;
+        border-right: 3px solid #d9432f;
+        border-top: 3px solid #009a57;
+        border-left: 3px solid #ffb700;
+    }
+    75% {
+        border-bottom: 3px solid #d9432f;
+        border-right: 3px solid #ffb700;
+        border-left: 3px solid #009a57;
+        border-top: 3px solid #176ced;
+    }
+    100% {
+        border-top: 3px solid #176ced;
+        border-left: 3px solid #d9432f;
+        border-bottom: 3px solid #ffb700;
+        border-right: 3px solid #009a57;
+    }
+}
+
+@keyframes Random_Appear {
+    0% {
+        opacity: 0;
+        scale: 1.5;
+    }
+    
+    100% {
+        opacity: 1;
+    }
+}
+
 /* Body Styles! */
 
 body {
     overflow-x: hidden;
-    background: var(--White);
+    background: var(--Light-BG);
 }
 
 body.Scroll-None {
@@ -195,14 +189,15 @@ button {
     justify-content: center;
     color: var(--Text-Black);
     padding: var(--Spacing-4);
-    border: var(--Outline-Black);
+    border: var(--Outline-Button);
     transition: var(--Transition);
-    background: var(--Main-White-3);
-    border-radius: var(--Radius-2);
     font-weight: var(--Font-Bold);
+    border-radius: var(--Radius-2);
+    background: var(--Main-White-3);
 }
 button.White-Button {
     background: var(--White);
+    border: var(--Outline-Light);
 }
 button:active {
     animation: Sink-And-Pop 1s ease-in-out;
@@ -282,7 +277,7 @@ p, label, span {
     color: var(--Main);
 }
 
-.Outline_Shadow {
+.Outline-Shadow {
     box-shadow: var(--Outline-Shadow);
 }
 
@@ -313,7 +308,7 @@ p, label, span {
     position: relative;
     text-decoration: none;
     background: var(--White);
-    border: var(--Outline-Black);
+    border: var(--Outline-Light);
     border-radius: var(--Radius-2);
 }
 
@@ -347,7 +342,7 @@ p, label, span {
     color: var(--Text-Black);
     background: var(--White);
     padding: var(--Spacing-1);
-    border: var(--Outline-Black);
+    border: var(--Outline-Light);
     max-width: var(--Spacing-10);
     border-radius: var(--Radius-1);
 }
@@ -357,7 +352,7 @@ p, label, span {
     display: none;
     translate: -10%;
     padding: var(--Spacing-1);
-    border: var(--Outline-Black);
+    border: var(--Outline-Light);
     margin-top: var(--Spacing-4);
     border-radius: var(--Radius-1);
 }
@@ -377,13 +372,20 @@ p, label, span {
 /* Input Styles! */
 
 input {
-    background: var(--Light-BG);
+    background: var(--White);
     padding: var(--Spacing-4);
     border: var(--Outline-Light);
     transition: var(--Transition);
     border-radius: var(--Radius-1);
     margin-bottom: var(--Spacing-4);
 }
+input:focus {
+    border: var(--Outline-Main);
+    box-shadow: 0 0 0 var(--Spacing-1) var(--Transparent-Main);
+}
+/* input:active {
+    animation: Sink-And-Pop 1s ease-in-out;
+} */
 
 .h1_Font_Size {
     font-size: var(--Spacing-9);
@@ -400,21 +402,21 @@ input {
 
 
 .Tool-Box {
-    gap: 0.8rem;
     position: fixed;
+    gap: var(--Spacing-7);
     top: 50%;
     left: 50%;
     width: 50%;
-    padding: 64px;
     z-index: 1000;
     max-width: 386px;
-    text-align: center;
     translate: -50% -50%;
-    border: var(--Outline-Black);
+    text-align: center;
+    padding: var(--Spacing-9);
+    border: var(--Outline-Light);
     border-radius: var(--Radius-2);
 }
 .Tool-Box h1 {
-    font-size: 100px;
+    font-size: var(--Spacing-9);
 }
 
 
@@ -427,15 +429,13 @@ input {
     left: 0;
     height: 100vh;
     z-index: 99999;
-    height: 100dvh;
     width: 12.9rem;
-    overflow-y: hidden;
+    overflow: hidden;
     gap: var(--Spacing-1);
     flex-direction: column;
-    overflow: hidden !important;
     transition: var(--Transition);
     padding-left: var(--Spacing-4);
-    background: var(--Main-White-1);
+    background: var(--Main-White-BG);
     padding-right: var(--Spacing-4);
     border-right: var(--Outline-White-Main);
 }
@@ -491,7 +491,7 @@ input {
 
 .Side-Bar button i {
     color: var(--Text-Black);
-    font-size: var(--Spacing-8);
+    font-size: var(--Spacing-6);
 }
 
 .Side-Bar button p {
@@ -516,13 +516,13 @@ input {
 
 .Main .Classes .Class {
     cursor: pointer;
-    padding: 2.5rem;
     position: relative;
     background: var(--White);
     width: var(--Spacing-10);
+    padding: var(--Spacing-8);
     height: var(--Spacing-10);
     border-radius: var(--Radius-2);
-    border: var(--Outline-Black);
+    border: var(--Outline-Light);
     box-shadow: var(--Outline-Shadow);
 }
 .Main .Classes .Class h3 {
@@ -571,15 +571,12 @@ input {
     text-align: center;
     align-items: center;
     flex-direction: row;
-    margin-bottom: 50px;
     justify-content: center;
     background: var(--White);
-    padding: var(--Spacing-2);
-    border: var(--Outline-Black);
+    border: var(--Outline-Light);
     border-radius: var(--Radius-2);
-
-    padding-left: 2.25rem;
-    padding-right: 2.25rem;
+    margin-bottom: var(--Spacing-9);
+    padding: var(--Spacing-2) var(--Spacing-8);
 }
 
 .Whiteboard_Area .Whiteboard_Tools .Tool {
@@ -623,7 +620,7 @@ input {
     display: none !important;
     position: fixed;
     background: var(--White);
-    border: var(--Outline-Black);
+    border: var(--Outline-Light);
 }
 
 .Whiteboard_Area .Whiteboard,
@@ -716,10 +713,10 @@ input {
     top: 0;
     left: 50%;
     translate: -50%;
-    margin-top: 2.5rem;
     text-align: center;
     padding: var(--Spacing-2);
-    border: var(--Outline-Black);
+    margin-top: var(--Spacing-8);
+    border: var(--Outline-Light);
     border-radius: var(--Radius-2);
 }
 
@@ -745,7 +742,7 @@ input {
     margin: 1rem;
     position: fixed;
     font-size: 2rem;
-    border-radius: 2.5rem;
+    border-radius: var(--Spacing-9);
 }
 
 .Whiteboard_Area #Back {
@@ -787,7 +784,7 @@ input {
     flex-direction: row;
     gap: var(--Spacing-1);
     padding: var(--Spacing-1);
-    border-top: var(--Outline-Black);
+    border-top: var(--Outline-Light);
 }
 .Video_Meeting .Bottom_Menu .Divider {
     font-size: 2.5rem;
@@ -806,7 +803,7 @@ input {
     flex-direction: column;
     color: var(--Text-Black);
     background: var(--White);
-    border-left: var(--Outline-Black);
+    border-left: var(--Outline-Light);
 }
 
 .Video_Meeting_Chat_Sidebar .Center {
@@ -818,7 +815,7 @@ input {
     max-width: 10rem;
     border-radius: 67rem;
     padding: var(--Spacing-1);
-    border: var(--Outline-Black);
+    border: var(--Outline-Light);
 }
 
 
@@ -840,7 +837,7 @@ input {
     appearance: none;
     background: var(--White);
     padding: var(--Spacing-1);
-    border: var(--Outline-Black);
+    border: var(--Outline-Light);
     border-radius: var(--Radius-1);
 }
 
@@ -861,23 +858,12 @@ input {
     animation: Random_Appear 0.3s ease-in-out;
 }
 
-@keyframes Random_Appear {
-    0% {
-        opacity: 0;
-        scale: 1.5;
-    }
-    
-    100% {
-        opacity: 1;
-    }
-}
-
 
 
 .Attendance_Session_List {
     display: flex;
     flex-direction: column;
-    border: var(--Outline-Black);
+    border: var(--Outline-Light);
     border-radius: var(--Radius-1);
 }
 
@@ -890,7 +876,7 @@ input {
     justify-content: center;
     padding: var(--Spacing-2);
     justify-content: space-between;
-    border-bottom: var(--Outline-Black);
+    border-bottom: var(--Outline-Light);
 }
 .Attendance_Session_List li:last-child {
     border-bottom: none;
@@ -922,12 +908,6 @@ input {
 .Account_Form input, .Account_Form select {
     width: 100%;
 }
-.Account_Form input:active {
-    animation: Sink-And-Pop 1s ease-in-out;
-}
-.Account_Form input:focus {
-    border: var(--Outline-Main);
-}
 
 .Account_Form .Row {
     display: flex;
@@ -941,39 +921,6 @@ input {
 }
 
 
-
-@keyframes Google-Animation {
-    0% {
-        border-top: 3px solid #176ced;
-        border-left: 3px solid #d9432f;
-        border-bottom: 3px solid #ffb700;
-        border-right: 3px solid #009a57;
-    }
-    25% {
-        border-right: 3px solid #176ced;
-        border-top: 3px solid #ffb700;
-        border-left: 3px solid #d9432f;
-        border-bottom: 3px solid #009a57;
-    }
-    50% {
-        border-bottom: 3px solid #176ced;
-        border-right: 3px solid #d9432f;
-        border-top: 3px solid #009a57;
-        border-left: 3px solid #ffb700;
-    }
-    75% {
-        border-bottom: 3px solid #d9432f;
-        border-right: 3px solid #ffb700;
-        border-left: 3px solid #009a57;
-        border-top: 3px solid #176ced;
-    }
-    100% {
-        border-top: 3px solid #176ced;
-        border-left: 3px solid #d9432f;
-        border-bottom: 3px solid #ffb700;
-        border-right: 3px solid #009a57;
-    }
-}
 
 button.OAuth2_Signin_Button#Google {
     border-top: 3px solid #176ced;
@@ -994,7 +941,7 @@ button.OAuth2_Signin_Button#Google {
     padding: var(--Spacing-2);
     height: var(--Spacing-10);
     margin-bottom: var(--Spacing-9);
-    border-bottom: var(--Outline-Black);
+    border-bottom: var(--Outline-Light);
 }
 
 .Stream_Empty {
@@ -1053,7 +1000,7 @@ button.OAuth2_Signin_Button#Google {
     display: flex;
     position: fixed;
     padding: var(--Spacing-5);
-    background: var(--Main-White-1);
+    background: var(--Main-White-BG);
     border-bottom: var(--Outline-White-Main);
 }
 
@@ -1062,17 +1009,16 @@ button.OAuth2_Signin_Button#Google {
     margin-left: auto;
     border-radius: 50%;
     display: inline-flex;
-    border: var(--Outline-Black);
+    border: var(--Outline-Light);
     transition: var(--Transition);
     margin-right: var(--Spacing-9);
-    box-shadow: var(--Outline-Shadow);
 }
 
 
 
 
 
-@media (max-width: 425px) or (max-height: 633px) {
+@media (max-width: 425px), (max-height: 633px) {
     .Tool-Box {
         padding: 0;
         border: none;
@@ -1184,5 +1130,32 @@ button.OAuth2_Signin_Button#Google {
 @media (prefers-reduced-motion: reduce) {
     #Pen_Cursor {
         display: none;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --White: hsl(220, 20%, 10%);
+        --Light-BG: hsl(220, 0%, 15%);
+        --Dark-White: hsl(0, 0%, 20%);
+        --Main-White-BG: hsl(220, 20%, 17%);
+
+        --Main: hsl(220, 100%, 78%);
+        --Main-White-3: hsla(220, 100%, 10%);
+
+        --Purple-Black: hsl(245, 15%, 88%);
+        --Text-Black: hsl(0, 0%, 70%);
+        --Text-White: hsl(0, 100%, 99%);
+        --Teal-Black: hsl(195, 14%, 50%);
+        --Text-Dark-Main: hsl(220, 50%, 85%);
+
+        --Outline-Thickness: 3px;
+        --Outline-Colour: hsl(0, 0%, 80%);  
+        --Outline-Light-Colour: hsl(0, 0%, 20%);
+        --Outline-White-Main-Colour: hsl(220, 0%, 60%);
+        --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
+        --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Light-Colour);
+        --Outline-Main: var(--Outline-Thickness) solid var(--Main);
+        --Outline-Shadow: 4px 4px var(--Outline-Colour);
+        --Thickness-2: 4px;
     }
 }
