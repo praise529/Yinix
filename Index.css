@@ -207,7 +207,7 @@ button:active {
 select {
     color: var(--Text-Black);
     padding: var(--Spacing-4);
-    background: var(--Light-BG);
+    background: var(--White);
     border: var(--Outline-Light);
     border-radius: var(--Radius-1);
 }
@@ -287,6 +287,12 @@ p, label, span {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.End {
+    display: inline-flex;
+    justify-content: flex-end;
+    margin-right: var(--Spacing-9);
 }
 
 .Spinner {
@@ -862,9 +868,10 @@ input:focus {
 
 .Attendance_Session_List {
     display: flex;
+    width: 90%;
     flex-direction: column;
     border: var(--Outline-Light);
-    border-radius: var(--Radius-1);
+    border-radius: var(--Radius-2);
 }
 
 .Attendance_Session_List li {
@@ -874,12 +881,15 @@ input:focus {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: var(--Spacing-2);
+    padding: var(--Spacing-8);
     justify-content: space-between;
-    border-bottom: var(--Outline-Light);
 }
+.Attendance_Session_List li:nth-child(even) {
+    background: var(--White);
+}
+
 .Attendance_Session_List li:last-child {
-    border-bottom: none;
+    border-radius: 0 var(--Radius-2);
 }
 
 .Attendance_Session_List div select {

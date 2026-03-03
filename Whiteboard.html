@@ -162,6 +162,11 @@
         
         Activate_Tool();
     </script>
+    <script>
+        if (!localStorage.getItem("Yinix-Account") || !Account) {
+            document.location = "./Auth/Signin.html";
+        }
+    </script>
 </body>
 
 </html>

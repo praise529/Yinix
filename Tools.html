@@ -46,7 +46,7 @@
                 </div>
                 <h2><i class="ph-bold ph-clipboard-text"></i> Attendance</h2>
             </a>
-            <a href="./Tools/Attendance.html" class="Item_Card">
+            <a href="./Whiteboard.html" class="Item_Card">
                 <div class="Top_Bar">
                     <button class="White-Button" style="padding: 0;"><i class="ph-bold ph-star"></i></button>
                 </div>
@@ -68,5 +68,10 @@
     </div>
 
     <script src="./Index.js"></script>
+    <script>
+        if (!localStorage.getItem("Yinix-Account") || !Account) {
+            document.location = "./Auth/Signin.html";
+        }
+    </script>
 </body>
 </html>

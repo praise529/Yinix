@@ -43,6 +43,11 @@
         document.title = Classroom_ID ? `${Classroom_ID} - Yinix!` : Redirecting;
     </script>
     <script>
+        if (!localStorage.getItem("Yinix-Account") || !Account) {
+            document.location = "./Auth/Signin.html";
+        }
+    </script>
+    <script>
         const Class_Stream = document.getElementById("Class_Stream")
         const Class_Name = document.getElementById("Class_Name");
         const Loading_Wheel = document.getElementById("Loading");
