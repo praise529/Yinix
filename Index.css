@@ -84,26 +84,29 @@
 
 :root.Dark {
     --White: hsl(220, 20%, 10%);
-    --Light-BG: hsl(220, 0%, 15%);
-    --Dark-White: hsl(0, 0%, 20%);
-    --Main-White-BG: hsl(220, 20%, 17%);
+    --Light-BG: hsl(220, 20%, 7%);
 
-    --Main: hsl(220, 100%, 78%);
-    --Main-White-3: hsla(220, 100%, 10%);
+    /* #5c92ff! */
+    --Main: hsl(220, 100%, 68%);
+    --Main-White-3: hsl(220, 50%, 12%);
+    --Secondary-Main: hsl(240, 100%, 68%);
+    --Transparent-Main: hsla(from var(--Main) H S L / 0.05);
 
-    --Purple-Black: hsl(245, 15%, 88%);
-    --Text-Black: hsl(0, 0%, 70%);
+    --Purple-Black: hsl(245, 15%, 68%);
+    --Text-Black: hsl(220, 0%, 80%);
+    --Text-Dark-Main: hsl(220, 50%, 80%);
     --Text-White: hsl(0, 100%, 99%);
     --Teal-Black: hsl(195, 14%, 50%);
-    --Text-Dark-Main: hsl(220, 50%, 85%);
-
+    --Text-Muted: hsl(0, 0%, 50%);
+    
     --Outline-Thickness: 3px;
-    --Outline-Colour: hsl(0, 0%, 80%);  
-    --Outline-Light-Colour: hsl(0, 0%, 20%);
-    --Outline-White-Main-Colour: hsl(220, 20%, 20%);
-    --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
-    --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Light-Colour);
+    --Outline-Colour: hsl(220, 20%, 16%);
+    --Outline-Button-Colour: hsl(220, 75%, 15%);  
+    --Outline-White-Main-Colour: hsl(220, 20%, 92%);
     --Outline-Main: var(--Outline-Thickness) solid var(--Main);
+    --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
+    --Outline-Button: var(--Outline-Thickness) solid var(--Outline-Button-Colour);
+    --Outline-White-Main: var(--Outline-Thickness) solid var(--Outline-White-Main-Colour);
     --Outline-Shadow: 4px 4px var(--Outline-Colour);
 }
 
@@ -183,6 +186,7 @@ body.Scroll-None {
 
 /* 🔲 Buttons! */
 button {
+    cursor: pointer;
     align-items: center;
     display: inline-flex;
     gap: var(--Spacing-2);
@@ -308,8 +312,9 @@ p, label, span {
 
 /* 🔲 Item Cards! */
 
-.Item_Card {
+.Item-Card {
     width: 12rem;
+    height: 14rem;
     padding: 2.5rem;
     position: relative;
     text-decoration: none;
@@ -318,16 +323,33 @@ p, label, span {
     border-radius: var(--Radius-2);
 }
 
-.Item_Card .Top_Bar {
+.Item-Card h2 {
+    z-index: 999;
+    margin-top: 12rem;
+    position: relative;
+}
+
+.Item-Card .Item-Top-Bar {
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 999;
     margin: var(--Spacing-4);
     margin-bottom: var(--Spacing-4);
 }
-.Item_Card .Top_Bar button {
+.Item-Card .Item-Top-Bar button {
     border: none;
+    background: none;
+    padding: var(--Spacing-3);
     font-size: var(--Spacing-5);
+}
+
+.Item-Card .Item-Card-Thumbnail {
+    z-index: 1;
+    width: 100%;
+    top: 0; left: 0;
+    position: absolute;
+    border-radius: var(--Radius-2) var(--Radius-2) 0 0;
 }
 
 
@@ -434,16 +456,16 @@ input:focus {
     position: fixed;
     left: 0;
     height: 100vh;
-    z-index: 99999;
     width: 12.9rem;
+    z-index: 999999;
     overflow: hidden;
     gap: var(--Spacing-1);
     flex-direction: column;
+    background: var(--White);
     transition: var(--Transition);
     padding-left: var(--Spacing-4);
-    background: var(--Main-White-BG);
     padding-right: var(--Spacing-4);
-    border-right: var(--Outline-White-Main);
+    border-right: var(--Outline-Light);
 }
 
 .Side-Bar.Hidden {
@@ -1006,16 +1028,17 @@ button.OAuth2_Signin_Button#Google {
 
 .Top-Bar {
     width: 100%;
-    z-index: 999;
     display: flex;
+    z-index: 99999;
     position: fixed;
+    background: var(--White);
     padding: var(--Spacing-5);
-    background: var(--Main-White-BG);
-    border-bottom: var(--Outline-White-Main);
+    border-bottom: var(--Outline-Light);
 }
 
 .Top-Bar .Account-Picture {
     width: 3rem;
+    cursor: pointer;
     margin-left: auto;
     border-radius: 50%;
     display: inline-flex;

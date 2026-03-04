@@ -218,3 +218,10 @@ window.addEventListener("resize", HandleResize);
 
 
 
+const AllPostForms = document.querySelectorAll("form[method='post']");
+
+AllPostForms?.forEach(PostForm => {
+  PostForm.addEventListener("submit", (E) => {
+    E.preventDefault();
+  });
+})

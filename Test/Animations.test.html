@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="Test.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations</title>
+
+    <style>
+        .AnimationCircle {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid hsl(220, 20%, 90%);
+            animation: Animation 1s cubic-bezier(.25,1.05,1,-0.15) infinite;
+        }
+        .AnimationCircle2 {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid hsl(220, 20%, 90%);
+            animation: Animation2 1s linear infinite;
+        }
+
+        button {
+            transition: 200ms cubic-bezier(.6,.78,0,.46);
+        }
+        button:hover {
+            scale: 1.05;
+            background: hsl(0, 0%, 30%);
+        }
+        button:active {
+            scale: 0.95;
+            background: black;
+        }
+
+        @keyframes Animation {
+            0%, 100% {
+                translate: 0;
+            }
+
+            50% {
+                translate: 5rem;
+            }
+        }
+        @keyframes Animation2 {
+            0%, 100% {
+                translate: 0;
+            }
+            50% {
+                translate: 10rem 10rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="AnimationCircle"></div>
+    <div class="AnimationCircle2"></div><br><br><br><br><br><br><br><br><br><br>
+    <button>Hi 
+    <span class="Button-Arrow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z"></path></svg>
+    </span></button>
+</body>
+</html>
