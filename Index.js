@@ -149,7 +149,7 @@ const ClassesDropdownIcon = document.querySelector("#Classes-Dropdown .Dropdown-
 
 ClassesDropdownItems.classList.add("Hidden");
 
-fetch(`http://localhost:1100/API/Accounts/${Account.Info[0]._id}/Classrooms`)
+fetch(`http://localhost:2820/API/Accounts/${Account.Info[0]._id}/Classrooms`)
 .then((Json) => { return Json.json() })
 .then((Data) => {
     ClassesDropdownItems.innerHTML = "";

@@ -26,7 +26,7 @@
             const Capture_Screen = await navigator.mediaDevices.getDisplayMedia({ video: true });
             Screen_Video.srcObject = Capture_Screen;
           
-            await fetch('http://localhost:1100/API/Screens/Start', {
+            await fetch('http://localhost:2820/API/Screens/Start', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

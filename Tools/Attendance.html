@@ -35,7 +35,7 @@
 
         console.log(Attendance_ID);
 
-        fetch(`http://localhost:1100/API/Attendance/${Attendance_ID}`)
+        fetch(`http://localhost:2820/API/Attendance/${Attendance_ID}`)
         .then((Json) => { return Json.json(); })
         .then((Data) => {
             Attendance_Session_List.innerHTML = "";
@@ -54,7 +54,7 @@
         .catch((Err) => console.error(Err));
 
         async function Submit() {
-            fetch(`http://localhost:1100/API/Attendance/697038b6f26274b398ab9270/Sessions`, {
+            fetch(`http://localhost:2820/API/Attendance/697038b6f26274b398ab9270/Sessions`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
