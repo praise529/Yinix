@@ -27,7 +27,7 @@ App.get("/", (req: Request, res: Response) => {
   res.json({ Yinix: true });
 });
 
-App.listen(Port, "0.0.0.0", async () => {
+App.listen(Number(Port), "0.0.0.0", async () => {
   await Connect_To_Database();
   console.log(`Yinix! - http://localhost:${PORT}`);
 });
