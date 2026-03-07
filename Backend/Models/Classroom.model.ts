@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import CreateStreamID from "../Config/StreamID";
 
 const Student_Schema = new mongoose.Schema({
   ID: { type: mongoose.Types.ObjectId },
@@ -6,6 +7,9 @@ const Student_Schema = new mongoose.Schema({
   Active: { type: Boolean, default: false }
 });
 const Stream_Schema = new mongoose.Schema({
+  ID: { type: String, default: CreateStreamID() },
+  Type: { type: String, enum: ["Announcement", "Comment"], },
+  CommentedAnnouncementID: { required: false, type: String },
   Content: { type: String, required: true },
   Classroom: { type: mongoose.Types.ObjectId, required: true },
   Account: { type: mongoose.Types.ObjectId, required: true },
