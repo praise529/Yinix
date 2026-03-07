@@ -30,7 +30,13 @@ export const Get_Classroom = async (req: Request, res: Response) => {
     try {
         const ID = req.params.ID;
         const Class = await Classroom.findById(ID);
-        if (!Class) return;
+        if (!Class) {
+            res.status(404).send({
+                Yinix: false,
+                Info: "Classroom not found"
+            });
+            return;
+        }
 
         res.status(200).json({
             Yinix: true,
@@ -72,7 +78,13 @@ export const AddStudentToClassroom = async (req: Request, res: Response) => {
         const { ID } = req.params;
         const { StudentName, StudentID } = req.body;
         const Class = await Classroom.findById(ID);
-        if (!Class) return;
+        if (!Class) {
+            res.status(404).send({
+                Yinix: false,
+                Info: "Classroom not found"
+            });
+            return;
+        }
 
         Class.Students.unshift({ ID: StudentID, Name: StudentName });
         Class.save();
@@ -100,7 +112,13 @@ export const SendClassStream = async (req: Request, res: Response) => {
     try {
         const { ID } = req.params;
         const Class = await Classroom.findById(ID);
-        if (!Class) return;
+        if (!Class) {
+            res.status(404).send({
+                Yinix: false,
+                Info: "Classroom not found"
+            });
+            return;
+        }
         const Stream = Class.Stream;
 
         res.status(200).send({
@@ -120,14 +138,30 @@ export const SendClassStream = async (req: Request, res: Response) => {
 export const CreateClassStream = async (req: Request, res: Response) => {
     try {
         const { ID } = req.params;
+        const { Content, Type, CommentedAnnouncementID } = req.body;
         const Class = await Classroom.findById(ID);
-        if (!Class) return;
+        if (!Class) {
+            res.status(404).send({
+                Yinix: false,
+                Info: "Classroom not found"
+            });
+            return;
+        }
         const Stream = Class.Stream;
 
-        res.status(200).send({
+        Class.Stream.push({
+            Content,
+            Type,
+            CommentedAnnouncementID,
+            Classroom: Class._id,
+            Account: req.body.AccountID
+        });
+        await Class.save();
+
+        res.status(201).send({
             Yinix: true,
             Info: "Created ✅",
-            Stream: Stream
+            Stream: Class.Stream
         });
         SendConsoleMessage(`Created a announcement/comment in ${Class.Name} classroom's stream! ✅`);
     } catch (Err) {

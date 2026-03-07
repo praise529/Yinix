@@ -1,7 +1,7 @@
 export default function CreateStreamID(): string {
-    let StreamID = "";
+    let StreamID = "93";
 
-    for (let y = 0; y < 20; y++) {
+    for (let y = 0; y < 6; y++) {
         StreamID += Math.floor(Math.random() * 10);
     }
 

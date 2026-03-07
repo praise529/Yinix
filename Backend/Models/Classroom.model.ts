@@ -7,13 +7,13 @@ const Student_Schema = new mongoose.Schema({
   Active: { type: Boolean, default: false }
 });
 const Stream_Schema = new mongoose.Schema({
-  ID: { type: String, default: CreateStreamID() },
+  ID: { type: String, default: CreateStreamID, unique: true },
   Type: { type: String, enum: ["Announcement", "Comment"], },
   CommentedAnnouncementID: { required: false, type: String },
   Content: { type: String, required: true },
   Classroom: { type: mongoose.Types.ObjectId, required: true },
   Account: { type: mongoose.Types.ObjectId, required: true },
-})
+}, { _id: false });
 
 const Classroom_Schema = new mongoose.Schema({
   Name: {
