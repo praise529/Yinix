@@ -1,0 +1,1271 @@
+/* 
+    ################################
+        # Index.css — Table of Contents 📑
+    ################################
+    1.) Tokens & Variables!
+    2.) Reset & Base!
+    3.) Typography!
+    4.) Buttons & Inputs!
+    5.) Layout Utilities!
+    6.) Components - Sidebar!
+    7.) Components - Item Cards!
+    8.) Components - Whiteboard!
+    9.) Components - Video Meeting!
+    10.) Animations!
+    11.) Media Queries!
+    ###############################
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: "Urbanist", sans-serif;
+}
+
+:root {
+    --White: hsl(220, 100%, 100%);
+    --Light-BG: hsl(220, 20%, 97%);
+    --Dark-White: hsl(220, 75%, 98%);
+
+    /* #5c92ff! */
+    --Main: hsl(220, 100%, 68%);
+    --Main-White-BG: hsl(220, 20%, 99%);
+    --Main-White-3: hsl(220, 100%, 88%);
+    --Secondary-Main: hsl(240, 100%, 68%);
+    --Transparent-Main: hsla(from var(--Main) H S L / 0.06);
+
+    --Purple-Black: hsl(245, 15%, 68%);
+    --Text-Black: hsl(220, 100%, 10%);
+    --Text-Dark-Main: hsl(220, 50%, 35%);
+    --Text-White: hsl(0, 100%, 99%);
+    --Teal-Black: hsl(195, 14%, 50%);
+    --Text-Muted: hsl(0, 0%, 50%);
+
+    --Outline-Thickness: 3px;
+    --Outline-Colour: hsl(220, 20%, 90%);
+    --Outline-Button-Colour: hsl(220, 75%, 80%);
+    --Outline-White-Main-Colour: hsl(220, 20%, 92%);
+    --Outline-Main: var(--Outline-Thickness) solid var(--Main);
+    --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
+    --Outline-Button: var(--Outline-Thickness) solid var(--Outline-Button-Colour);
+    --Outline-White-Main: var(--Outline-Thickness) solid var(--Outline-White-Main-Colour);
+    --Outline-Shadow: 4px 4px var(--Outline-Colour);
+
+    --Radius-1: 1rem;
+    --Radius-2: 2rem;
+    --Radius-3: 5rem;
+    --Radius-4: 10rem;
+
+    --Spacing-1: 0.25rem;
+    --Spacing-2: 0.5rem;
+    --Spacing-3: 0.75rem;
+    --Spacing-4: 1rem;
+    --Spacing-5: 1.25rem;
+    --Spacing-6: 1.5rem;
+    --Spacing-7: 1.75rem;
+    --Spacing-8: 2rem;
+    --Spacing-9: 5rem;
+    --Spacing-10: 10rem;
+    --Spacing-11: 20rem;
+
+    --Transition: 300ms ease-in-out;
+    --Transition-2: 1s ease-in-out;
+
+    --Font-Medium: 500;
+    --Font-Bold: bold;
+
+    --Thickness-1: 2px;
+    --Thickness-2: 4px;
+}
+
+:root.Dark {
+    --White: hsl(220, 20%, 10%);
+    --Light-BG: hsl(220, 20%, 7%);
+
+    /* #5c92ff! */
+    --Main: hsl(220, 100%, 68%);
+    --Main-White-3: hsl(220, 50%, 12%);
+    --Secondary-Main: hsl(240, 100%, 68%);
+    --Transparent-Main: hsla(from var(--Main) H S L / 0.05);
+
+    --Purple-Black: hsl(245, 15%, 68%);
+    --Text-Black: hsl(220, 0%, 80%);
+    --Text-Dark-Main: hsl(220, 50%, 80%);
+    --Text-White: hsl(0, 100%, 99%);
+    --Teal-Black: hsl(195, 14%, 50%);
+    --Text-Muted: hsl(0, 0%, 50%);
+
+    --Outline-Thickness: 3px;
+    --Outline-Colour: hsl(220, 20%, 16%);
+    --Outline-Button-Colour: hsl(220, 75%, 15%);
+    --Outline-White-Main-Colour: hsl(220, 20%, 92%);
+    --Outline-Main: var(--Outline-Thickness) solid var(--Main);
+    --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
+    --Outline-Button: var(--Outline-Thickness) solid var(--Outline-Button-Colour);
+    --Outline-White-Main: var(--Outline-Thickness) solid var(--Outline-White-Main-Colour);
+    --Outline-Shadow: 4px 4px var(--Outline-Colour);
+}
+
+
+/* Animations! */
+
+@keyframes Sink-And-Pop {
+
+    0%,
+    100% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 0.97;
+    }
+
+    75% {
+        scale: 1.05;
+    }
+}
+
+@keyframes Spin {
+    to {
+        rotate: 360deg;
+    }
+}
+
+@keyframes Google-Animation {
+    0% {
+        border-top: 3px solid #176ced;
+        border-left: 3px solid #d9432f;
+        border-bottom: 3px solid #ffb700;
+        border-right: 3px solid #009a57;
+    }
+
+    25% {
+        border-right: 3px solid #176ced;
+        border-top: 3px solid #ffb700;
+        border-left: 3px solid #d9432f;
+        border-bottom: 3px solid #009a57;
+    }
+
+    50% {
+        border-bottom: 3px solid #176ced;
+        border-right: 3px solid #d9432f;
+        border-top: 3px solid #009a57;
+        border-left: 3px solid #ffb700;
+    }
+
+    75% {
+        border-bottom: 3px solid #d9432f;
+        border-right: 3px solid #ffb700;
+        border-left: 3px solid #009a57;
+        border-top: 3px solid #176ced;
+    }
+
+    100% {
+        border-top: 3px solid #176ced;
+        border-left: 3px solid #d9432f;
+        border-bottom: 3px solid #ffb700;
+        border-right: 3px solid #009a57;
+    }
+}
+
+@keyframes Random_Appear {
+    0% {
+        opacity: 0;
+        scale: 1.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Body Styles! */
+
+body {
+    overflow-x: hidden;
+    background: var(--Light-BG);
+}
+
+body.Scroll-None {
+    overflow: hidden !important;
+}
+
+
+/* 🔲 Buttons! */
+button {
+    cursor: pointer;
+    align-items: center;
+    display: inline-flex;
+    gap: var(--Spacing-2);
+    justify-content: center;
+    color: var(--Text-Black);
+    padding: var(--Spacing-4);
+    border: var(--Outline-Button);
+    transition: var(--Transition);
+    font-weight: var(--Font-Bold);
+    border-radius: var(--Radius-2);
+    background: var(--Main-White-3);
+}
+
+button.White-Button {
+    background: var(--White);
+    border: var(--Outline-Light);
+}
+
+button:active {
+    animation: Sink-And-Pop 1s ease-in-out;
+}
+
+
+select {
+    color: var(--Text-Black);
+    padding: var(--Spacing-4);
+    background: var(--White);
+    border: var(--Outline-Light);
+    border-radius: var(--Radius-1);
+}
+
+select:focus {
+    border-color: var(--Main);
+}
+
+li {
+    list-style-type: none;
+}
+
+
+/* 🎨 Colour Styles! */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+p,
+input,
+li {
+    color: var(--Text-Black);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+a {
+    color: var(--Main);
+    text-decoration: none;
+}
+
+
+/* 🅰️ Preset Text Styles! */
+
+.Bold {
+    font-weight: bold;
+}
+
+.Underlined {
+    text-decoration: underline;
+}
+
+.Muted {
+    color: var(--Text-Muted);
+}
+
+p,
+label,
+span {
+    font-weight: 600;
+}
+
+.Big-Heading {
+    font-size: 4rem;
+}
+
+.Text-Center {
+    text-align: center;
+}
+
+.Text-Width-100 {
+    width: 100%;
+    display: block;
+}
+
+
+/* Normal Preset Styles! */
+
+.Hidden {
+    display: none;
+}
+
+.Main-Colour {
+    color: var(--Main);
+}
+
+.Outline-Shadow {
+    box-shadow: var(--Outline-Shadow);
+}
+
+.Row {
+    gap: var(--Spacing-4);
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.End {
+    display: inline-flex;
+    justify-content: flex-end;
+    margin-right: var(--Spacing-9);
+}
+
+.Spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: 100% -50%;
+    font-size: var(--Spacing-9);
+    animation: Spin 1s ease-in-out infinite;
+}
+
+.Spinner.No-Spin {
+    color: red;
+    animation: none;
+}
+
+
+
+
+/* 🔲 Item Cards! */
+
+.Item-Card {
+    width: 12rem;
+    height: 14rem;
+    padding: 2.5rem;
+    position: relative;
+    text-decoration: none;
+    background: var(--White);
+    border: var(--Outline-Light);
+    border-radius: var(--Radius-2);
+}
+
+.Item-Card h2 {
+    z-index: 999;
+    margin-top: 12rem;
+    position: relative;
+}
+
+.Item-Card .Item-Top-Bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    margin: var(--Spacing-4);
+    margin-bottom: var(--Spacing-4);
+}
+
+.Item-Card .Item-Top-Bar button {
+    border: none;
+    background: none;
+    padding: var(--Spacing-3);
+    font-size: var(--Spacing-5);
+}
+
+.Item-Card .Item-Card-Thumbnail {
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    border-radius: var(--Radius-2) var(--Radius-2) 0 0;
+}
+
+
+/* 🖼️ Grid Styles! */
+.Grid {
+    width: 98%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: var(--Spacing-4);
+}
+
+
+/* Select Styles! */
+
+.Select {
+    height: var(--Spacing-4);
+    color: var(--Text-Black);
+    background: var(--White);
+    padding: var(--Spacing-1);
+    border: var(--Outline-Light);
+    max-width: var(--Spacing-10);
+    border-radius: var(--Radius-1);
+}
+
+.Select .Select_Popover {
+    width: 100%;
+    display: none;
+    translate: -10%;
+    padding: var(--Spacing-1);
+    border: var(--Outline-Light);
+    margin-top: var(--Spacing-4);
+    border-radius: var(--Radius-1);
+}
+
+.Select .Select_Popover .Select_Item {
+    padding: var(--Spacing-1);
+}
+
+
+.Select.Open {
+    margin-bottom: var(--Spacing-10);
+}
+
+.Select.Open .Select_Popover {
+    display: block;
+}
+
+
+/* Input Styles! */
+
+input {
+    background: var(--White);
+    padding: var(--Spacing-4);
+    border: var(--Outline-Light);
+    transition: var(--Transition);
+    border-radius: var(--Radius-1);
+    margin-bottom: var(--Spacing-4);
+}
+
+input:focus {
+    border: var(--Outline-Main);
+    box-shadow: 0 0 0 var(--Spacing-1) var(--Transparent-Main);
+}
+
+/* input:active {
+    animation: Sink-And-Pop 1s ease-in-out;
+} */
+
+.h1_Font_Size {
+    font-size: var(--Spacing-9);
+}
+
+.Center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+.Tool-Box {
+    position: fixed;
+    gap: var(--Spacing-7);
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    z-index: 1000;
+    max-width: 386px;
+    translate: -50% -50%;
+    text-align: center;
+    padding: var(--Spacing-9);
+    border: var(--Outline-Light);
+    border-radius: var(--Radius-2);
+}
+
+.Tool-Box h1 {
+    font-size: var(--Spacing-9);
+}
+
+
+
+/* Side Bar! */
+
+.Side-Bar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    height: 100vh;
+    width: 12.9rem;
+    z-index: 999999;
+    overflow: hidden;
+    gap: var(--Spacing-1);
+    flex-direction: column;
+    background: var(--White);
+    transition: var(--Transition);
+    padding-left: var(--Spacing-4);
+    padding-right: var(--Spacing-4);
+    border-right: var(--Outline-Light);
+}
+
+.Side-Bar .Side-Bar-Top {
+    margin-top: var(--Spacing-7);
+    margin-bottom: var(--Spacing-8);
+}
+
+.Side-Bar.Hidden {
+    display: none;
+}
+
+.Side-Bar .Line {
+    height: 100px;
+}
+
+.Side-Bar a p {
+    font-weight: bold;
+}
+
+.Side-Bar button p,
+.Side-Bar button i,
+.Side-Bar .Icon {
+    color: var(--Text-Dark-Main);
+}
+
+.Side-Bar .Yinix {
+    padding: var(--Spacing-1);
+    border-radius: var(--Radius-4);
+    background: var(--Transparent-Main);
+}
+
+.Side-Bar .Yinix p,
+.Side-Bar .Yinix .Icon {
+    color: var(--Main);
+}
+
+
+.Side-Bar button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    background: none;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.Side-Bar a button.Dropdown .Dropdown-Arrow {
+    margin-left: auto;
+    font-size: var(--Spacing-6);
+    color: var(--Text-Dark-Main);
+}
+
+.Side-Bar .Classes-Dropdown-Items.Hidden {
+    display: none;
+}
+
+.Side-Bar .Classes-Dropdown-Items .Classes-Dropdown-Item {
+    margin-left: 2rem;
+}
+
+.Side-Bar button i,
+.Side-Bar .Icon {
+    font-size: var(--Spacing-7);
+}
+
+.Side-Bar button p {
+    font-size: var(--Spacing-4);
+}
+
+
+
+.Main {
+    margin-bottom: var(--Spacing-9);
+    padding-top: var(--Spacing-10);
+    margin-left: var(--Spacing-11);
+}
+
+.Main .Row {
+    display: flex;
+    flex-direction: row;
+}
+
+.Main .Row div {
+    flex-direction: column;
+}
+
+.Main .Classes .Class {
+    cursor: pointer;
+    position: relative;
+    background: var(--White);
+    width: var(--Spacing-10);
+    padding: var(--Spacing-8);
+    height: var(--Spacing-10);
+    border: var(--Outline-Light);
+    border-radius: var(--Radius-2);
+}
+
+.Main .Classes .Class .Subject {
+    position: absolute;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    display: inline-flex;
+    border-radius: 50rem;
+    justify-content: center;
+    width: var(--Spacing-8);
+    color: var(--Text-Black);
+    height: var(--Spacing-8);
+    margin: var(--Spacing-4);
+    padding: var(--Spacing-2);
+    background: var(--Transparent-Main);
+}
+
+.Main .Classes .Class .Subject .Icon {
+    font-size: var(--Spacing-8);
+}
+
+
+/* =====================================Whiteboard Area=====================================! */
+
+
+.Whiteboard_Area {
+    display: flex;
+}
+
+.Whiteboard_Area .Whiteboard_Tools {
+    gap: 32px;
+    display: flex;
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    translate: -50%;
+    max-height: 30px;
+    text-align: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background: var(--White);
+    border: var(--Outline-Light);
+    border-radius: var(--Radius-2);
+    margin-bottom: var(--Spacing-9);
+    padding: var(--Spacing-2) var(--Spacing-8);
+}
+
+.Whiteboard_Area .Whiteboard_Tools .Tool {
+    transition: 0.01s ease-in-out;
+}
+
+.Whiteboard_Area .Whiteboard_Tools div i {
+    font-size: 32px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--Text-Black);
+    transition: var(--Transition);
+}
+
+
+.Whiteboard_Area .Whiteboard_Tools .Tool i:active {
+    opacity: 0.5;
+}
+
+.Whiteboard_Area .Whiteboard_Tools .Tool.Active {
+    padding: 0.5rem;
+    color: var(--Main);
+    border-radius: 2rem;
+    padding-left: var(--Spacing-2);
+    padding-right: var(--Spacing-2);
+    background: var(--Transparent-Main);
+}
+
+.Whiteboard_Area .Whiteboard_Tools div.Active i {
+    color: var(--Main);
+}
+
+.Whiteboard_Area .Whiteboard_Tools .Whiteboard_Divider {
+    font-size: 28px;
+    color: var(--Dark-White);
+}
+
+.Whiteboard_Area #Colour_Creator {
+    left: 195px;
+    bottom: 150px;
+    display: none !important;
+    position: fixed;
+    background: var(--White);
+    border: var(--Outline-Light);
+}
+
+.Whiteboard_Area .Whiteboard,
+.Whiteboard_Area .White {
+    width: 100%;
+    z-index: -999;
+    height: 100dvh;
+    cursor: default;
+    position: fixed;
+    pointer-events: auto;
+    background: var(--White);
+}
+
+#Pen_Cursor {
+    width: 20px;
+    height: 20px;
+    z-index: 99999;
+    position: absolute;
+    pointer-events: none;
+    translate: 0 -1.8rem;
+    transition: 50ms ease-in-out;
+    transition-property: transform, width, border, background-color;
+}
+
+#Pen_Cursor img {
+    width: 1.5rem;
+}
+
+.Whiteboard_Area .Whiteboard .Pen_Mark {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--Main);
+}
+
+.Whiteboard_Area .White .Text {
+    padding: 18px;
+    overflow: hidden;
+    resize: both;
+    width: max-content;
+    position: relative;
+    border: 2px solid var(--White);
+}
+
+.Whiteboard_Area .White .Text::-webkit-resizer {
+    display: none;
+}
+
+
+.Whiteboard_Area .White .Text:focus {
+    outline: inherit;
+    cursor: text;
+    border: 2px dotted var(--Main);
+}
+
+.Whiteboard_Area .White .Text::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: se-resize;
+    background: var(--White);
+    border: 3px solid var(--Main);
+
+    display: none;
+}
+
+.Whiteboard_Area .White .Text::before {
+    content: "🗑️";
+    width: 7px;
+    height: 7px;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    border-radius: 5px;
+    background: var(--White);
+}
+
+.Whiteboard_Area .White .Text:focus::after,
+.Whiteboard_Area .White .Text:focus:before {
+    display: block;
+}
+
+
+.Whiteboard_Area .Top_Bar {
+    width: 40%;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    translate: -50%;
+    text-align: center;
+    padding: var(--Spacing-2);
+    margin-top: var(--Spacing-8);
+    border: var(--Outline-Light);
+    border-radius: var(--Radius-2);
+}
+
+.Whiteboard_Area .Top_Bar input {
+    font-weight: bold;
+    font-size: xx-large;
+    width: 70%;
+    border: 2px solid var(--White);
+}
+
+
+
+.Whiteboard_Area .Top_Bar button {
+    padding: 0;
+    border: none;
+    font-size: 2rem;
+    border-radius: 0;
+}
+
+.Whiteboard_Area #Comment,
+.Whiteboard_Area #Back {
+    right: 0;
+    width: 5rem;
+    margin: 1rem;
+    position: fixed;
+    font-size: 2rem;
+    border-radius: var(--Spacing-9);
+}
+
+.Whiteboard_Area #Back {
+    left: 0;
+    width: 6rem;
+    font-size: 1rem;
+}
+
+
+
+
+/* =====================================Video Meeting Area=====================================! */
+
+.Video_Meeting {
+    height: 100vh;
+}
+
+.Video_Meeting .Video_Box {
+    margin: var(--Spacing-1);
+    width: 25rem;
+    height: 300px;
+    border-radius: var(--Radius-1);
+}
+
+.Video_Meeting .Video_Box #Webcam_Video {
+    width: 100%;
+    border-radius: var(--Radius-1);
+}
+
+.Video_Meeting button {
+    border-radius: var(--Radius-2);
+}
+
+
+.Video_Meeting .Bottom_Menu {
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    gap: var(--Spacing-1);
+    padding: var(--Spacing-1);
+    border-top: var(--Outline-Light);
+}
+
+.Video_Meeting .Bottom_Menu .Divider {
+    font-size: 2.5rem;
+    color: var(--Dark-White);
+}
+
+
+
+.Video_Meeting_Chat_Sidebar {
+    gap: var(--Spacing-1);
+    display: flex;
+    padding: 2rem;
+    height: 100dvh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    flex-direction: column;
+    color: var(--Text-Black);
+    background: var(--White);
+    border-left: var(--Outline-Light);
+}
+
+.Video_Meeting_Chat_Sidebar .Center {
+    text-align: center;
+    align-items: center;
+}
+
+.Video_Meeting_Chat_Sidebar .Chat_Container .Chat_Bubble {
+    max-width: 10rem;
+    border-radius: 67rem;
+    padding: var(--Spacing-1);
+    border: var(--Outline-Light);
+}
+
+
+
+
+
+
+#Randomizer input[type="number"] {
+    width: 1.5rem;
+    text-align: center;
+}
+
+#Randomizer input[type="number"]:focus {
+    outline: none;
+    border: var(--Outline-Main);
+}
+
+#Randomizer input[type="range"] {
+    width: 80%;
+    appearance: none;
+    background: var(--White);
+    padding: var(--Spacing-1);
+    border: var(--Outline-Light);
+    border-radius: var(--Radius-1);
+}
+
+#Randomizer input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    background: var(--Main);
+}
+
+
+
+#Randomizer #Random_Number {
+    user-select: all;
+    animation: Random_Appear 0.3s ease-in-out;
+}
+
+
+
+.Attendance_Session_List {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    border: var(--Outline-Light);
+    border-radius: var(--Radius-2);
+}
+
+.Attendance_Session_List li {
+    height: 1rem;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--Spacing-8);
+    justify-content: space-between;
+}
+
+.Attendance_Session_List li:nth-child(even) {
+    background: var(--White);
+}
+
+.Attendance_Session_List li:last-child {
+    border-radius: 0 var(--Radius-2);
+}
+
+.Attendance_Session_List div select {
+    right: 0;
+    position: absolute;
+}
+
+
+
+
+#Signin_Form,
+#Signup_Form {
+    display: flex;
+    flex-direction: column;
+}
+
+.Account_Form {
+    width: 75%;
+    display: flex;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    translate: -50% 0;
+    gap: var(--Spacing-4);
+    flex-direction: column;
+    padding: var(--Spacing-2);
+}
+
+.Account_Form input,
+.Account_Form select {
+    width: 100%;
+}
+
+.Account_Form .Row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--Spacing-9);
+    justify-content: center;
+}
+
+.Account_Form .Row div {
+    width: 100%;
+}
+
+
+.SocialButtons {
+    gap: var(--Spacing-4);
+}
+
+button.OAuth2_Signin_Button#Google {
+    border-top: 3px solid #176ced;
+    border-left: 3px solid #d9432f;
+    border-bottom: 3px solid #ffb700;
+    border-right: 3px solid #009a57;
+}
+
+
+
+
+
+.Class_Intro {
+    display: flex;
+    top: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: var(--Spacing-2);
+    height: var(--Spacing-10);
+    margin-bottom: var(--Spacing-9);
+    border-bottom: var(--Outline-Light);
+}
+
+.Stream_Empty {
+    display: flex;
+    align-items: center;
+    gap: var(--Spacing-4);
+    flex-direction: column;
+    justify-content: center;
+    height: var(--Spacing-10);
+}
+
+.Class_Nav {
+    width: 50%;
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    font-weight: 500;
+    left: 50%;
+    translate: -20% 0;
+    justify-content: space-around;
+    bottom: 0;
+    margin-bottom: var(--Spacing-8);
+}
+
+.Class_Nav li {
+    cursor: pointer;
+    user-select: none;
+}
+
+.Class_Nav li.Active {
+    width: 1rem;
+    display: inline-flex;
+    padding-bottom: 0.2rem;
+    justify-content: center;
+    border-bottom: var(--Thickness-2) solid var(--Main);
+}
+
+
+#Side-Bar-Button {
+    margin: var(--Spacing-4);
+}
+
+.Side-Bar:not(.None)~#Side-Bar-Button {
+    margin-left: var(--Spacing-10);
+}
+
+
+#Screen-Share-Form {
+    width: 80%;
+}
+
+#Screen-Share-Form input {
+    width: 100%;
+}
+
+
+
+.Top-Bar {
+    width: 100%;
+    display: flex;
+    z-index: 99999;
+    position: fixed;
+    background: var(--White);
+    padding: var(--Spacing-5);
+    border-bottom: var(--Outline-Light);
+}
+
+.Top-Bar .Account-Picture {
+    width: 3rem;
+    cursor: pointer;
+    margin-left: auto;
+    border-radius: 50%;
+    display: inline-flex;
+    border: var(--Outline-Light);
+    transition: var(--Transition);
+    margin-right: var(--Spacing-9);
+}
+
+
+
+#Side-Bar-Close-Button {
+    display: none;
+}
+
+
+@media (max-width: 425px),
+(max-height: 633px) {
+    .Tool-Box {
+        padding: 0;
+        border: none;
+    }
+}
+
+@media (max-width: 640px) {
+    #Side-Bar-Close-Button {
+        display: block;
+        margin-left: auto;
+    }
+
+    .Side-Bar.Hidden {
+        left: -250px;
+    }
+
+    .Side-Bar.Open {
+        left: 0;
+        display: flex;
+        position: fixed;
+        z-index: 9999999;
+    }
+
+
+    .Side-Bar-Backdrop {
+        inset: 0;
+        display: block;
+        position: fixed;
+        z-index: 9999;
+        background: hsla(220, 100%, 10%, 0.5);
+    }
+
+    #Side-Bar-Button {
+        margin-left: var(--Spacing-4);
+    }
+
+    .Main {
+        margin-left: var(--Spacing-8);
+        padding-top: var(--Spacing-10);
+    }
+
+    .Spinner {
+        translate: -50% -50%;
+    }
+}
+
+@media (hover: hover) {
+    .Whiteboard_Area .White .Text:hover {
+        border: 2px dotted var(--Main);
+    }
+
+    .Whiteboard_Area .Whiteboard_Tools div span:hover {
+        color: #47595e;
+    }
+
+    button:hover {
+        scale: 1.05;
+    }
+
+    button.OAuth2_Signin_Button#Google:hover {
+        animation: Google-Animation 1s infinite;
+    }
+
+    .Account_Form input:hover {
+        scale: 1.01;
+    }
+
+    .Whiteboard_Area .Top_Bar button:hover {
+        background: var(--Dark-White);
+    }
+
+    .Whiteboard_Area .Top_Bar input:hover {
+        border: var(--Outline-Main);
+    }
+
+    .Select .Select_Popover .Select_Item:hover {
+        background: var(--Dark-White);
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .Whiteboard_Area .Whiteboard_Tools:hover #Pen_Cursor img {
+        display: none;
+    }
+
+    .Top-Bar .Account-Picture:hover {
+        scale: 1.05;
+    }
+}
+
+@media (max-width: 641px) {
+    .Whiteboard_Area .Whiteboard_Tools {
+        padding: 0;
+        border: none;
+    }
+}
+
+@media (max-width: 551px) {
+    .Whiteboard_Area .Whiteboard_Tools .Tool {
+        display: none;
+    }
+
+    .Whiteboard_Area .Whiteboard_Tools div:first-child,
+    .Whiteboard_Area .Whiteboard_Tools div:last-child {
+        display: inline;
+    }
+}
+
+@media (pointer: coarse) {
+    #Pen_Cursor {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #Pen_Cursor {
+        display: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --White: hsl(220, 20%, 10%);
+        --Light-BG: hsl(220, 0%, 15%);
+        --Dark-White: hsl(0, 0%, 20%);
+        --Main-White-BG: hsl(220, 20%, 17%);
+
+        --Main: hsl(220, 100%, 78%);
+        --Main-White-3: hsla(220, 100%, 10%);
+
+        --Purple-Black: hsl(245, 15%, 88%);
+        --Text-Black: hsl(0, 0%, 70%);
+        --Text-White: hsl(0, 100%, 99%);
+        --Teal-Black: hsl(195, 14%, 50%);
+        --Text-Dark-Main: hsl(220, 50%, 85%);
+
+        --Outline-Thickness: 3px;
+        --Outline-Colour: hsl(0, 0%, 80%);
+        --Outline-Light-Colour: hsl(0, 0%, 20%);
+        --Outline-White-Main-Colour: hsl(220, 0%, 60%);
+        --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
+        --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Light-Colour);
+        --Outline-Main: var(--Outline-Thickness) solid var(--Main);
+        --Outline-Shadow: 4px 4px var(--Outline-Colour);
+        --Thickness-2: 4px;
+    }
+}
