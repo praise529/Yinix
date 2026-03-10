@@ -74,7 +74,7 @@ function Home() {
                             </div>
                         ))
                         : (
-                            <div className="Text-Center">
+                            <div className="Text-Center" title="No Classes">
                                 <h2>No classes...</h2><br></br>
                                 <p className="Muted">Try joining a class or switching accounts.</p><br></br><br></br>
                                 <div className="Row">

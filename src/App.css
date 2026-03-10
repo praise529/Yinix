@@ -1345,7 +1345,37 @@ button.OAuth2_Signin_Button#Google {
         --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
         --Outline-Button: var(--Outline-Thickness) solid var(--Outline-Button-Colour);
         --Outline-White-Main: var(--Outline-Thickness) solid var(--Outline-White-Main-Colour);
-        --Outline-Shadow: 4px 4px var(--Outline-Colour);
+        <<<<<<< HEAD --Outline-Shadow: 4px 4px var(--Outline-Colour);
+    }
+
+    :root.Dark {
+        --White: hsl(220, 100%, 100%);
+        --Light-BG: hsl(220, 20%, 97%);
+        --Dark-White: hsl(220, 75%, 98%);
+
+        /* #5c92ff! */
+        --Main: hsl(220, 100%, 68%);
+        --Main-White-BG: hsl(220, 20%, 99%);
+        --Main-White-3: hsl(220, 100%, 88%);
+        --Secondary-Main: hsl(240, 100%, 68%);
+        --Transparent-Main: hsla(from var(--Main) H S L / 0.06);
+
+        --Purple-Black: hsl(245, 15%, 68%);
+        --Text-Black: hsl(220, 100%, 10%);
+        --Text-Dark-Main: hsl(220, 50%, 35%);
+        --Text-White: hsl(0, 100%, 99%);
+        --Teal-Black: hsl(195, 14%, 50%);
+        --Text-Muted: hsl(0, 0%, 50%);
+
+        --Outline-Thickness: 3px;
+        --Outline-Colour: hsl(220, 20%, 90%);
+        --Outline-Button-Colour: hsl(220, 75%, 80%);
+        --Outline-White-Main-Colour: hsl(220, 20%, 92%);
+        --Outline-Main: var(--Outline-Thickness) solid var(--Main);
+        --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
+        --Outline-Button: var(--Outline-Thickness) solid var(--Outline-Button-Colour);
+        --Outline-White-Main: var(--Outline-Thickness) solid var(--Outline-White-Main-Colour);
+        =======>>>>>>>d39e3ec6c30e73aff8aa260854ec7652c79d621b --Outline-Shadow: 4px 4px var(--Outline-Colour);
     }
 
     :root.Dark {
