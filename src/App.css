@@ -85,6 +85,7 @@
 :root.Dark {
     --White: hsl(220, 20%, 10%);
     --Light-BG: hsl(220, 20%, 7%);
+    --Dark-White: hsl(220, 20%, 12.5%);
 
     /* #5c92ff! */
     --Main: hsl(220, 100%, 68%);
@@ -222,6 +223,7 @@ button:active {
 
 
 select {
+    font-weight: 600;
     color: var(--Text-Black);
     padding: var(--Spacing-4);
     background: var(--White);
@@ -462,6 +464,44 @@ input:focus {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+.Switch {
+    width: 4rem;
+    position: relative;
+    height: var(--Spacing-8);
+    padding: var(--Spacing-1);
+    background: hsl(0, 0%, 80%);
+    border-radius: var(--Spacing-10);
+    transition: var(--Transition);
+}
+
+:root.Dark .Switch {
+    background: hsl(220, 20%, 10%);
+}
+
+:root.Dark .Switch.Active {
+    background: var(--Main);
+}
+
+.Switch::before {
+    left: 5%;
+    width: 2rem;
+    content: "";
+    height: 2rem;
+    border-radius: 50%;
+    position: absolute;
+    background: white;
+}
+
+.Switch.Active {
+    background: var(--Main);
+}
+
+.Switch.Active::before {
+    left: auto;
+    right: 5%;
 }
 
 
@@ -1118,6 +1158,43 @@ button.OAuth2_Signin_Button#Google {
 }
 
 
+
+.Settings-Items {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: var(--Spacing-8);
+    border-radius: var(--Radius-2);
+}
+
+.Settings-Items .Settings-Item {
+    width: 100%;
+    background: var(--White);
+    padding: var(--Spacing-6);
+    justify-content: flex-start;
+    border: var(--Outline-Light);
+    border-bottom: 0;
+}
+
+.Settings-Items .Settings-Item h4 {
+    margin-left: var(--Spacing-8);
+}
+
+.Settings-Items .Settings-Item:first-child {
+    border-radius: var(--Radius-2) var(--Radius-2) 0 0;
+}
+
+.Settings-Items .Settings-Item:last-child {
+    border-bottom: var(--Outline-Light);
+    border-radius: 0 0 var(--Radius-2) var(--Radius-2);
+}
+
+.Settings-Items .Settings-Item:nth-child(even) {
+    background: var(--Dark-White);
+}
+
+
 @media (max-width: 425px),
 (max-height: 633px) {
     .Tool-Box {
@@ -1245,27 +1322,59 @@ button.OAuth2_Signin_Button#Google {
 @media (prefers-color-scheme: dark) {
     :root {
         --White: hsl(220, 20%, 10%);
-        --Light-BG: hsl(220, 0%, 15%);
-        --Dark-White: hsl(0, 0%, 20%);
-        --Main-White-BG: hsl(220, 20%, 17%);
+        --Light-BG: hsl(220, 20%, 7%);
 
-        --Main: hsl(220, 100%, 78%);
-        --Main-White-3: hsla(220, 100%, 10%);
+        /* #5c92ff! */
+        --Main: hsl(220, 100%, 68%);
+        --Main-White-3: hsl(220, 50%, 12%);
+        --Secondary-Main: hsl(240, 100%, 68%);
+        --Transparent-Main: hsla(from var(--Main) H S L / 0.05);
 
-        --Purple-Black: hsl(245, 15%, 88%);
-        --Text-Black: hsl(0, 0%, 70%);
+        --Purple-Black: hsl(245, 15%, 68%);
+        --Text-Black: hsl(220, 0%, 80%);
+        --Text-Dark-Main: hsl(220, 50%, 80%);
         --Text-White: hsl(0, 100%, 99%);
         --Teal-Black: hsl(195, 14%, 50%);
-        --Text-Dark-Main: hsl(220, 50%, 85%);
+        --Text-Muted: hsl(0, 0%, 50%);
 
         --Outline-Thickness: 3px;
-        --Outline-Colour: hsl(0, 0%, 80%);
-        --Outline-Light-Colour: hsl(0, 0%, 20%);
-        --Outline-White-Main-Colour: hsl(220, 0%, 60%);
-        --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
-        --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Light-Colour);
+        --Outline-Colour: hsl(220, 20%, 16%);
+        --Outline-Button-Colour: hsl(220, 75%, 15%);
+        --Outline-White-Main-Colour: hsl(220, 20%, 92%);
         --Outline-Main: var(--Outline-Thickness) solid var(--Main);
+        --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
+        --Outline-Button: var(--Outline-Thickness) solid var(--Outline-Button-Colour);
+        --Outline-White-Main: var(--Outline-Thickness) solid var(--Outline-White-Main-Colour);
         --Outline-Shadow: 4px 4px var(--Outline-Colour);
-        --Thickness-2: 4px;
+    }
+
+    :root.Dark {
+        --White: hsl(220, 100%, 100%);
+        --Light-BG: hsl(220, 20%, 97%);
+        --Dark-White: hsl(220, 75%, 98%);
+
+        /* #5c92ff! */
+        --Main: hsl(220, 100%, 68%);
+        --Main-White-BG: hsl(220, 20%, 99%);
+        --Main-White-3: hsl(220, 100%, 88%);
+        --Secondary-Main: hsl(240, 100%, 68%);
+        --Transparent-Main: hsla(from var(--Main) H S L / 0.06);
+
+        --Purple-Black: hsl(245, 15%, 68%);
+        --Text-Black: hsl(220, 100%, 10%);
+        --Text-Dark-Main: hsl(220, 50%, 35%);
+        --Text-White: hsl(0, 100%, 99%);
+        --Teal-Black: hsl(195, 14%, 50%);
+        --Text-Muted: hsl(0, 0%, 50%);
+
+        --Outline-Thickness: 3px;
+        --Outline-Colour: hsl(220, 20%, 90%);
+        --Outline-Button-Colour: hsl(220, 75%, 80%);
+        --Outline-White-Main-Colour: hsl(220, 20%, 92%);
+        --Outline-Main: var(--Outline-Thickness) solid var(--Main);
+        --Outline-Light: var(--Outline-Thickness) solid var(--Outline-Colour);
+        --Outline-Button: var(--Outline-Thickness) solid var(--Outline-Button-Colour);
+        --Outline-White-Main: var(--Outline-Thickness) solid var(--Outline-White-Main-Colour);
+        --Outline-Shadow: 4px 4px var(--Outline-Colour);
     }
 }

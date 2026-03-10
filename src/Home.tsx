@@ -5,6 +5,7 @@ import TopBar from "./Components/TopBar";
 import { Spinner, WarningCircle } from "phosphor-react";
 import { ServerURL } from "./Scripts/URLs";
 import FindSubject from "./Scripts/FindSubject";
+import { SetUpTheme } from "./Scripts/Theme";
 
 
 type ClassroomType = {
@@ -14,6 +15,7 @@ type ClassroomType = {
 }
 
 function Home() {
+    SetUpTheme();
     if (!localStorage.getItem("Yinix-Account")) return;
     const Account = JSON.parse(localStorage.getItem("Yinix-Account") ?? "null");
     const [Classes, SetClasses] = useState<ClassroomType[]>([]);
