@@ -12,7 +12,7 @@ export default function TopBar() {
       }}>
         <List weight="bold" size={20}></List>
       </button>
-      <img id="Account-Picture" className="Account-Picture" src={AccountPicture}></img>
+      <img id="Account-Picture" className="Account-Picture" src={AccountPicture} title="Account"></img>
     </nav>
   );
 }
