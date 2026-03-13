@@ -72,7 +72,7 @@
     --Spacing-10: 10rem;
     --Spacing-11: 20rem;
 
-    --Transition: 300ms ease-in-out;
+    --Transition: 300ms cubic-bezier(0.3, 0.8, 0.2, 1.3);
     --Transition-2: 1s ease-in-out;
 
     --Font-Medium: 500;
@@ -181,6 +181,18 @@
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes Button-Icon-Animation {
+    from {
+        opacity: 0;
+        translate: 20px;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0;
     }
 }
 
@@ -340,6 +352,21 @@ span {
 .Spinner.No-Spin {
     color: red;
     animation: none;
+}
+
+.Chip {
+    cursor: pointer;
+    background: var(--White);
+    translate: var(--Transition);
+    border: var(--Outline-Light);
+    font-weight: var(--Font-Bold);
+    border-radius: var(--Radius-4);
+    padding: var(--Spacing-2) var(--Spacing-4);
+}
+
+.Chip:hover {
+    scale: 1.1;
+    background: var(--Outline-Colour);
 }
 
 
@@ -505,6 +532,12 @@ input:focus {
 }
 
 
+.Column {
+    display: flex;
+    flex-direction: column;
+}
+
+
 
 
 
@@ -525,6 +558,28 @@ input:focus {
 
 .Tool-Box h1 {
     font-size: var(--Spacing-9);
+}
+
+.Tool {
+    gap: var(--Spacing-5);
+}
+
+
+.Timer-Range {
+    width: 50%;
+    border: none;
+    appearance: none;
+    background: none;
+}
+
+.Timer-Range::-webkit-progress-bar {
+    border-radius: var(--Radius-4);
+    background: var(--Outline-Colour);
+}
+
+.Timer-Range::-webkit-progress-value {
+    background: var(--Main);
+    border-radius: var(--Radius-4);
 }
 
 
@@ -1286,6 +1341,20 @@ button.OAuth2_Signin_Button#Google {
 
     .Top-Bar .Account-Picture:hover {
         scale: 1.05;
+    }
+
+    button .Button-Icon {
+        display: none;
+        transition: var(--Transition);
+    }
+
+    button:has(.Button-Icon):hover {
+        scale: 1;
+    }
+
+    button:hover .Button-Icon {
+        display: block;
+        animation: Button-Icon-Animation 300ms cubic-bezier(0.3, 0.8, 0.2, 1.3);
     }
 }
 

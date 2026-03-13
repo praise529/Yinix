@@ -1,12 +1,23 @@
-import { Bell, Sun, Translate } from "phosphor-react";
+import { Bell, Sun, Translate, XCircle } from "phosphor-react";
 import SideBar from "./Components/SideBar";
 import Switch from "./Components/Switch";
 import TopBar from "./Components/TopBar";
 import { SetUpTheme, ToggleTheme } from "./Scripts/Theme";
+import AskForNotifications from "./Scripts/Notifications";
+import { useState } from "react";
 
 const Settings = () => {
   SetUpTheme();
+  const [Error, SetError] = useState("");
   const Account = JSON.parse(localStorage.getItem("Yinix-Account") ?? "null");
+
+  async function Ask() {
+    const Result = await AskForNotifications();
+    if (Result === 0) {
+      // Error
+      SetError("Error");
+    }
+  }
 
   return (
     <div>
@@ -14,7 +25,14 @@ const Settings = () => {
       <TopBar></TopBar>
 
       <div className="Main">
-        <h1>Settings</h1><br></br><br></br>
+        <h1>Settings</h1>
+        {Error && (
+          <div className="Row" style={{ color: "red", textAlign: "left" }}>
+            <br></br>
+            <XCircle weight="bold" size={25}></XCircle>
+            <h3 style={{ color: "red" }}>Error Enabling Notifications, or something</h3>
+          </div>
+        )}<br></br><br></br>
 
         <div className="Account-Info">
           <h3>{Account.Info.Name}</h3>
@@ -31,7 +49,8 @@ const Settings = () => {
           </div>
           <div className="Settings-Item Row">
             <h4 className="Row"><Bell size={24} weight="bold"></Bell> Notifications:</h4>
-            <Switch active={false} title="Allow Notifications?"></Switch>
+            <Switch active={Notification.permission === "granted" ? true : false} title="Allow Notifications?"
+              onClick={Ask()}></Switch>
           </div>
           <div className="Settings-Item Row">
             <h4 className="Row"><Translate weight="bold" size={24}></Translate> Language:</h4>
