@@ -43,13 +43,13 @@ const TimerTool = () => {
         SetTotalSeconds(0);
     }
 
-    function AddSeconds(Seconds: number) {
-        SetTotalSeconds(Current => {
-            const NewTime = Current + Seconds
-            SetInitialSeconds(NewTime)
-            return NewTime
-        })
-    }
+    // function AddSeconds(Seconds: number) {
+    //    SetTotalSeconds(Current => {
+    //        const NewTime = Current + Seconds
+    //        SetInitialSeconds(NewTime)
+    //       return NewTime
+    //    })
+    //}
 
     function ConvertTime() {
         const Hours = Math.floor(TotalSeconds / 3600);
