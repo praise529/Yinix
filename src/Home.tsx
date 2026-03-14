@@ -6,6 +6,7 @@ import { Spinner, WarningCircle } from "phosphor-react";
 import { ServerURL } from "./Scripts/URLs";
 import FindSubject from "./Scripts/FindSubject";
 import { SetUpTheme } from "./Scripts/Theme";
+import { Link } from "react-router-dom";
 
 
 type ClassroomType = {
@@ -78,7 +79,7 @@ function Home() {
                                 <h2>No classes...</h2><br></br>
                                 <p className="Muted">Try joining a class or switching accounts.</p><br></br><br></br>
                                 <div className="Row">
-                                    <button>Join Class</button>
+                                    <Link to={"/Class"}><button>Join Class</button></Link>
                                     <button className="White-Button">Switch Accounts</button>
                                 </div>
                             </div>

@@ -27,6 +27,7 @@
 }
 
 :root {
+    --Dark-BG: hsla(0, 0%, 50%, 10%);
     --White: hsl(220, 100%, 100%);
     --Light-BG: hsl(220, 20%, 97%);
     --Dark-White: hsl(220, 75%, 98%);
@@ -235,6 +236,17 @@ button.Danger-Button {
     border: var(--Outline-Thickness) solid hsl(0, 100%, 80%);
 }
 
+button.No-BG-Button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    padding: var(--Spacing-2);
+}
+
+button.No-BG-Button:hover {
+    background: var(--Dark-BG);
+}
+
 button:active {
     animation: Sink-And-Pop 1s ease-in-out;
 }
@@ -338,6 +350,13 @@ span {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.Row-Between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: var(--Spacing-8);
 }
 
 .End {
@@ -1209,6 +1228,10 @@ button.OAuth2_Signin_Button#Google {
     display: inline-flex;
     border: var(--Outline-Light);
     transition: var(--Transition);
+}
+
+.Top-Bar .Notification-Button {
+    margin-left: var(--Spacing-4);
     margin-right: var(--Spacing-9);
 }
 

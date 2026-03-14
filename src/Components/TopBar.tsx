@@ -1,7 +1,8 @@
-import { List } from "phosphor-react";
+import { Bell, List } from "phosphor-react";
 import "../App.css";
 import AccountPicture from '../assets/Favicon BG.png'
 import { OpenSideBar } from "../Scripts/SideBar";
+import { Link } from "react-router-dom";
 
 export default function TopBar() {
   return (
@@ -14,6 +15,11 @@ export default function TopBar() {
         <List weight="bold" size={20}></List>
       </button>
       <img id="Account-Picture" className="Account-Picture" src={AccountPicture} title="Account"></img>
+      <Link to={"/Notifications"}>
+        <button className="Notification-Button White-Button">
+          <Bell size={20} weight="bold"></Bell>
+        </button>
+      </Link>
     </nav>
   );
 }
