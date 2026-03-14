@@ -8,7 +8,7 @@ import { useState, useRef, useEffect } from "react";
 const TimerTool = () => {
     const IntervalRef = useRef<any | null>(null);
 
-    const [InitialSeconds, SetInitialSeconds] = useState(10);
+    const InitialSeconds = 10;
     const [TotalSeconds, SetTotalSeconds] = useState(10);
     const [IsRunning, SetIsRunning] = useState(false);
 
