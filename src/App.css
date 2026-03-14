@@ -229,6 +229,11 @@ button.White-Button {
     border: var(--Outline-Light);
 }
 
+button.Danger-Button {
+    background: hsl(0, 100%, 85%);
+    border: var(--Outline-Thickness) solid hsl(0, 100%, 70%);
+}
+
 button:active {
     animation: Sink-And-Pop 1s ease-in-out;
 }

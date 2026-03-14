@@ -6,6 +6,7 @@ import Signin from "./Auth/Signin";
 import Signup from "./Auth/Signup";
 import Tools from "./Tools.tsx";
 import TimerTool from "./Tools/Timer.tsx";
+import Class from "./Class.tsx";
 
 function Protected({ children }: any) {
   if (!Account) {
@@ -19,6 +20,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Protected><Home /></Protected>} />
+      <Route path="/Class" element={<Protected><Class /></Protected>} />
       <Route path="/Settings" element={<Protected><Settings /></Protected>} />
       <Route path="/Tools" element={<Protected><Tools /></Protected>} />
       <Route path="/Tools/Timer" element={<Protected><TimerTool /></Protected>} />

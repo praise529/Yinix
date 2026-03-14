@@ -37,6 +37,7 @@ const Settings = () => {
         <div className="Account-Info">
           <h3>{Account.Info.Name}</h3>
           <p className="Muted">{Account.Info.Email}</p>
+          <button className="Danger-Button">Sign Out</button>
         </div>
         <div className="Settings-Items">
           <div className="Settings-Item Row">
