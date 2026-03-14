@@ -230,8 +230,9 @@ button.White-Button {
 }
 
 button.Danger-Button {
-    background: hsl(0, 100%, 85%);
-    border: var(--Outline-Thickness) solid hsl(0, 100%, 70%);
+    color: hsl(0, 100%, 60%);
+    background: hsl(0, 100%, 90%);
+    border: var(--Outline-Thickness) solid hsl(0, 100%, 80%);
 }
 
 button:active {
@@ -1269,6 +1270,11 @@ button.OAuth2_Signin_Button#Google {
         margin-left: auto;
     }
 
+    .Side-Bar,
+    .Side-Bar-Backdrop {
+        display: none;
+    }
+
     .Side-Bar.Hidden {
         left: -250px;
     }
@@ -1281,7 +1287,7 @@ button.OAuth2_Signin_Button#Google {
     }
 
 
-    .Side-Bar-Backdrop {
+    .Side-Bar-Backdrop.Shown {
         inset: 0;
         display: block;
         position: fixed;
@@ -1289,7 +1295,7 @@ button.OAuth2_Signin_Button#Google {
         background: hsla(220, 100%, 10%, 0.5);
     }
 
-    #Side-Bar-Button {
+    #Side-Bar-Button.Shown {
         margin-left: var(--Spacing-4);
     }
 
